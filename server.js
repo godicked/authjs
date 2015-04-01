@@ -14,7 +14,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser   = require('body-parser');
 var session      = require('express-session');
 
-require('./config/database.js');
+var congigDB = require('./config/database.js');
 //var mysql = require('mysql');
 
 // configuration ===============================================================
