@@ -1,40 +1,52 @@
 <!-- views/profile.ejs -->
 <!doctype html>
 <html>
-<head>
-    <title>Node Authentication</title>
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
-    <style>
-        body        { padding-top:80px; word-wrap:break-word; }
-    </style>
-</head>
-<body>
-<div class="container">
-
-    <div class="page-header text-center">
-        <h1><span class="fa fa-anchor"></span> Profile Page</h1>
-        <a href="/logout" class="btn btn-default btn-sm">Logout</a>
-    </div>
-
-    <div class="row">
-
-        <!-- LOCAL INFORMATION -->
-        <div class="col-sm-6">
-            <div class="well">
-                <h3><span class="fa fa-user"></span> Local</h3>
-
-                    <p>
-                        <strong>id</strong>: <%= user._id %><br>
-                        <strong>email</strong>: <%= user.local.email %><br>
-                        <strong>password</strong>: <%= user.local.password %>
-                    </p>
-
-            </div>
-        </div>
-
-    </div>
-
-</div>
-</body>
+	<head>
+		<meta charset="utf-8" />
+			<link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+			<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type="text/css">
+			<link rel="stylesheet" href="/public/style.css" type="text/css">
+			<link rel="icon" href="/public/favicon.ico" />
+			<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+			<script src="/public/jquery.js"></script>
+		<title>Hermessage</title>
+	</head>
+	<body>
+		
+		<header>
+			<a href="/logout">Logout</a>
+			<a href='#'><h1>HermÈs<span class="red">S</span>age <img src="/public/images/hermessage.png" id="photo" /></h1></a>
+			<em class="header">Harder, better, faster, stronger IRC</em>
+			<br>
+		</header>
+		
+		<section id="hermess_chat">
+		
+			<form action="/" method="post" id="formulaire_chat">
+				<input class="textbox" type="text" name="message" id="message" placeholder="Votre message..." size="50" autofocus autocomplete="off" />
+			   <!-- <input type="submit" id="envoi_message" value="Envoyer" />!-->
+				<span id="flr">#FLR</span>
+			</form>
+			
+			<article id="zone_chat">
+			</article>
+			
+			<aside id ="zone_list">
+				<ul id="list"></ul>
+			</aside>
+			
+		</section>
+		
+		
+		<footer>
+			<em>Réalisé par Félix Alié & David Gödicke 2015 - Remerciements à Jo Colina pour le css</em>
+		</footer>
+		
+		
+		<script src="/socket.io/socket.io.js"></script>
+		<script>
+			var socket = io.connect();
+			socket.emit('get_id','<%=user._id%>');
+		</script>
+	</body>
 </html>
