@@ -1,4 +1,5 @@
 // app/routes.js
+var User = require('./models/user.js');
 module.exports = function(app, passport) {
 
     // =====================================
@@ -49,10 +50,30 @@ module.exports = function(app, passport) {
     // we will want this protected so you have to be logged in to visit
     // we will use route middleware to verify this (the isLoggedIn function)
     app.get('/profile', isLoggedIn, function(req, res) {
-        res.render('profile.ejs', {
-            user : req.user // get the user out of session and pass to template
-        });
+		if(req.user.local.name){
+			res.render('profile.ejs', {
+				user : req.user // get the user out of session and pass to template
+			});
+		}
+		else{
+			res.render('welcome.ejs',{
+				user : req.user
+			});
+		}
     });
+	
+	// =====================================
+    // WELCOME =============================
+    // =====================================
+	
+	app.post('/welcome', function(req,res){
+		var pseudo = req.body.name;
+		console.log(pseudo);
+		User.findByIdAndUpdate(req.user._id, { $set: { 'local.name': pseudo }}, function (err, user) {
+			req.user = user;
+			res.redirect('/profile');
+		});
+	});
 
     // =====================================
     // LOGOUT ==============================

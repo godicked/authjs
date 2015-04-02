@@ -1,0 +1,32 @@
+<!-- views/welcome.ejs -->
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type="text/css">
+		<link rel="stylesheet" href="/public/style.css" type="text/css">
+		<link rel="icon" href="/public/favicon.ico" />
+		<title id="title">Settings - Hermessage</title>
+	</head>
+	<body>
+		
+		<header>
+			<a href="/logout">Logout</a>
+			<a href='#'><h1>HermÈs<span class="red">S</span>age <img src="/public/images/hermessage.png" id="photo" /></h1></a>
+			<em class="header">Harder, better, faster, stronger IRC </em>
+			<br>
+		</header>
+		
+		<section>
+			<p>
+			<strong>Email</strong>: <%=user.local.email%></p><br>
+			<strong>Name</strong>: <span style="color: red;">A choisir !</span><br>
+			</p>
+			<form action="/welcome" method="post">
+				<label>name</label>
+				<input type="text" name="name">
+			</form>
+		</section>
+	</body>
+</html>

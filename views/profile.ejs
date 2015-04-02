@@ -3,13 +3,14 @@
 <html>
 	<head>
 		<meta charset="utf-8" />
-			<link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
-			<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type="text/css">
-			<link rel="stylesheet" href="/public/style.css" type="text/css">
-			<link rel="icon" href="/public/favicon.ico" />
-			<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
-			<script src="/public/jquery.js"></script>
-		<title>Hermessage</title>
+		<link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type="text/css">
+		<link rel="stylesheet" href="/public/style.css" type="text/css">
+		<link rel="icon" href="/public/favicon.ico" />
+		<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+		<script src="/public/javascript/commandParser.js"></script>
+		<script src="/public/jquery.js"></script>
+		<title id="title">Hermessage</title>
 	</head>
 	<body>
 		
@@ -45,8 +46,47 @@
 		
 		<script src="/socket.io/socket.io.js"></script>
 		<script>
+		
+// Initialisation de session ===================================================
+			var pseudo = '<%=user.local.name%>';
 			var socket = io.connect();
-			socket.emit('get_id','<%=user._id%>');
+			socket.emit('give_id','<%=user._id%>');
+
+			
+// Reception socket=============================================================
+			socket.on('get_name',function(name){
+				pseudo = name;
+			});
+            socket.on('message', function(message) {
+                insereMessage(message)
+            })
+            socket.on('nouveau_client', function(pseudo) {
+                $('#zone_chat').prepend('<p><em>' + pseudo + ' a rejoint le Chat !</em></p>');
+            })
+			socket.on('list', function(message){
+				$('#list').replaceWith(message);
+                actualise_liste();
+			});
+			
+// Action JQuerry ==============================================================
+            $('#formulaire_chat').submit(function () {
+                var message = $('#message').val();
+                socket.emit('message', message); // Transmet le message aux autres
+                monMessage(pseudo, message); // Affiche le message aussi sur notre page
+                $('#message').val('').focus(); // Vide la zone de Chat et remet le focus dessus
+                return false; // Permet de bloquer l'envoi "classique" du formulaire
+            });
+			
+// Additional function =========================================================
+
+            function monMessage(pseudo, message) {
+                $('#zone_chat').prepend(commandHTML(message,pseudo));
+            }
+			function insereMessage(message) {
+                $('#zone_chat').prepend(message);
+            }
+			
+
 		</script>
 	</body>
 </html>
