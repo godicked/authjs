@@ -11,7 +11,7 @@ module.exports = {
                         return '<p><span class="pseudo">' + User + ' dit: </span></p><p><img class="imagechat" src="' + message.substring(5)+'>"</img></p>';
                         break;
                     case "/dance":
-						return '<p><span class="pseudo">' + User + ' dit: </span></p><p><img class="imagechat" src="/public/dance.gif"></img></p>';
+						return '<p><span class="pseudo">' + User + ' dit: </span></p><p><img class="imagechat" src="/public/images/dance.gif"></img></p>';
                         break;
 					case "/w":
 						var whisped = message.split(" ")[1]
@@ -35,7 +35,7 @@ function commandHTML(message,User){
 			return '<p><span class="pseudo">' + User + ' dit: </span></p><p><img class="imagechat" src="'+ message.substring(5)+'"</img></p>';
 			break;
 		case "/dance":
-			return '<p><span class="pseudo">' + User + ' dit: </span></p><p><img class="imagechat" src="/public/dance.gif"</img></p>';
+			return '<p><span class="pseudo">' + User + ' dit: </span><img class="imagechat" src="/public/images/dance.gif"</img></p>';
 			break;
 		case "/w":
 			var whisped = message.split(" ")[1]
