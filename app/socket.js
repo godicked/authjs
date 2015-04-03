@@ -25,7 +25,6 @@ module.exports = function(io){
 				}
 			});
 		});
-		
 		socket.on('message',function(message){
 			if(socket.pseudo){
 				console.log('message send from: ' + socket.pseudo);
@@ -40,7 +39,6 @@ module.exports = function(io){
 					else{
 						socket.emit('message','<p style="color: red;">User not found</p>');
 					}
-					
 				}
 				else{
 					socket.broadcast.emit('message', m);
@@ -50,7 +48,6 @@ module.exports = function(io){
 				socket.emit('message','<p style="color: red;">Sorry session expired, pls reload</p>');
 			}
 		});
-		
 		socket.on('disconnect',function(){
 			try{
 				sessions[socket.pseudo].connected = false;
