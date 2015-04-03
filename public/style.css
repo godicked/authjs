@@ -50,6 +50,9 @@ header em {
 	font-size: 1em;
 	color: #ccc;
 }
+em.whisp{
+	color: #FF66FF;
+}
 h1{
 	font-family: 'Open Sans';
 	margin-bottom:auto;
