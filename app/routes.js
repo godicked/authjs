@@ -56,15 +56,27 @@ module.exports = function(app, passport) {
 			});
 		}
 		else{
-			res.render('welcome.ejs',{
-				user : req.user
-			});
+			res.redirect('/welcome');
 		}
     });
 	
 	// =====================================
     // WELCOME =============================
     // =====================================
+	app.get('/welcome', function(req,res){
+		var userMap = [];
+		User.find({},{'_id':0,'local.name':1},function(err, user){
+				if(err)
+					console.log(err);
+				else{
+					user.forEach(function(user){
+						if(user.local.name)
+							userMap.push(user.local.name);
+					});
+				}
+				res.render('welcome.ejs',{data : {user : req.user, names : userMap}});
+			});
+	});
 	
 	app.post('/welcome', function(req,res){
 		var pseudo = req.body.name;

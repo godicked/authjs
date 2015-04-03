@@ -5,28 +5,44 @@
 		<meta charset="utf-8" />
 		<link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
 		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type="text/css">
-		<link rel="stylesheet" href="/public/style.css" type="text/css">
-		<link rel="icon" href="/public/images/favicon.ico" />
+		<link rel="stylesheet" href="public/style.css" type="text/css">
+		<link rel="icon" href="public/images/favicon.ico" />
+		<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
 		<title id="title">Settings - Hermessage</title>
 	</head>
 	<body>
-		
-		<header>
-			<a href="/logout">Logout</a>
-			<a href='#'><h1>HermÈs<span class="red">S</span>age <img src="/public/images/hermessage.png" id="photo" /></h1></a>
-			<em class="header">Harder, better, faster, stronger IRC </em>
-			<br>
-		</header>
-		
-		<section>
-			<p>
-			<strong>Email</strong>: <%=user.local.email%></p><br>
-			<strong>Name</strong>: <span style="color: red;">A choisir !</span><br>
-			</p>
-			<form action="/welcome" method="post">
-				<label>name</label>
-				<input type="text" name="name">
-			</form>
-		</section>
+		<a href="/logout" id="logout">Logout</a>
+		<div id="page_block">
+			<header>
+				<a href='#'><h1>HERMÈS<span style="color: red;">S</span>AGE <img src="/public/images/hermessage.png" id="photo" /></h1></a>
+				<em class="header">Harder, better, faster, stronger IRC </em>
+				<br>
+			</header>
+			
+			<section>
+				<p>
+				<strong>Email</strong>: <%=data.user.local.email%><br>
+				<strong>Pseudo</strong>: <span style="color: red;">A choisir !</span><br>
+				</p>
+				<form action="/welcome" method="post" id="confirmation">
+					<label id="info"><label><br>
+					<input type="text" name="name" class="textbox" placeholder="votre pseudo" id="input">
+				</form>
+			</section>
+		</div>
+		<script>
+			var error = false;
+			var users = '<%=data.names%>'.split(",");
+			$('#confirmation').submit(function(){
+				var val = $('#input').val();
+				if(users.indexOf(val) >= 0){
+					if(!error)
+						$('#info').prepend('<span style="color : red;">Pseudo deja pris!</span>');
+					error = true;
+					return false;
+				}
+			});
+			
+		</script>
 	</body>
 </html>
