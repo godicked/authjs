@@ -44,12 +44,11 @@ a{
 	font-family: 'Open Sans';
 	font-weight: 700;
 	text-shadow: 0px 7px 0px #121212;
-	
 }
 #logout {
 	display: block;
 	float:right;
-	background: rgb(234, 37, 37);
+	background:red;
 	padding: 8px;
 	border-radius: 5px;
 }
@@ -59,6 +58,7 @@ a{
 #photo{
 	width: 6vh;
 }
+/* =================CHAMPS DE TEXTE============================*/
 .textbox {
 	background: #333;
 	color: #ccc;
@@ -79,10 +79,12 @@ a{
 }
 #rechercher{
 	margin:3%;
+	width:50%;
 }
 #rechercher:hover {
-	width:30%;
+	width:50%;
 }
+/* =================================================================*/
 footer{
 	position: fixed;
 	bottom: 3px;
@@ -108,7 +110,6 @@ footer em{
 	font-size: 1em;
 	font-family: 'Open Sans';
 	font-weight: 700;
-	
 }
 p{
 	font-size: 1em;
