@@ -57,7 +57,7 @@ module.exports = function(io){
 					if (sessions[socket.pseudo].connected == false){
 						delete sessions[socket.pseudo];
 						console.log('session closed');
-						socket.broadcast.emit('message','<p>'+socket.pseudo+' est deconnecté');
+						socket.broadcast.emit('message','<p><em>'+socket.pseudo+' est deconnecté</em></p>');
 						};
 					}, 5000);
 				}
