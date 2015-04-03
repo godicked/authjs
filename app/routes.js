@@ -63,19 +63,8 @@ module.exports = function(app, passport) {
 	// =====================================
     // WELCOME =============================
     // =====================================
-	app.get('/welcome', function(req,res){
-		var userMap = [];
-		User.find({},{'_id':0,'local.name':1},function(err, user){
-				if(err)
-					console.log(err);
-				else{
-					user.forEach(function(user){
-						if(user.local.name)
-							userMap.push(user.local.name);
-					});
-				}
-				res.render('welcome.ejs',{data : {user : req.user, names : userMap}});
-			});
+	app.get('/welcome', isLoggedIn, function(req,res) {
+		res.render('welcome.ejs',{user : req.user});
 	});
 	
 	app.post('/welcome', function(req,res){

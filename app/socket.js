@@ -17,6 +17,8 @@ module.exports = function(io){
 				}
 				else{
 					console.log("user connected: " + user.local.name);
+					if(!sessions[user.local.name])
+						socket.broadcast.emit('nouveau_client',user.local.name);
 					socket.pseudo = user.local.name;
 					socket.oid = id;
 					sessions[user.local.name] = {};
@@ -54,10 +56,26 @@ module.exports = function(io){
 				setTimeout(function () {
 					if (sessions[socket.pseudo].connected == false){
 						delete sessions[socket.pseudo];
-						console.log('session closed');};
+						console.log('session closed');
+						socket.broadcast.emit('message','<p>'+socket.pseudo+' est deconnecté');
+						};
 					}, 5000);
 				}
 			catch(err){}
+		});
+	});
+	
+	io.of('/info').on('connection',function(socket){
+		console.log('name name');
+		socket.on('name_free',function(name){
+			console.log('name_free ask');
+			User.findOne({'local.name':name},function(err,user){
+				console.log(user);
+				if(err || !user)
+					socket.emit('name_free',data = {'free':true,'name':name});
+				if(user)
+					socket.emit('name_free',data = {'free':false,'name':name});
+			});
 		});
 	});
 };

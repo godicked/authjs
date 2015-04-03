@@ -21,28 +21,42 @@
 			
 			<section>
 				<p>
-				<strong>Email</strong>: <%=data.user.local.email%><br>
+				<strong>Email</strong>: <%=user.local.email%><br>
 				<strong>Pseudo</strong>: <span style="color: red;">A choisir !</span><br>
 				</p>
 				<form action="/welcome" method="post" id="confirmation">
-					<label id="info"><label><br>
+					<label id="info"></label><br>
 					<input type="text" name="name" class="textbox" placeholder="votre pseudo" id="input">
 				</form>
 			</section>
 		</div>
+		<script src="/socket.io/socket.io.js"></script>
 		<script>
-			var error = false;
-			var users = '<%=data.names%>'.split(",");
+			var correct = false;
+			var info = io.connect('localhost:1234/info');
 			$('#confirmation').submit(function(){
-				var val = $('#input').val();
-				if(users.indexOf(val) >= 0){
-					if(!error)
-						$('#info').prepend('<span style="color : red;">Pseudo deja pris!</span>');
-					error = true;
+				if(!correct)
 					return false;
-				}
 			});
 			
+			$('#input').keyup(function(){
+				var val = $('#input').val();
+				info.emit('name_free',val);
+				$('#info').replaceWith('<label id="info">wait</label>');
+				correct=false;
+			});
+			info.on('name_free',function(data){
+				var val = $('#input').val();
+					if(val == data.name){
+						if(!data.free)
+						$('#info').replaceWith('<label id="info">sorry</label>');
+						else{
+							$('#info').replaceWith('<label id="info">free</label>');
+							correct=true;
+						}
+					}
+			});
+				
 		</script>
 	</body>
 </html>
