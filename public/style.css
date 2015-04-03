@@ -12,6 +12,7 @@ body{
 	width: 23%;
 	height: 100%;
 	background: rgb(38, 38, 38);
+	resize:horizontal;
 }
 #page_block{
 	width: 70%;
