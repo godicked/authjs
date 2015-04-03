@@ -106,8 +106,10 @@ footer em{
 #hermess_chat {
 	width: 60%;
 	margin: 0 auto;
-	margin-top: 2em;
 	word-wrap: break-word;
+}
+#zone_chat{
+	margin-top: 2em;
 }
 .pseudo {
 	font-size: 1em;
