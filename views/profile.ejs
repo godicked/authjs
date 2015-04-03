@@ -15,30 +15,28 @@
 	<body>
 		<a href="/logout" id="logout">Logout</a>
 		<div id="page_block">
-			<header>
-
-				<a href='#'><h1>HERMÈS<span style="color : red;">S</span>AGE <img src="/public/images/hermessage.png" id="photo" /></h1></a>
-				<em class="header">Harder, better, faster, stronger IRC</em>
-				<br>
-			</header>
-			<nav id='menu' class='menu'>
-				<div id='profil'></div>
+			<nav id='menu_gauche' class='menu_gauche'>
+				<div id='profil'>
+					<p class="pseudo">Profil</p>
+					<img id='profil' src=''>
+				</div>
 				<div id='gestion_room'>
+					<p class="pseudo">Rooms</p>
 					<div id='bloc_recherche'>
-						<input class="textbox" type="text" name="recherche" id="recherche" placeholder="Chercher une room" size="50" autofocus autocomplete="off" style='hover:none !important' />
-						<img id='profil' src=''>
+						<input class="textbox" type="text" name="recherche" id="rechercher" placeholder="Chercher une room" size="50" autofocus autocomplete="off"/>
+						<img id='recherche' src=''>
 					</div>
-					<div id='liste_room'>
-						<ul id='rooms'></ul>
-					</div>
+					<asside id='rooms'>
+						<ul id='liste_rooms'></ul>
+					</asside>
 				</div>
 
 			</nav>
+			<div class='marge'></div>
 			<section id="hermess_chat">
 
 				<form action="/" method="post" id="formulaire_chat">
 					<input class="textbox" type="text" name="message" id="message" placeholder="Votre message..." size="50" autofocus autocomplete="off" />
-				   <!-- <input type="submit" id="envoi_message" value="Envoyer" />!-->
 					<span id="flr">#FLR</span>
 				</form>
 
@@ -51,16 +49,22 @@
 							$('#zone_chat').append(localStorage.chat2);
 					}
 				</script>
-
-				<aside id ="liste_user">
-					<ul id="list"></ul>
-				</aside>
-
 			</section>
+			<nav id='menu_droite' class='menu_droite'>
+				<header>
+				<a href='#'><h1>HERMÈS<span style="color : red;">S</span>AGE <img src="/public/images/hermessage.png" id="photo" /></h1></a>
+				<em class="header">Harder, better, faster, stronger IRC</em>
+				<br>
+			</header>
+			<aside id ="users">
+					<ul id="liste_users"></ul>
+				</aside>
+			</nav>
+			
 
 		</div>
 		<footer>
-			<em>Réalisé par Félix Alié & David Gödicke 2015 - Remerciements à Jo Colina pour le css</em>
+			<em>Réalisé par Félix Alié & David Gödicke 2015</em>
 		</footer>
 
 
