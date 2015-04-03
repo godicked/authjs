@@ -33,7 +33,13 @@
 
 				<article id="zone_chat">
 				</article>
-
+				<script>
+					if(localStorage.chat1){
+						$('#zone_chat').append(localStorage.chat1);
+						if(localStorage.chat2)
+							$('#zone_chat').append(localStorage.chat2);
+					}
+				</script>
 				<aside id ="zone_list">
 					<ul id="list"></ul>
 				</aside>
@@ -83,9 +89,11 @@
 
             function monMessage(pseudo, message) {
                 $('#zone_chat').prepend(commandHTML(message,pseudo));
+				store(commandHTML(message,pseudo));
             }
 			function insereMessage(message) {
                 $('#zone_chat').prepend(message);
+				store(message);
             }
 
             $(function() {
@@ -93,6 +101,21 @@
 	      			animate: true
 	    		});
   			});
+			function store(message){
+				if(!localStorage.chat1){
+					localStorage.nb1 = 1;
+					localStorage.chat1 = message;
+				}
+				else{
+					localStorage.chat1 = message + localStorage.chat1;
+					localStorage.nb1 +=1;
+					if(localStorage.nb1 > 300){
+						localStorage.chat2 = localStorage.chat1;
+						localStorage.nb1 = 0;
+						localStorage.chat1 = " ";
+					}
+				}
+			}
 		</script>
 	</body>
 </html>
