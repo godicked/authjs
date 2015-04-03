@@ -5,7 +5,7 @@ var encode = require('ent/encode');
 var sessions = {}
 
 module.exports = function(io){
-	io.sockets.on('connection', function (socket) {
+	io.of('/chat').on('connection',function(socket){
 		console.log('new user');
 		socket.on('give_id',function(id){
 			User.findById(id,function(err,user){

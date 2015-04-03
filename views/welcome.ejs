@@ -8,6 +8,7 @@
 		<link rel="stylesheet" href="public/style.css" type="text/css">
 		<link rel="icon" href="public/images/favicon.ico" />
 		<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+		<script src="/public/javascript/url.js"></script>
 		<title id="title">Settings - Hermessage</title>
 	</head>
 	<body>
@@ -33,7 +34,7 @@
 		<script src="/socket.io/socket.io.js"></script>
 		<script>
 			var correct = false;
-			var info = io.connect('hermessage.fr:1234/info');
+			var info = io.connect(getURL() + '/info');
 			$('#confirmation').submit(function(){
 				if(!correct)
 					return false;

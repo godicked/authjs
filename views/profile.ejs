@@ -10,6 +10,7 @@
 		<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
 		<script src="/public/javascript/commandParser.js"></script>
 		<script src="/public/javascript/jquery.js"></script>
+		<script src="/public/javascript/url.js"></script>
 		<title id="title">Hermessage</title>
 	</head>
 	<body>
@@ -26,9 +27,9 @@
 						<input class="textbox" type="text" name="recherche" id="rechercher" placeholder="Chercher une room" size="50" autofocus autocomplete="off"/>
 						<img id='recherche' src=''>
 					</div>
-					<asside id='rooms'>
+					<aside id='rooms'>
 						<ul id='liste_rooms'></ul>
-					</asside>
+					</aside>
 				</div>
 
 			</nav>
@@ -73,7 +74,7 @@
 
 // Initialisation de session ===================================================
 			var pseudo = '<%=user.local.name%>';
-			var socket = io.connect();
+			var socket = io.connect(getURL() + '/chat');
 			socket.emit('give_id','<%=user._id%>');
 
 

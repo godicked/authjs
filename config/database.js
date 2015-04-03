@@ -1,5 +1,5 @@
 module.exports = {
 
-    'url' : 'mongodb://localhost/hermessage'
+    'url' : 'mongodb://admin:admin@proximus.modulusmongo.net:27017/doregE2p'
 
 };
