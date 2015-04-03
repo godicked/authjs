@@ -21,39 +21,40 @@
 				<em class="header">Harder, better, faster, stronger IRC</em>
 				<br>
 			</header>
-			
+			<nav id='menu' class='menu'>
+			</nav>
 			<section id="hermess_chat">
-			
+
 				<form action="/" method="post" id="formulaire_chat">
 					<input class="textbox" type="text" name="message" id="message" placeholder="Votre message..." size="50" autofocus autocomplete="off" />
 				   <!-- <input type="submit" id="envoi_message" value="Envoyer" />!-->
 					<span id="flr">#FLR</span>
 				</form>
-				
+
 				<article id="zone_chat">
 				</article>
-				
+
 				<aside id ="zone_list">
 					<ul id="list"></ul>
 				</aside>
-				
+
 			</section>
-			
-		</div>	
+
+		</div>
 		<footer>
 			<em>Réalisé par Félix Alié & David Gödicke 2015 - Remerciements à Jo Colina pour le css</em>
 		</footer>
-			
-		
+
+
 		<script src="/socket.io/socket.io.js"></script>
 		<script>
-		
+
 // Initialisation de session ===================================================
 			var pseudo = '<%=user.local.name%>';
 			var socket = io.connect();
 			socket.emit('give_id','<%=user._id%>');
 
-			
+
 // Reception socket=============================================================
 			socket.on('get_name',function(name){
 				pseudo = name;
@@ -68,7 +69,7 @@
 				$('#list').replaceWith(message);
                 actualise_liste();
 			});
-			
+
 // Action JQuerry ==============================================================
             $('#formulaire_chat').submit(function () {
                 var message = $('#message').val();
@@ -77,7 +78,7 @@
                 $('#message').val('').focus(); // Vide la zone de Chat et remet le focus dessus
                 return false; // Permet de bloquer l'envoi "classique" du formulaire
             });
-			
+
 // Additional function =========================================================
 
             function monMessage(pseudo, message) {
@@ -86,8 +87,12 @@
 			function insereMessage(message) {
                 $('#zone_chat').prepend(message);
             }
-			
 
+            $(function() {
+	    		$( "#menu" ).resizable({
+	      			animate: true
+	    		});
+  			});
 		</script>
 	</body>
 </html>

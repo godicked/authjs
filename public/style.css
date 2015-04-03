@@ -3,6 +3,14 @@ body{
 	background-color: #222222;
 	color: white;
 }
+.menu{
+	float: left;
+	display: block;
+	box-shadow: rgb(29, 28, 28) 10px 0px 10px 2px;
+	width: 35%;
+	height: 100%;
+	background: rgb(38, 38, 38);
+}
 #page_block{
 	width: 70%;
 	margin:auto;
@@ -36,7 +44,11 @@ a{
 	
 }
 #logout {
+	display: block;
 	float:right;
+	background: rgb(234, 37, 37);
+	padding: 8px;
+	border-radius: 5px;
 }
 #flr:hover{
     cursor:pointer;
@@ -81,6 +93,7 @@ footer em{
 #hermess_chat {
 	width: 60%;
 	margin: 0 auto;
+	word-wrap: break-word;
 }
 .pseudo {
 	font-size: 1em;
