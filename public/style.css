@@ -1,7 +1,7 @@
 body{
 	font-family: 'Raleway', sans-serif;
 	/*background-color: #222222;*/
-	background:'public/images/navy-blue.png'; 
+	background:url('public/images/navy_blue.png'); 
 	color: white;
 }
 .menu_gauche{
