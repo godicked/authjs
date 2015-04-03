@@ -29,11 +29,22 @@ body{
 }
 #profil{
 	display: block;
+	margin: 10px;
+	margin-top: 20px;
 }
 #profilpic{
 	float:left;
 	width:100px;
 	border-radius:7px;
+}
+#pseudo{
+	color: white;
+	background: none!important;
+	border:none !important;
+	outline:none !important;
+	outline-offset:none !important;
+	font-size:1em;
+	float:left;
 }
 #page_block{
 	width: 100%;
