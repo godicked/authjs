@@ -38,6 +38,7 @@ h1{
 	color: #FFF;
 	text-shadow: 0px 7px 0px #121212;
 	border: 0;
+	width: 100%
 }
 a{
 	text-decoration: none;
@@ -107,9 +108,15 @@ footer em{
 }
 #hermess_chat {
 	width: 70%;
-	margin: 25%;
+	margin:0;
 	margin-top: 5px;
 	max-width: 650px;
+}
+.marge:before {
+    content: "";
+    display: inline-block;
+    width: 25%;
+    min-width: 275px;
 }
 #zone_chat{
 	margin-top: 2em;
