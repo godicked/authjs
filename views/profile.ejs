@@ -17,11 +17,12 @@
 		<div id="page_block">
 			<nav id='menu_gauche' class='menu_gauche'>
 				<div id='profil'>
-					<p class="pseudo">Profil</p>
-					<img id='profilpic' src='/public/images/saussage.gif'>
+					<h1>Profil</h1>
+					<img id='profilpic' src='/public/images/profil_pic.PNG'>
+					<p class='pseudo' style='float:left'>Pseudo: </p><input type="text" id="pseudo" value="<%=user.local.name%>" size="50" autofocus autocomplete="off"/>
 				</div>
 				<div id='gestion_room'>
-					<p class="pseudo">Rooms</p>
+					<h1>Rooms</h1>
 					<div id='bloc_recherche'>
 						<input class="textbox" type="text" name="recherche" id="rechercher" placeholder="Chercher une room" size="50" autofocus autocomplete="off"/>
 						<img id='recherche' src=''>
