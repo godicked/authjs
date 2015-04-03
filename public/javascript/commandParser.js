@@ -8,7 +8,7 @@ module.exports = {
                         return '<p><em>' + User +' '+ message.substring(4) +'</em></p>';
                         break;
                      case "/img":
-                        return '<p><span class="pseudo">' + User + ' dit: </span><img class="imagechat" src="' + message.substring(5)+'>"</img></p>';
+                        return '<p><span class="pseudo">' + User + ' dit: </span><img class="imagechat" src="'+ message.substring(5)+'"></img></p>';
                         break;
                     case "/dance":
 						return '<p><span class="pseudo">' + User + ' dit: </span><img class="imagechat" src="/public/images/dance.gif"></img></p>';
@@ -32,10 +32,10 @@ function commandHTML(message,User){
 			return '<p><em>' + User +' '+ message.substring(4) +'</em></p>';
 			break;
 		case "/img":
-			return '<p><span class="pseudo">' + User + ' dit: </span><img class="imagechat" src="'+ message.substring(5)+'"</img></p>';
+			return '<p><span class="pseudo">' + User + ' dit: </span><img class="imagechat" src="'+ message.substring(5)+'"></img></p>';
 			break;
 		case "/dance":
-			return '<p><span class="pseudo">' + User + ' dit: </span><img class="imagechat" src="/public/images/dance.gif"</img></p>';
+			return '<p><span class="pseudo">' + User + ' dit: </span><img class="imagechat" src="/public/images/dance.gif"></img></p>';
 			break;
 		case "/w":
 			var whisped = message.split(" ")[1]
