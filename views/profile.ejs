@@ -133,7 +133,7 @@
 				}
 				else{
 					localStorage.chat1 = message + localStorage.chat1;
-					localStorage.nb1 +=1;
+					localStorage.nb1 = Number(localStorage.nb1)+1;
 					if(localStorage.nb1 > 300){
 						localStorage.chat2 = localStorage.chat1;
 						localStorage.nb1 = 0;
