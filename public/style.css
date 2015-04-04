@@ -60,6 +60,7 @@ body{
 }
 .titre-section:hover{
 	background: rgb(42, 42, 42);
+	cursor: pointer;
 }
 #users{
 }
