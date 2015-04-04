@@ -79,8 +79,9 @@ header{
   	width: 100%;
 }
 header em {
-	font-size: 1em;
+	font-size: 0.8em;
 	color: #ccc;
+	padding-right: 2em;
 }
 em.whisp{
 	color: #FF66FF;
@@ -146,10 +147,10 @@ a{
 }
 /* =================================================================*/
 footer{
-	position: fixed;
-	bottom: 3px;
+	position: relative;
 	width: 100%;
 	text-align: center;
+	margin-top: 98vh;
 }
 img.imagechat {
 	width:23%;
