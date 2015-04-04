@@ -44,8 +44,9 @@ body{
 	cursor: pointer;
 }
 #users{
-	margin-left: 2em;
-	margin-right: 1em;
+}
+#container-users{
+	  background: rgb(31, 31, 31);
 }
 #profil{
 	display: block;
