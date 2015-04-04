@@ -1,6 +1,6 @@
 module.exports = {
 	make: function(array){
-		var res;
+		var res ='';
 		for(i in array){
 			res+="<em class='user'>"+array[i]+'</em>';
 		}
