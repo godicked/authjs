@@ -28,10 +28,28 @@ body{
 	min-width: 150px;
 	/*max-width: 270px;*/
 }
+.user{
+	background: rgb(31, 31, 31);
+	margin: 0.1em;
+	text-align: center;
+	vertical-align: middle;
+	display: inline-block;
+	padding: 2em;
+}
+.user:hover{
+	background-color: red;
+	transition: 500ms all ease;
+	cursor: pointer;
+}
+#users{
+	margin-left: 1em;
+	margin-right: 1em;
+}
 #profil{
 	display: block;
 	margin: 10px;
 	margin-top: 20px;
+	margin-left: 1em;
 }
 #profilpic{
 	float:left;

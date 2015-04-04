@@ -32,6 +32,18 @@
                 console.log("nouveau" + nouveau);
             }
 
+            function actualise_liste(){
+                $('.user').click(function(){
+                    var pseudo = this.textContent;
+                    var val = $('#message').val();
+                    if(val == ''){
+                        $('#message').val('/w ' + pseudo+' ').focus();
+                    }else {
+                        $('#message').val(val + ' '+pseudo).focus();
+                    }
+                });
+            }
+
             function insere_flr(){
             if(rage < 3){
                 $('#zone_chat').prepend('<p><span class="flr">Tu fous la rage</span>');

@@ -63,7 +63,6 @@
 				<br>
 			</header>
 			<aside id ="users">
-					<ul id="liste_users"></ul>
 			</aside>
 			<footer>
 				<em>Réalisé par Félix Alié & David Gödicke 2015</em>
@@ -95,7 +94,7 @@
                 $('#zone_chat').prepend('<p><em>' + pseudo + ' a rejoint le Chat !</em></p>');
             })
 			socket.on('list', function(message){
-				$('#list').replaceWith(message);
+				$('#users').replaceWith(message);
                 actualise_liste();
 			});
 

@@ -1,5 +1,6 @@
 var User = require('./models/user.js');
 var parser = require('../public/javascript/commandParser.js');
+var listMaker = require('../public/javascript/listMaker.js');
 var ent = require('ent');
 var encode = require('ent/encode');
 var sessions = {}
@@ -17,8 +18,12 @@ module.exports = function(io){
 				}
 				else{
 					console.log("user connected: " + user.local.name);
-					if(!sessions[user.local.name])
+					if(!sessions[user.local.name]){
 						socket.broadcast.emit('nouveau_client',user.local.name);
+						var list = listMaker.make(Object.keys(sessions));
+						socket.broadcast.emit('list',list);
+						socket.emit('list',list);
+					}
 					socket.pseudo = user.local.name;
 					socket.oid = id;
 					sessions[user.local.name] = {};
