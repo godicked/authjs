@@ -9,7 +9,7 @@ body{
   	left: 0;
 	top: 0;
 	display: block;
-	box-shadow: rgb(29, 28, 28) 10px 0px 10px 2px;
+	box-shadow: rgb(29, 28, 28) 5px 0px 10px 2px;
 	width: 270px;
 	height: 100%;
 	background: rgb(38, 38, 38);
@@ -20,7 +20,7 @@ body{
   	right: 0;
 	top: 0;
 	display: block;
-	box-shadow: rgb(29, 28, 28) -10px 0px 10px 2px;
+	box-shadow: rgb(29, 28, 28) -5px 0px 10px 2px;
 	width: 23%;
 	height: 100%;
 	background: rgb(38, 38, 38);
@@ -30,14 +30,14 @@ body{
 }
 .user{
 	background: rgb(38, 38, 38);
-	margin: 0.15em;
+	margin: 0.2em;
 	margin-left: 0px;
 	text-align: center;
 	vertical-align: middle;
 	display: inline-block;
 	padding-top: 1em;
 	padding-bottom: 1em;
-	width: 33%;
+	width: 32.79%;
 	transition: 250ms ease-out;
 	font-family: 'Roboto';
 }
@@ -104,6 +104,9 @@ body{
 	margin:auto;
 }
 .statut{
+	position: fixed;
+	top:2em;
+	left:220px;
 	display: inline-block;
 	width: 15px;
 	height: 15px;
