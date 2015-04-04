@@ -8,7 +8,7 @@
 		<link rel="stylesheet" href="/public/style.css" type="text/css">
 		<link rel="icon" href="/public/images/favicon.ico" />
 		<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
-		<script src="/public/javascript/commandParser.js"></script>
+		<script src="/public/javascript/analyse.js"></script>
 		<script src="/public/javascript/jquery.js"></script>
 		<script src="/public/javascript/url.js"></script>
 		<title id="title">Hermessage</title>
@@ -89,9 +89,15 @@
 			socket.on('get_name',function(name){
 				pseudo = name;
 			});
-            socket.on('message', function(message) {
-                insereMessage(message)
+            socket.on('message', function(data) {
+                htmlPrint(htmlMake(data,data.from));
             })
+			socket.on('command',function(data){
+				htmlPrint(htmlMake(data,data.from));
+			});
+			socket.on('whisper',function(data){
+				htmlPrint(htmlMake(data,data.from));
+			});
             socket.on('nouveau_client', function(pseudo) {
                 $('#zone_chat').prepend('<p><em>' + pseudo + ' a rejoint le Chat !</em></p>');
             })
@@ -103,46 +109,11 @@
 // Action JQuerry ==============================================================
             $('#formulaire_chat').submit(function () {
                 var message = $('#message').val();
-				if(message == '/clear'){
-					$('#zone_chat').empty();
-					$('#message').val('').focus();
-					localStorage.chat1 = "";
-					localStorage.chat2 = "";
-					localStorage.nb1 = 0;
-				}
-				else{
-					socket.emit('message', message); // Transmet le message aux autres
-					monMessage(pseudo, message); // Affiche le message aussi sur notre page
-					$('#message').val('').focus(); // Vide la zone de Chat et remet le focus dessus
-				}
+				var data = parse(message);
+				apply(data,socket,pseudo);
+				$('#message').val('').focus();
 				return false; // Permet de bloquer l'envoi "classique" du formulaire
             });
-
-// Additional function =========================================================
-
-            function monMessage(pseudo, message) {
-                $('#zone_chat').prepend(commandHTML(message,pseudo));
-				store(commandHTML(message,pseudo));
-            }
-			function insereMessage(message) {
-                $('#zone_chat').prepend(message);
-				store(message);
-            }
-			function store(message){
-				if(!localStorage.chat1){
-					localStorage.nb1 = 1;
-					localStorage.chat1 = message;
-				}
-				else{
-					localStorage.chat1 = message + localStorage.chat1;
-					localStorage.nb1 = Number(localStorage.nb1)+1;
-					if(localStorage.nb1 > 300){
-						localStorage.chat2 = localStorage.chat1;
-						localStorage.nb1 = 0;
-						localStorage.chat1 = " ";
-					}
-				}
-			}
 		</script>
 	</body>
 </html>

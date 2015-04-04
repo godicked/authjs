@@ -1,11 +1,13 @@
 var User = require('./models/user.js');
-var parser = require('../public/javascript/commandParser.js');
 var listMaker = require('../public/javascript/listMaker.js');
 var ent = require('ent');
 var encode = require('ent/encode');
 var sessions = {}
 
 module.exports = function(io){
+	
+// Namespace /chat ======================================================================
+	
 	io.of('/chat').on('connection',function(socket){
 		console.log('new user');
 		socket.on('give_id',function(id){
@@ -33,29 +35,43 @@ module.exports = function(io){
 				}
 			});
 		});
-		socket.on('message',function(message){
+		
+		socket.on('message',function(data){
 			if(socket.pseudo){
-				console.log('message send from: ' + socket.pseudo);
-				var m = encode(message);
-				m = parser.commandHTML(m,socket.pseudo);
-				if(m.charAt(0) == '/'){
-					var sendTo = m.substring(1,m.indexOf('<'))
-					console.log("private message send to: " + sendTo);
-					if(sessions[sendTo]){
-						socket.broadcast.to(sessions[sendTo].id).emit('message',m.substring(m.indexOf('<')));
-					}
-					else{
-						socket.emit('message','<p style="color: red;">User not found</p>');
-					}
+				console.log('message envoyé de: ' + socket.pseudo);
+				data.from = socket.pseudo;
+				socket.broadcast.emit('message',data);
+			}
+			else
+				socket.emit('wrong','votre session a expiré, veuillez recharger la page');
+		});
+		
+		socket.on('whisper',function(data){
+			if(socket.pseudo){
+				data.from = socket.pseudo;
+				console.log('message privé envoyer de: '+ socket.pseudo + ' pour: ' + data.to);
+				if(sessions[data.to]){
+					socket.broadcast.to(sessions[data.to].id).emit('whisper', data);
 				}
 				else{
-					socket.broadcast.emit('message', m);
+					socket.emit('wrong','Cet utilisateur n\'est pas connecté');
+					console.log(data.to + ' n\'est pas connecté');
 				}
 			}
-			else{
-				socket.emit('message','<p style="color: red;">Sorry session expired, pls reload</p>');
-			}
+			else
+				socket.emit('wrong','votre session a expiré, veuillez recharger la page');
 		});
+		
+		socket.on('command',function(data){
+			if(socket.pseudo){
+				data.from = socket.pseudo;
+				console.log('commande envoyé de: '+socket.pseudo);
+				socket.broadcast.emit('command',data);
+			}
+			else
+				socket.emit('wrong','votre session a expiré, veuillez recharger la page');
+		});
+		
 		socket.on('disconnect',function(){
 			try{
 				sessions[socket.pseudo].connected = false;
@@ -70,6 +86,9 @@ module.exports = function(io){
 			catch(err){}
 		});
 	});
+
+
+// Namespace /info ======================================================================
 	
 	io.of('/info').on('connection',function(socket){
 		console.log('name name');
