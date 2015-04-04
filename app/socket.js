@@ -20,17 +20,16 @@ module.exports = function(io){
 					console.log("user connected: " + user.local.name);
 					if(!sessions[user.local.name]){
 						socket.broadcast.emit('nouveau_client',user.local.name);
-						var list = listMaker.make(Object.keys(sessions));
-						console.log(Object.keys(sessions));
-						socket.broadcast.emit('list',list);
-						socket.emit('list',list);
 					}
 					socket.pseudo = user.local.name;
 					socket.oid = id;
 					sessions[user.local.name] = {};
 					sessions[user.local.name].id = socket.id;
 					sessions[user.local.name].connected = true;
-					console.log('noms' + Object.keys(sessions));
+					var list = listMaker.make(Object.keys(sessions));
+					console.log(Object.keys(sessions));
+					socket.broadcast.emit('list',list);
+					socket.emit('list',list);
 				}
 			});
 		});
