@@ -105,8 +105,8 @@ body{
 }
 .statut{
 	position: fixed;
-	top:2em;
-	left:220px;
+	top:2.5em;
+	left:210px;
 	display: inline-block;
 	width: 15px;
 	height: 15px;
