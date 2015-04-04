@@ -30,6 +30,7 @@ module.exports = function(io){
 					sessions[user.local.name] = {};
 					sessions[user.local.name].id = socket.id;
 					sessions[user.local.name].connected = true;
+					console.log('noms' + Object.keys(sessions));
 				}
 			});
 		});
