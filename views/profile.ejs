@@ -126,12 +126,6 @@
                 $('#zone_chat').prepend(message);
 				store(message);
             }
-
-            $(function() {
-	    		$( "#menu" ).resizable({
-	      			animate: true
-	    		});
-  			});
 			function store(message){
 				if(!localStorage.chat1){
 					localStorage.nb1 = 1;

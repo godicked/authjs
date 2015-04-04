@@ -21,6 +21,7 @@ module.exports = function(io){
 					if(!sessions[user.local.name]){
 						socket.broadcast.emit('nouveau_client',user.local.name);
 						var list = listMaker.make(Object.keys(sessions));
+						console.log(Object.keys(sessions));
 						socket.broadcast.emit('list',list);
 						socket.emit('list',list);
 					}
