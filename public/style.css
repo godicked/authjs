@@ -71,7 +71,7 @@ body{
 	display: block;
 	margin: 10px;
 	margin-top: 20px;
-	margin-left: 1em;
+	/*margin-left: 1em;*/
 }
 #profilpic{
 	float:left;
@@ -84,7 +84,7 @@ body{
 }
 #gestion_room{
 	margin-top: 6em;
-	margin-left: 1em;
+	/*margin-left: 1em;*/
 }
 #pseudo{
 	color: white;
