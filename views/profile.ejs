@@ -5,6 +5,7 @@
 		<meta charset="utf-8" />
 		<link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
 		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type="text/css">
+		<link href='http://fonts.googleapis.com/css?family=Roboto:100,300' rel='stylesheet' type='text/css'>
 		<link rel="stylesheet" href="/public/style.css" type="text/css">
 		<link rel="icon" href="/public/images/favicon.ico" />
 		<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
@@ -18,17 +19,17 @@
 		<div id="page_block">
 			<nav id='menu_gauche' class='menu_gauche'>
 				<div id='profil'>
-					<h1 style="font-size:2em; margin-bottom:5px;font-family: raleway;text-shadow: none;">Profil</h1>
+					<a class='statut' href=''></a>
+					<h1 class='titre-section' style="text-align:left;padding-left:1em;">Profil</h1>
 					<img id='profilpic' src='/public/images/profil_pic.PNG'>
 					<div id='container_profil'>
-						<span class='pseudo' style='float:left'>Statut</span><div class='statut'></div>
 						<p><span class='pseudo' style='float:left'>Pseudo:  </span>
-						<input type="text" id="pseudo" value="<%=user.local.name%>" size="5" autocomplete="off"/><p>
-						<p><span class='pseudo' style='float:left'>Premium: Oui</span><p>
+						<input type="text" id="pseudo" value="<%=user.local.name%>" size="5" autocomplete="off"/><!--<span class='pseudo'></span>--><p>
+						<p><span class='pseudo' style='float:left;margin-top:0.5em'>Premium: Oui</span><p>
 					</div>
 				</div>
 				<div id='gestion_room'>
-					<h1 style="font-size:2em; margin-bottom:5px;font-family: raleway;text-shadow: none;">Rooms</h1>
+					<h1 class='titre-section' style="text-align:left;padding-left:1em;">Rooms</h1>
 					<div id='bloc_recherche'>
 						<input class="textbox" type="text" name="recherche" id="rechercher" placeholder="Chercher une room" size="50" autocomplete="off"/>
 						<img id='recherche' src=''>
@@ -63,8 +64,12 @@
 				<br>
 				</header>
 				<div id="users">
-					<h1 style="font-size:1.3em; margin-bottom:5px;font-family: raleway;text-shadow: none;">Utilisateurs en ligne</h1>
-					<div id='liste'></div>
+					<h1 class="titre-section">Utilisateurs en ligne</h1>
+					<div id='liste-users'></div>
+				</div>
+				<div id="users">
+					<h1 class="titre-section">Contacts</h1>
+					<div id='liste-contacts'></div>
 				</div>
 				<footer>
 					<em>Réalisé par Félix Alié & David Gödicke 2015</em>
@@ -102,7 +107,7 @@
                 $('#zone_chat').prepend('<p><em>' + pseudo + ' a rejoint le Chat !</em></p>');
             })
 			socket.on('list', function(message){
-				$('#liste').replaceWith(message);
+				$('#liste-users').replaceWith(message);
                 actualise_liste();
 			});
 

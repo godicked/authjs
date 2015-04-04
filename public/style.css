@@ -9,7 +9,7 @@ body{
   	left: 0;
 	top: 0;
 	display: block;
-	box-shadow: rgb(29, 28, 28) 10px 0px 10px 2px;
+	box-shadow: rgb(29, 28, 28) 5px 0px 10px 2px;
 	width: 270px;
 	height: 100%;
 	background: rgb(38, 38, 38);
@@ -20,40 +20,69 @@ body{
   	right: 0;
 	top: 0;
 	display: block;
-	box-shadow: rgb(29, 28, 28) -10px 0px 10px 2px;
+	box-shadow: rgb(29, 28, 28) -5px 0px 10px 2px;
 	width: 23%;
 	height: 100%;
 	background: rgb(38, 38, 38);
 	resize:horizontal;
-	min-width: 150px;
+	min-width: 250px;
 	/*max-width: 270px;*/
 }
 .user{
-	background: rgb(31, 31, 31);
-	margin: 0.1em;
+	background: rgb(38, 38, 38);
+	margin: 0.2em;
+	margin-left: 0px;
 	text-align: center;
 	vertical-align: middle;
 	display: inline-block;
-	padding: 2em;
+	padding-top: 1em;
+	padding-bottom: 1em;
+	width: 32%;
 	transition: 250ms ease-out;
+	font-family: 'Roboto';
 }
 .user:hover{
 	background-color: red;
 	cursor: pointer;
 }
+.titre-section {
+	border-bottom: solid;
+	font-size: 1.3em;
+	margin-bottom: 1em;
+	font-family: 'Roboto';
+	font-weight: 100;
+	text-shadow: none;
+	text-align: center;
+	margin: 0px;
+	padding-top: 1em;
+	padding-bottom: 1em;
+	transition: 250ms ease-out;
+	background: rgb(38, 38, 38);
+	border-bottom-width: 0.1em;
+	border-bottom-color: rgb(31, 31, 31);
+	border-top: solid;
+	border-top-width: 0.1em;
+	border-top-color: rgb(31, 31, 31);
+}
+.titre-section:hover{
+	background: rgb(42, 42, 42);
+	cursor: pointer;
+}
 #users{
-	margin-left: 1em;
-	margin-right: 1em;
+}
+#container-users{
+	  background: rgb(31, 31, 31);
 }
 #profil{
 	display: block;
-	margin: 10px;
+	/*margin: 10px;*/
 	margin-top: 20px;
-	margin-left: 1em;
+	/*margin-left: 1em;*/
 }
 #profilpic{
 	float:left;
-	width:90px;
+	height:5.1em;
+	margin-left: 1em;
 	/*border-radius:20px;*/
 }
 #container_profil{
@@ -62,7 +91,7 @@ body{
 }
 #gestion_room{
 	margin-top: 6em;
-	margin-left: 1em;
+	/*margin-left: 1em;*/
 }
 #pseudo{
 	color: white;
@@ -82,6 +111,9 @@ body{
 	margin:auto;
 }
 .statut{
+	position: fixed;
+	top:2.5em;
+	left:210px;
 	display: inline-block;
 	width: 15px;
 	height: 15px;
@@ -92,9 +124,10 @@ body{
 }
 header{
 	text-align: center;
-  	float: right;
-  	margin-bottom: 3em;
-  	width: 100%;
+	padding-bottom: 3em;
+	width: 100%;
+	border-bottom: solid;
+	border-bottom-color: rgb(31, 31, 31);
 }
 header em {
 	font-size: 0.8em;
@@ -208,4 +241,38 @@ p{
 	font-size: 1em;
 	margin-top: 0.4em;
 	margin-bottom: 0.4em;
+}
+::-webkit-scrollbar {
+	width: .875em;
+	height: .875em;
+	background: rgb(38, 38, 38);
+}
+::-webkit-scrollbar-track-piece {
+	background: transparent none;
+	border: solid .25em transparent;
+	border-right-width: .5em;
+	margin: auto;
+	-webkit-box-shadow: inset .8em .8em 5em 5em rgb(31, 31, 31), inset -.0625em -.0625em 0 0 rgb(34, 34, 34);
+}
+::-webkit-scrollbar-track-piece:horizontal {			/* Fond pour la barre du bas */
+	border-right-width: .25em;
+	border-bottom-width: .5em;
+}
+::-webkit-scrollbar-thumb {
+	border: solid 0 transparent;
+	border-right-width: .25em;
+	-webkit-border-radius: .3125em;
+	-webkit-border-top-right-radius: .5625em .3125em;
+	-webkit-border-bottom-right-radius: .5625em .3125em;
+	-webkit-box-shadow: inset 0 0 0 .0625em rgb(31, 31, 31), inset 0 0 0 .375em rgb(31, 31, 31);
+}
+::-webkit-scrollbar-thumb:hover {						/* Barre */
+	-webkit-box-shadow: inset 0 0 0 .0625em rgb(90,90,90), inset 0 0 0 .375em rgb(110,110,110);
+}
+::-webkit-scrollbar-thumb:horizontal {					/* Barre du bas */
+	border-right-width: 0;
+	border-bottom-width: .25em;
+	-webkit-border-top-right-radius: .3125em;
+	-webkit-border-bottom-right-radius: .3125em .5625em;
+	-webkit-border-bottom-left-radius: .3125em .5625em;
 }
