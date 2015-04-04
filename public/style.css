@@ -38,7 +38,7 @@ body{
 }
 .user:hover{
 	background-color: red;
-	transition: 1500ms all ease;
+	transition: 750ms ease-in-out;
 	cursor: pointer;
 }
 #users{
