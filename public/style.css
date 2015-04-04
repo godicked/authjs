@@ -29,7 +29,7 @@ body{
 	/*max-width: 270px;*/
 }
 .user{
-	background: rgb(31, 31, 31);
+	background: rgb(38, 38, 38);
 	margin: 0.1em;
 	text-align: center;
 	vertical-align: middle;
@@ -38,6 +38,7 @@ body{
 	padding-bottom: 1em;
 	width: 33%;
 	transition: 250ms ease-out;
+	font-family: 'Roboto';
 }
 .user:hover{
 	background-color: red;
