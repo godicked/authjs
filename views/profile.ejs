@@ -65,7 +65,11 @@
 				</header>
 				<div id="users">
 					<h1 class="titre-section">Utilisateurs en ligne</h1>
-					<div id='liste'></div>
+					<div id='liste-users'></div>
+				</div>
+				<div id="users">
+					<h1 class="titre-section">Contacts</h1>
+					<div id='liste-contacts'></div>
 				</div>
 				<footer>
 					<em>Réalisé par Félix Alié & David Gödicke 2015</em>
@@ -97,7 +101,7 @@
                 $('#zone_chat').prepend('<p><em>' + pseudo + ' a rejoint le Chat !</em></p>');
             })
 			socket.on('list', function(message){
-				$('#liste').replaceWith(message);
+				$('#liste-users').replaceWith(message);
                 actualise_liste();
 			});
 

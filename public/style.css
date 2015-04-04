@@ -37,7 +37,7 @@ body{
 	display: inline-block;
 	padding-top: 1em;
 	padding-bottom: 1em;
-	width: 32.60%;
+	width: 32%;
 	transition: 250ms ease-out;
 	font-family: 'Roboto';
 }
@@ -46,6 +46,7 @@ body{
 	cursor: pointer;
 }
 .titre-section {
+	border-bottom: solid;
 	font-size: 1.3em;
 	margin-bottom: 1em;
 	font-family: 'Roboto';
@@ -57,6 +58,11 @@ body{
 	padding-bottom: 1em;
 	transition: 250ms ease-out;
 	background: rgb(38, 38, 38);
+	border-bottom-width: 0.1em;
+	border-bottom-color: rgb(31, 31, 31);
+	border-top: solid;
+	border-top-width: 0.1em;
+	border-top-color: rgb(31, 31, 31);
 }
 .titre-section:hover{
 	background: rgb(42, 42, 42);
