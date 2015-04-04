@@ -5,10 +5,6 @@ function parse(message){
 		var split = message.split(' ');
 		var command = split[0];
 		switch(command){
-			case '/clear':
-				data.type = 'local command';
-				data.command = '/clean';
-				break;
 			case '/me':
 				data.type = 'command';
 				data.command = '/me';
@@ -51,13 +47,6 @@ function apply(data,socket,pseudo){
 			break;
 		case 'whisper':
 			socket.emit('whisper',data);
-			break;
-		case 'local command':
-			switch(data.command){
-				case '/clean':
-					$('#zone_chat').empty();
-					break;
-			}
 			break;
 	}
 	htmlPrint(htmlMake(data,pseudo));

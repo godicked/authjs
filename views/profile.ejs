@@ -119,8 +119,15 @@
 // Action JQuerry ==============================================================
             $('#formulaire_chat').submit(function () {
                 var message = $('#message').val();
-				var data = parse(message);
-				apply(data,socket,pseudo);
+				if(message == '/clear'){
+					clearStorage(localStorage);
+					$('#zone_chat').empty();
+				}
+				else{
+					var data = parse(message);
+					apply(data,socket,pseudo);
+					store(htmlMake(data,pseudo),localStorage);
+				}
 				$('#message').val('').focus();
 				return false; // Permet de bloquer l'envoi "classique" du formulaire
             });

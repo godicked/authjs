@@ -22,3 +22,8 @@ function initStore(localStorage){
 	if(!localStorage.chat2)
 		localStorage.chat2 = " ";
 }
+function clearStorage(localStorage){
+	localStorage.chat1 = " ";
+	localStorage.chat2 = " ";
+	localStorage.nb1 = 0;
+}
