@@ -35,15 +35,16 @@ body{
 	vertical-align: middle;
 	display: inline-block;
 	padding: 2em;
+	transition: 750ms ease-in-out;
 }
 .user:hover{
 	background-color: red;
-	transition: 750ms ease-in-out;
 	cursor: pointer;
 }
 #users{
 	margin-left: 1em;
 	margin-right: 1em;
+	float:right;
 }
 #profil{
 	display: block;
