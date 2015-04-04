@@ -45,6 +45,22 @@ body{
 	background-color: red;
 	cursor: pointer;
 }
+.titre-section {
+	font-size: 1.3em;
+	margin-bottom: 1em;
+	font-family: 'Roboto';
+	font-weight: 100;
+	text-shadow: none;
+	text-align: center;
+	margin: 0px;
+	padding-top: 1em;
+	padding-bottom: 1em;
+	transition: 250ms ease-out;
+	background: rgb(38, 38, 38);
+}
+.titre-section:hover{
+	background: rgb(42, 42, 42);
+}
 #users{
 }
 #container-users{
