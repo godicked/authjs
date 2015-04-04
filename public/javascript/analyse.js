@@ -66,6 +66,7 @@ function apply(data,socket,pseudo){
 function htmlPrint(message){
 	if(message)
 		$('#zone_chat').prepend(message);
+	return message;
 }
 
 function htmlMake(data,pseudo){

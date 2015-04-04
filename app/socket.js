@@ -79,7 +79,10 @@ module.exports = function(io){
 					if (sessions[socket.pseudo].connected == false){
 						delete sessions[socket.pseudo];
 						console.log('session closed');
-						socket.broadcast.emit('message','<p><em>'+socket.pseudo+' est deconnecté</em></p>');
+						socket.broadcast.emit('deco','<p><em>'+socket.pseudo+' est deconnecté</em></p>');
+						var list = listMaker.make(Object.keys(sessions));
+						console.log(Object.keys(sessions));
+						socket.broadcast.emit('list',list);
 						};
 					}, 5000);
 				}
