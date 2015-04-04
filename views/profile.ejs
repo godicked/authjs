@@ -64,6 +64,7 @@
 				</header>
 				<div id="users">
 					<h1 style="font-size:2em; margin-bottom:5px;font-family: raleway;text-shadow: none;">Utilisateurs en ligne</h1>
+					<div id='liste'></div>
 				</div>
 				<footer>
 					<em>Réalisé par Félix Alié & David Gödicke 2015</em>
@@ -95,7 +96,7 @@
                 $('#zone_chat').prepend('<p><em>' + pseudo + ' a rejoint le Chat !</em></p>');
             })
 			socket.on('list', function(message){
-				$('#users').replaceWith(message);
+				$('#liste').replaceWith(message);
                 actualise_liste();
 			});
 
