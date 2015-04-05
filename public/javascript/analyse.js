@@ -80,9 +80,9 @@ function htmlMake(data,pseudo){
 				break;
 			case '/link':
 				if((data.message.indexOf('http://') == 0) || (data.message.indexOf('https://') == 0))
-					return '<p><span class="pseudo">' + pseudo + ' dit: </span><a href="'+data.message+'">'+data.message+'</a>';
+					return '<p><span class="pseudo">' + pseudo + ' dit: </span><a href="'+data.message+'" class="chat_link">'+data.message+'</a>';
 				else
-					return '<p><span class="pseudo">' + pseudo + ' dit: </span><a href="http://'+data.message+'">'+data.message+'</a>';
+					return '<p><span class="pseudo">' + pseudo + ' dit: </span><a href="http://'+data.message+'" class="chat_link">'+data.message+'</a>';
 				break;
 		}
 	}

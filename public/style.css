@@ -270,6 +270,9 @@ footer em{
 	margin-top: 2em;
 	word-wrap: break-word;
 }
+.chat_link{
+	color : blue;
+}
 .pseudo {
 	font-size: 1em;
 	font-family: 'Open Sans';
