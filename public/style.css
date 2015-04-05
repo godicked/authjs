@@ -3,6 +3,10 @@ body{
 	/*background-color: #222222;*/
 	background-image:url('/public/images/navy_blue.png'); 
 	color: white;
+
+}
+body::-webkit-scrollbar { 
+    display: none; 
 }
 .menu_gauche{
 	position: fixed;
@@ -87,7 +91,7 @@ body{
 }
 #container_profil{
 	float: left;
-	margin-left: 5px;
+	margin-left: 0.1em;
 }
 #gestion_room{
 	margin-top: 6em;
