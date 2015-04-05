@@ -172,7 +172,7 @@ a{
 	float:right;
 	background:red;
 	padding: 8px;
-	border-radius: 5px;
+	/*border-radius: 5px;*/
 }
 #flr:hover{
     cursor:pointer;
@@ -213,6 +213,7 @@ footer{
 	text-align: left;
 	left:2%;
 	z-index:10;
+	bottom:1%;
 }
 img.imagechat {
 	width:23%;
