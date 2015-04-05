@@ -59,6 +59,6 @@
             }
 
              function playSound(filename){   
-                document.getElementById("sound").innerHTML='<audio autoplay="autoplay"><source src="/public/' + filename + '.mp3" type="audio/mpeg" /> /><embed hidden="true" autostart="true" loop="false" src="/public/' + filename + '.mp3" /></audio>';
+                document.getElementById("sound").innerHTML='<audio autoplay="autoplay"><source src="/public/son' + filename + '.mp3" type="audio/mpeg" /> /><embed hidden="true" autostart="true" loop="false" src="/public/' + filename + '.mp3" /></audio>';
             }
             
