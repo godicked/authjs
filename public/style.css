@@ -208,10 +208,11 @@ a{
 }
 /* =================================================================*/
 footer{
-	position: relative;
+	position: fixed;
 	width: 100%;
-	text-align: center;
-	margin-top: 98vh;
+	text-align: left;
+	left:2%;
+	z-index:10;
 }
 img.imagechat {
 	width:23%;
