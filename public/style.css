@@ -281,6 +281,9 @@ footer em{
 .whisp{
 	color : violet;
 }
+.info{
+	color: green;
+}
 p{
 	font-size: 1em;
 	margin-top: 0.4em;

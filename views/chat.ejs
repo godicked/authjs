@@ -90,7 +90,7 @@
 // Reception socket=============================================================
 			socket.on('get_name',function(name){
 				pseudo = name;
-				store(htmlPrint('<p>Votre nom est: '+pseudo+'</p>'),localStorage);
+				store(htmlPrint('<p class="info">Votre nom est: '+pseudo+'</p>'),localStorage);
 			});
             socket.on('message', function(data) {
                 store(htmlPrint(htmlMakeR(data)),localStorage);
