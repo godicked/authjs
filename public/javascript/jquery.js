@@ -9,10 +9,10 @@
             
             // Ajoute un message dans la page
           
-            function actualise_titre(){
+            function actualise_titre(content){
             nouveau = true;
                 timer = setInterval(function(){
-                    $('title').html('Nouveau message');
+                    $('title').html('Nouveau '+content);
                      setTimeout(function(){
                           $('title').html('Hermessage');
                       },1000);
@@ -59,6 +59,6 @@
             }
 
              function playSound(filename){   
-                document.getElementById("sound").innerHTML='<audio autoplay="autoplay"><source src="/public/' + filename + '.mp3" type="audio/mpeg" /> /><embed hidden="true" autostart="true" loop="false" src="/public/' + filename + '.mp3" /></audio>';
+                document.getElementById("sound").innerHTML='<audio autoplay="autoplay"><source src="/public/son/' + filename + '.mp3" type="audio/mpeg" /> /><embed hidden="true" autostart="true" loop="false" src="/public/' + filename + '.mp3" /></audio>';
             }
             

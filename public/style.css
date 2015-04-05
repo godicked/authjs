@@ -3,6 +3,10 @@ body{
 	/*background-color: #222222;*/
 	background-image:url('/public/images/navy_blue.png'); 
 	color: white;
+
+}
+body::-webkit-scrollbar { 
+    display: none; 
 }
 .menu_gauche{
 	position: fixed;
@@ -32,12 +36,13 @@ body{
 	background: rgb(38, 38, 38);
 	margin: 0.2em;
 	margin-left: 0px;
+	margin-right:0.53%;
 	text-align: center;
 	vertical-align: middle;
 	display: inline-block;
 	padding-top: 1em;
 	padding-bottom: 1em;
-	width: 32%;
+	width: 32.8%;
 	transition: 250ms ease-out;
 	font-family: 'Roboto';
 }
@@ -87,7 +92,7 @@ body{
 }
 #container_profil{
 	float: left;
-	margin-left: 5px;
+	margin-left: 0.1em;
 }
 #gestion_room{
 	margin-top: 6em;
@@ -121,6 +126,11 @@ body{
 	background-color: green;
 	margin-left: 10px;
 	margin-top: 5px;
+	transition: 250ms all ease;
+}
+.statut:hover{
+	width:25px;
+	height:25px;
 }
 header{
 	text-align: center;
@@ -158,11 +168,13 @@ a{
 	text-shadow: 0px 7px 0px #121212;
 }
 #logout {
-	display: block;
-	float:right;
-	background:red;
-	padding: 8px;
-	border-radius: 5px;
+	display: inline-block;
+	float: left;
+	background: red;
+	padding: 0.4em;
+	font-family: 'Roboto';
+	font-size: 0.9em;
+	font-weight: 100;
 }
 #flr:hover{
     cursor:pointer;
@@ -198,10 +210,12 @@ a{
 }
 /* =================================================================*/
 footer{
-	position: relative;
+	position: fixed;
 	width: 100%;
-	text-align: center;
-	margin-top: 98vh;
+	text-align: left;
+	left:2%;
+	z-index:10;
+	bottom:1%;
 }
 img.imagechat {
 	width:23%;

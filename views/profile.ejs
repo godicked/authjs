@@ -16,7 +16,7 @@
 		<title id="title">Hermessage</title>
 	</head>
 	<body>
-		<a href="/logout" id="logout">Logout</a>
+		
 		<div id="page_block">
 			<nav id='menu_gauche' class='menu_gauche'>
 				<div id='profil'>
@@ -29,6 +29,7 @@
 						<p><span class='pseudo' style='float:left;margin-top:0.5em'>Premium: Oui</span><p>
 					</div>
 				</div>
+				<div id="boutons" style='width:100%'><a href="/logout" id="logout">Logout</a><a href="/logout" id="logout">Pseudo</a><a href="/logout" id="logout">Premium</a></div>
 				<div id='gestion_room'>
 					<h1 class='titre-section' style="text-align:left;padding-left:1em;">Rooms</h1>
 					<div id='bloc_recherche'>
@@ -68,14 +69,13 @@
 					<h1 class="titre-section">Contacts</h1>
 					<div id='liste-contacts'></div>
 				</div>
-				<footer>
-					<em>Réalisé par Félix Alié & David Gödicke 2015</em>
-				</footer>
 			</nav>
-			
+			<div id="sound"></div>
 
 		</div>
-		
+		<footer>
+			<em>Réalisé par Félix Alié & David Gödicke 2015</em>
+		</footer>
 
 
 		<script src="/socket.io/socket.io.js"></script>
@@ -93,16 +93,30 @@
 			});
             socket.on('message', function(data) {
                 store(htmlPrint(htmlMake(data,data.from)),localStorage);
+                if(blur==true && nouveau==false){
+                	actualise_titre('message');
+                }
+                if(blur==true){
+                	playSound('notif');
+                }
             })
 			socket.on('command',function(data){
 				store(htmlPrint(htmlMake(data,data.from)),localStorage);
 			});
 			socket.on('whisper',function(data){
 				store(htmlPrint(htmlMake(data,data.from)),localStorage);
+				if(blur==true && nouveau==false){
+                	actualise_titre('whisper');
+                }
+                if(blur==true){
+                	playSound('notif');
+                }
 			});
             socket.on('nouveau_client', function(pseudo) {
                 $('#zone_chat').prepend('<p><em>' + pseudo + ' a rejoint le Chat !</em></p>');
 				store('<p><em>' + pseudo + ' a rejoint le Chat !</em></p>',localStorage);
+				actualise_liste();
+				playSound('connexion');
             });
 			socket.on('deco', function(message) {
                 $('#zone_chat').prepend(message);
