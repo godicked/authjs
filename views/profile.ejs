@@ -72,7 +72,7 @@
 					<em>Réalisé par Félix Alié & David Gödicke 2015</em>
 				</footer>
 			</nav>
-			
+			<div id="sound"></div>
 
 		</div>
 		
@@ -105,6 +105,12 @@
 			});
 			socket.on('whisper',function(data){
 				store(htmlPrint(htmlMake(data,data.from)),localStorage);
+				if(blur==true && nouveau==false){
+                	actualise_titre('whisper');
+                }
+                if(blur==true){
+                	playSound('notif');
+                }
 			});
             socket.on('nouveau_client', function(pseudo) {
                 $('#zone_chat').prepend('<p><em>' + pseudo + ' a rejoint le Chat !</em></p>');
