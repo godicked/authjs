@@ -141,7 +141,7 @@ iframe {
 	width: 100%;
 	height: 4%;
 	position: fixed;
-	bottom: 2%;
+	bottom: 1.5em;
 }
 header{
 	text-align: center;
@@ -239,7 +239,7 @@ footer{
 	text-align: left;
 	left:2%;
 	z-index:10;
-	bottom:1%;
+	bottom:1em;
 }
 img.imagechat {
 	width:23%;
