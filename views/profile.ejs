@@ -110,6 +110,7 @@
             });
 			socket.on('list', function(message){
 				$('#liste-users').empty().append(message);
+				actualise_liste();
 			});
 			socket.on('wrong',function(message){
 				$('#zone_chat').prepend('<p style="color: red;">'+message+'</p>');
