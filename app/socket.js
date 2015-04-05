@@ -40,6 +40,7 @@ module.exports = function(io){
 			if(socket.pseudo){
 				console.log('message envoyé de: ' + socket.pseudo);
 				data.from = socket.pseudo;
+				data.message = encode(data.message);
 				socket.broadcast.emit('message',data);
 			}
 			else
@@ -49,6 +50,7 @@ module.exports = function(io){
 		socket.on('whisper',function(data){
 			if(socket.pseudo){
 				data.from = socket.pseudo;
+				data.message = encode(data.message);
 				console.log('message privé envoyer de: '+ socket.pseudo + ' pour: ' + data.to);
 				if(sessions[data.to]){
 					socket.broadcast.to(sessions[data.to].id).emit('whisper', data);
@@ -65,6 +67,7 @@ module.exports = function(io){
 		socket.on('command',function(data){
 			if(socket.pseudo){
 				data.from = socket.pseudo;
+				data.message = encode(data.message);
 				console.log('commande envoyé de: '+socket.pseudo);
 				socket.broadcast.emit('command',data);
 			}
