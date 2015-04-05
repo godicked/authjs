@@ -90,9 +90,10 @@
 // Reception socket=============================================================
 			socket.on('get_name',function(name){
 				pseudo = name;
+				store(htmlPrint('<p>Votre nom est: '+pseudo+'</p>'),localStorage);
 			});
             socket.on('message', function(data) {
-                store(htmlPrint(htmlMake(data,data.from)),localStorage);
+                store(htmlPrint(htmlMakeR(data)),localStorage);
                 if(blur==true && nouveau==false){
                 	actualise_titre('message');
                 }
@@ -101,10 +102,10 @@
                 }
             })
 			socket.on('command',function(data){
-				store(htmlPrint(htmlMake(data,data.from)),localStorage);
+				store(htmlPrint(htmlMakeR(data)),localStorage);
 			});
 			socket.on('whisper',function(data){
-				store(htmlPrint(htmlMake(data,data.from)),localStorage);
+				store(htmlPrint(htmlMakeR(data)),localStorage);
 				if(blur==true && nouveau==false){
                 	actualise_titre('whisper');
                 }
@@ -140,8 +141,10 @@
 				}
 				else{
 					var data = parse(message);
-					apply(data,socket,pseudo);
-					store(htmlMake(data,pseudo),localStorage);
+					send(data,socket);
+					var toPrint = htmlMakeS(data,pseudo);
+					htmlPrint(toPrint);
+					
 				}
 				$('#message').val('').focus();
 				return false; // Permet de bloquer l'envoi "classique" du formulaire

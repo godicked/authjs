@@ -23,7 +23,7 @@ module.exports = function(io){
 					if(!sessions[user.local.name]){
 						socket.broadcast.emit('nouveau_client',user.local.name);
 					}
-					socket.pseudo = user.local.name;
+					socket.name = user.local.name;
 					socket.oid = id;
 					sessions[user.local.name] = {};
 					sessions[user.local.name].id = socket.id;
@@ -37,9 +37,12 @@ module.exports = function(io){
 		});
 		
 		socket.on('message',function(data){
-			if(socket.pseudo){
-				console.log('message envoyé de: ' + socket.pseudo);
-				data.from = socket.pseudo;
+			if(socket.name){
+				console.log('message envoyé de: ' + socket.name);
+				if(socket.pseudo)
+					data.from = socket.pseudo;
+				else
+					data.from = socket.name;
 				data.message = encode(data.message);
 				socket.broadcast.emit('message',data);
 			}
@@ -48,10 +51,10 @@ module.exports = function(io){
 		});
 		
 		socket.on('whisper',function(data){
-			if(socket.pseudo){
-				data.from = socket.pseudo;
+			if(socket.name){
+				data.from = socket.name;
 				data.message = encode(data.message);
-				console.log('message privé envoyer de: '+ socket.pseudo + ' pour: ' + data.to);
+				console.log('message privé envoyer de: '+ socket.name + ' pour: ' + data.to);
 				if(sessions[data.to]){
 					socket.broadcast.to(sessions[data.to].id).emit('whisper', data);
 				}
@@ -65,10 +68,22 @@ module.exports = function(io){
 		});
 		
 		socket.on('command',function(data){
-			if(socket.pseudo){
-				data.from = socket.pseudo;
+			if(socket.name){
+				if(socket.pseudo)
+					data.from = socket.pseudo;
+				else
+					data.from = socket.name;
+				if(data.command == '/nonick'){
+					data.message = socket.name;
+					socket.emit('get_name',socket.name);
+					delete socket.pseudo;
+				}
+				if(data.command == '/nick'){
+					socket.pseudo = data.message;
+					socket.emit('get_name',data.message);
+				}
 				data.message = encode(data.message);
-				console.log('commande envoyé de: '+socket.pseudo);
+				console.log('commande envoyé de: '+socket.name);
 				socket.broadcast.emit('command',data);
 			}
 			else
@@ -77,12 +92,12 @@ module.exports = function(io){
 		
 		socket.on('disconnect',function(){
 			try{
-				sessions[socket.pseudo].connected = false;
+				sessions[socket.name].connected = false;
 				setTimeout(function () {
-					if (sessions[socket.pseudo].connected == false){
-						delete sessions[socket.pseudo];
+					if (sessions[socket.name].connected == false){
+						delete sessions[socket.name];
 						console.log('session closed');
-						socket.broadcast.emit('deco','<p><em>'+socket.pseudo+' est deconnecté</em></p>');
+						socket.broadcast.emit('deco','<p><em>'+socket.name+' est deconnecté</em></p>');
 						var list = listMaker.make(Object.keys(sessions));
 						console.log(Object.keys(sessions));
 						socket.broadcast.emit('list',list);

@@ -278,6 +278,9 @@ footer em{
 	font-family: 'Open Sans';
 	font-weight: 700;
 }
+.whisp{
+	color : violet;
+}
 p{
 	font-size: 1em;
 	margin-top: 0.4em;
