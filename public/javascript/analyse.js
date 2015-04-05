@@ -24,6 +24,11 @@ function parse(message){
 				data.to = split[1];
 				data.message = message.substring(4 + data.to.length);
 				break;
+			case '/link':
+				data.type = 'command';
+				data.command = '/link';
+				data.message = message.substring(6);
+				break;
 			default:
 				data.type = 'wrong';
 				data.message = 'La commande: ' + command + ' n\'existe pas';
@@ -73,9 +78,14 @@ function htmlMake(data,pseudo){
 			case '/dance':
 				return '<p><span class="pseudo">' + pseudo + ' dit: </span><img class="imagechat" src="/public/images/dance.gif"></img></p>';
 				break;
+			case '/link':
+				if((data.message.indexOf('http://') == 0) || (data.message.indexOf('https://') == 0))
+					return '<p><span class="pseudo">' + pseudo + ' dit: </span><a href="'+data.message+'">'+data.message+'</a>';
+				else
+					return '<p><span class="pseudo">' + pseudo + ' dit: </span><a href="http://'+data.message+'">'+data.message+'</a>';
+				break;
 		}
 	}
-	
 	if(data.type == 'whisper'){
 		if(data.from)
 			return '<p><em class="whisp">[from: ' +data.from+'] : ' + data.message + '</em></p>';
