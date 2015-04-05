@@ -1,0 +1,151 @@
+<!-- views/profile.ejs -->
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type="text/css">
+		<link href='http://fonts.googleapis.com/css?family=Roboto:100,300' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" href="/public/style.css" type="text/css">
+		<link rel="icon" href="/public/images/favicon.ico" />
+		<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+		<script src="/public/javascript/analyse.js"></script>
+		<script src="/public/javascript/jquery.js"></script>
+		<script src="/public/javascript/url.js"></script>
+		<script src="/public/javascript/store.js"></script>
+		<title id="title">Hermessage</title>
+	</head>
+	<body>
+		
+		<div id="page_block">
+			<nav id='menu_gauche' class='menu_gauche'>
+				<div id='profil'>
+					<a class='statut' href=''></a>
+					<h1 class='titre-section' style="text-align:left;padding-left:1em;">Profil</h1>
+					<img id='profilpic' src='/public/images/profil_pic.PNG'>
+					<div id='container_profil'>
+						<p><span class='pseudo' style='float:left'>Pseudo:  </span>
+						<input type="text" id="pseudo" value="<%=user.local.name%>" size="5" autocomplete="off"/><!--<span class='pseudo'></span>--><p>
+						<p><span class='pseudo' style='float:left;margin-top:0.5em'>Premium: Oui</span><p>
+					</div>
+				</div>
+				<div id='gestion_room'>
+					<h1 class='titre-section' style="text-align:left;padding-left:1em;">Rooms</h1>
+					<div id='bloc_recherche'>
+						<input class="textbox" type="text" name="recherche" id="rechercher" placeholder="Chercher une room" size="50" autocomplete="off"/>
+						<img id='recherche' src=''>
+					</div>
+					<aside id='rooms'>
+						<ul id='liste_rooms'></ul>
+					</aside>
+				</div>
+
+			</nav>
+			<section id="hermess_chat">
+
+				<form action="/" method="post" id="formulaire_chat">
+					<input class="textbox" type="text" name="message" id="message" placeholder="Votre message..." size="50" autofocus autocomplete="off" />
+					<span id="flr">#FLR</span>
+				</form>
+
+				<article id="zone_chat">
+				</article>
+				<script>
+					getStorage(localStorage);
+				</script>
+			</section>
+			<nav id='menu_droite' class='menu_droite'>
+				<header>
+				<a href='#'><h1>HERMÈS<span style="color : red;">S</span>AGE <img src="/public/images/hermessage.png" id="photo" /></h1></a>
+				<em class="header">Harder, better, faster, stronger IRC</em>
+				<br>
+				</header>
+				<div id="users">
+					<h1 class="titre-section">Utilisateurs en ligne</h1>
+					<div id='liste-users'></div>
+				</div>
+				<div id="users">
+					<h1 class="titre-section">Contacts</h1>
+					<div id='liste-contacts'></div>
+				</div>
+			</nav>
+			<div id="sound"></div>
+
+		</div>
+		<footer>
+			<div id="boutons" style='width:100%'><a href="/logout" id="logout" class='bouton'>Logout</a><a href="/logout" id="logout" class='bouton'>Contact</a><a href="/logout" id="logout" class='bouton'>Premium</a></div>
+			<em>Réalisé par Félix Alié & David Gödicke 2015</em>
+		</footer>
+
+
+		<script src="/socket.io/socket.io.js"></script>
+		<script>
+			initStore(localStorage);
+// Initialisation de session ===================================================
+			var pseudo = '<%=user.local.name%>';
+			var socket = io.connect(getURL() + '/chat');
+			socket.emit('give_id','<%=user._id%>');
+
+
+// Reception socket=============================================================
+			socket.on('get_name',function(name){
+				pseudo = name;
+			});
+            socket.on('message', function(data) {
+                store(htmlPrint(htmlMake(data,data.from)),localStorage);
+                if(blur==true && nouveau==false){
+                	actualise_titre('message');
+                }
+                if(blur==true){
+                	playSound('notif');
+                }
+            })
+			socket.on('command',function(data){
+				store(htmlPrint(htmlMake(data,data.from)),localStorage);
+			});
+			socket.on('whisper',function(data){
+				store(htmlPrint(htmlMake(data,data.from)),localStorage);
+				if(blur==true && nouveau==false){
+                	actualise_titre('whisper');
+                }
+                if(blur==true){
+                	playSound('notif');
+                }
+			});
+            socket.on('nouveau_client', function(pseudo) {
+                $('#zone_chat').prepend('<p><em>' + pseudo + ' a rejoint le Chat !</em></p>');
+				store('<p><em>' + pseudo + ' a rejoint le Chat !</em></p>',localStorage);
+				actualise_liste();
+				playSound('connexion');
+            });
+			socket.on('deco', function(message) {
+                $('#zone_chat').prepend(message);
+				store(message,localStorage);
+            });
+			socket.on('list', function(message){
+				$('#liste-users').empty().append(message);
+				actualise_liste();
+			});
+			socket.on('wrong',function(message){
+				$('#zone_chat').prepend('<p style="color: red;">'+message+'</p>');
+				store(message);
+			});
+
+// Action JQuerry ==============================================================
+            $('#formulaire_chat').submit(function () {
+                var message = $('#message').val();
+				if(message == '/clear'){
+					clearStorage(localStorage);
+					$('#zone_chat').empty();
+				}
+				else{
+					var data = parse(message);
+					apply(data,socket,pseudo);
+					store(htmlMake(data,pseudo),localStorage);
+				}
+				$('#message').val('').focus();
+				return false; // Permet de bloquer l'envoi "classique" du formulaire
+            });
+		</script>
+	</body>
+</html>
