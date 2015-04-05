@@ -9,10 +9,10 @@
             
             // Ajoute un message dans la page
           
-            function actualise_titre(){
+            function actualise_titre(content){
             nouveau = true;
                 timer = setInterval(function(){
-                    $('title').html('Nouveau message');
+                    $('title').html('Nouveau '+content);
                      setTimeout(function(){
                           $('title').html('Hermessage');
                       },1000);
