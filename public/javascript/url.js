@@ -1,3 +1,3 @@
 function getURL(){
-	return 'localhost:1234';
+	return 'hermessage.fr:1234';
 }
