@@ -284,10 +284,10 @@ footer em{
 	border-bottom-width: 0.1em;
 	border-bottom-color: rgb(38, 38, 38);
 	transition: 250ms all ease;
-	cursor: pointer;
 }
 .room:hover{
 	background: red;
+	cursor: pointer;
 }
 .pseudo {
 	font-size: 1em;
