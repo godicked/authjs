@@ -95,6 +95,7 @@
 
 		<script src="/socket.io/socket.io.js"></script>
 		<script>
+			var active = 'Accueil';
 			initStore(localStorage);
 // Initialisation de session ===================================================
 			var pseudo = '<%=user.local.name%>';
@@ -183,6 +184,7 @@
             	}
             	$('#'+div).css('visibility','visible');
             	$('#'+div).css('height','auto');
+            	active = div;
             });
 		</script>
 	</body>
