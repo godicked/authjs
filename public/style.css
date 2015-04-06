@@ -283,7 +283,8 @@ footer em{
 	border-bottom: solid;
 	border-bottom-width: 0.1em;
 	border-bottom-color: rgb(38, 38, 38);
-	transition: 250ms out ease;
+	transition: 250ms all ease;
+	cursor: pointer;
 }
 .room:hover{
 	background: red;
