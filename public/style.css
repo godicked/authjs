@@ -266,8 +266,8 @@ footer em{
     width: 25%;
     min-width: 275px;
 }
-#zone_chat{
-	margin-top: 2em;
+.zone_chat{
+	/*margin-top: 2em;*/
 	word-wrap: break-word;
 }
 .chat_link{

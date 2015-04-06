@@ -68,7 +68,7 @@ function send(data,socket){
 
 function htmlPrint(message){
 	if(message)
-		$('#zone_chat').prepend(message);
+		$('#Accueil').prepend(message);
 	return message;
 }
 

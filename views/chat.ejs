@@ -49,12 +49,21 @@
 			</nav>
 			<section id="hermess_chat">
 
-				<form action="/" method="post" id="formulaire_chat">
+				<form action="/" method="post" id="formulaire_chat" style='margin-bottom:2em'>
 					<input class="textbox" type="text" name="message" id="message" placeholder="Votre message..." size="50" autofocus autocomplete="off" />
 					<span id="flr">#FLR</span>
 				</form>
 
-				<article id="zone_chat">
+				<article id='Accueil' class="zone_chat">
+				</article>
+				<article id='Amis' class="zone_chat" style='visibility:hidden;'>
+				</article>
+				<article id='League of Legends' class="zone_chat" style='visibility:hidden;'>
+				</article>
+				<article id='Actualité' class="zone_chat" style='visibility:hidden;'>
+				</article>
+				<article id='Reddit' class="zone_chat" style='visibility:hidden;'>
+					<p>ici on parle de reddit</p>
 				</article>
 				<script>
 					getStorage(localStorage);
@@ -86,6 +95,7 @@
 
 		<script src="/socket.io/socket.io.js"></script>
 		<script>
+			var active = 'Accueil';
 			initStore(localStorage);
 // Initialisation de session ===================================================
 			var pseudo = '<%=user.local.name%>';
@@ -126,13 +136,13 @@
                 }
 			});
             socket.on('nouveau_client', function(pseudo) {
-                $('#zone_chat').prepend('<p><em>' + pseudo + ' a rejoint le Chat !</em></p>');
+                $('#Accueil').prepend('<p><em>' + pseudo + ' a rejoint le Chat !</em></p>');
 				store('<p><em>' + pseudo + ' a rejoint le Chat !</em></p>',localStorage);
 				actualise_liste();
 				playSound('connexion');
             });
 			socket.on('deco', function(message) {
-                $('#zone_chat').prepend(message);
+                $('#Accueil').prepend(message);
 				store(message,localStorage);
             });
 			socket.on('list', function(message){
@@ -140,7 +150,7 @@
 				actualise_liste();
 			});
 			socket.on('wrong',function(message){
-				$('#zone_chat').prepend('<p style="color: red;">'+message+'</p>');
+				$('#Accueil').prepend('<p style="color: red;">'+message+'</p>');
 				store(message);
 			});
 
@@ -149,7 +159,7 @@
                 var message = $('#message').val();
 				if(message == '/clear'){
 					clearStorage(localStorage);
-					$('#zone_chat').empty();
+					$('#Accueil').empty();
 				}
 				else{
 					var data = parse(message);
@@ -161,6 +171,20 @@
 				}
 				$('#message').val('').focus();
 				return false; // Permet de bloquer l'envoi "classique" du formulaire
+            });
+            $('.room').click(function(){
+            	var rooms = $('.room');
+            	var div = this.innerText;
+            	for(i= 0;i<rooms.length;i++){
+            		var hide = rooms[i].innerHTML;
+            		if(hide != div){
+            			$("#"+hide).css('visibility','hidden');
+            			$("#"+hide).css('height',0);
+            		}
+            	}
+            	$('#'+div).css('visibility','visible');
+            	$('#'+div).css('height','auto');
+            	active = div;
             });
 		</script>
 	</body>
