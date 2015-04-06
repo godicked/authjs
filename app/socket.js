@@ -82,7 +82,8 @@ module.exports = function(io){
 					socket.pseudo = data.message;
 					socket.emit('get_name',data.message);
 				}
-				data.message = encode(data.message);
+				if(data.message)
+					data.message = encode(data.message);
 				console.log('commande envoyé de: '+socket.name);
 				socket.broadcast.emit('command',data);
 			}
