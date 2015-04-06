@@ -64,6 +64,7 @@ module.exports = function(passport) {
                 // set the user's local credentials
                 newUser.local.email    = email;
                 newUser.local.password = newUser.generateHash(password);
+				newUser.local.rooms    = ['Acceuil'];
 
                 // save the user
                 newUser.save(function(err) {
@@ -150,6 +151,7 @@ module.exports = function(passport) {
 
                 // set the user's local credentials
                 newUser.local.name    = name;
+				newUser.local.rooms   = ['Acceuil'];
 
                 // save the user
                 newUser.save(function(err) {

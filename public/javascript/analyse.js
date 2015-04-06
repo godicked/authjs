@@ -1,6 +1,7 @@
 // function parse
 function parse(message){
 	var data = {};
+	data.room = 'Acceuil';
 	if(message.charAt(0) == '/'){
 		var split = message.split(' ');
 		var command = split[0];

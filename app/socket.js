@@ -34,6 +34,9 @@ module.exports = function(io){
 					console.log(Object.keys(sessions));
 					socket.broadcast.emit('list',list);
 					socket.emit('list',list);
+					user.local.rooms.forEach(function(room){
+						socket.join(room);
+					});
 				}
 			});
 		});
@@ -46,7 +49,8 @@ module.exports = function(io){
 				else
 					data.from = socket.name;
 				data.message = encode(data.message);
-				socket.broadcast.emit('message',data);
+				console.log('send to room: '+data.room);
+				socket.to(data.room).emit('message',data);
 			}
 			else
 				socket.emit('wrong','votre session a expiré, veuillez recharger la page');
@@ -91,6 +95,13 @@ module.exports = function(io){
 			}
 			else
 				socket.emit('wrong','votre session a expiré, veuillez recharger la page');
+		});
+		
+		socket.on('room',function(data){
+			if(data.command == '/join')
+				socket.join(data.message);
+			if(data.command == '/leave')
+				socket.leave(data.message);
 		});
 		
 		socket.on('disconnect',function(){
