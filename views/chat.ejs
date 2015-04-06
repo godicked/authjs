@@ -54,7 +54,16 @@
 					<span id="flr">#FLR</span>
 				</form>
 
-				<article id="zone_chat">
+				<article id='Accueil' class="zone_chat">
+				</article>
+				<article id='Amis' class="zone_chat" style='visibility:hidden;'>
+				</article>
+				<article id='League of Legends' class="zone_chat" style='visibility:hidden;'>
+				</article>
+				<article id='Actualité' class="zone_chat" style='visibility:hidden;'>
+				</article>
+				<article id='Reddit' class="zone_chat" style='visibility:hidden;'>
+					<p>ici on parle de reddit</p>
 				</article>
 				<script>
 					getStorage(localStorage);
@@ -162,6 +171,17 @@
 				$('#message').val('').focus();
 				return false; // Permet de bloquer l'envoi "classique" du formulaire
             });
+            $('.room').click(function(){
+            	var rooms = $('.room');
+            	var div = this.innerHTML();
+            	for(i= 0;i<rooms.length;i++){
+            		var hide = rooms[i].innerHTML;
+            		if(hide != div){
+            			$("#"+hide).hide();
+            		}
+            	}
+            	$('#'+div).show();
+            })
 		</script>
 	</body>
 </html>
