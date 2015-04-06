@@ -173,7 +173,7 @@
             });
             $('.room').click(function(){
             	var rooms = $('.room');
-            	var div = this.innerHTML();
+            	var div = this.innerText;
             	for(i= 0;i<rooms.length;i++){
             		var hide = rooms[i].innerHTML;
             		if(hide != div){
@@ -181,7 +181,7 @@
             		}
             	}
             	$('#'+div).show();
-            })
+            });
 		</script>
 	</body>
 </html>
