@@ -177,10 +177,10 @@
             	for(i= 0;i<rooms.length;i++){
             		var hide = rooms[i].innerHTML;
             		if(hide != div){
-            			$("#"+hide).hide();
+            			$("#"+hide).css('visibility','hidden');
             		}
             	}
-            	$('#'+div).show();
+            	$('#'+div).css('visibility','visible');
             });
 		</script>
 	</body>
