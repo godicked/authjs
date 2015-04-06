@@ -271,7 +271,11 @@ footer em{
 	word-wrap: break-word;
 }
 .chat_link{
-	color : blue;
+
+	color: rgb(112, 112, 176);
+	border-bottom: solid;
+	border-bottom-width: 1px;
+	
 }
 .pseudo {
 	font-size: 1em;
