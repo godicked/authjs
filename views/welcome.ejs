@@ -39,13 +39,23 @@
 				if(!correct)
 					return false;
 			});
-			
-			$('#input').keyup(function(){
-				var val = $('#input').val();
-				info.emit('name_free',val);
-				$('#info').replaceWith('<label id="info">wait</label>');
-				correct=false;
+			$("#input").keypress(function(e){
+				var charCode = !e.charCode ? e.which : e.charCode;
+				if(charCode == 31)
+					return false;
 			});
+			
+			$("#input").keyup(function(e){
+				var charCode = !e.charCode ? e.which : e.charCode;
+				if(charCode != 32){
+					var val = $('#input').val();
+					info.emit('name_free',val);
+					$('#info').replaceWith('<label id="info">wait</label>');
+					correct=false;
+				}
+				return false;
+			});
+			
 			info.on('name_free',function(data){
 				var val = $('#input').val();
 					if(val == data.name){

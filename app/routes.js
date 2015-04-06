@@ -70,10 +70,14 @@ module.exports = function(app, passport) {
 	app.post('/welcome', function(req,res){
 		var pseudo = req.body.name;
 		console.log(pseudo);
+		if(pseudo.indexOf(' ') < 0){
 		User.findByIdAndUpdate(req.user._id, { $set: { 'local.name': pseudo }}, function (err, user) {
 			req.user = user;
 			res.redirect('/chat');
 		});
+		}
+		else
+			res.redirect('/welcome');
 	});
 
 	// =====================================
