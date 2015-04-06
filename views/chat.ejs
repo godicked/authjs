@@ -144,6 +144,7 @@
 					send(data,socket);
 					var toPrint = htmlMakeS(data,pseudo);
 					htmlPrint(toPrint);
+					store(toPrint,localStorage);
 					
 				}
 				$('#message').val('').focus();
