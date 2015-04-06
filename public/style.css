@@ -275,12 +275,18 @@ footer em{
 	border-bottom: solid;
 	border-bottom-width: 1px;
 }
-.room{
-	width:100%;
-	margin:0;
+.room {
+	margin: 0;
 	padding: 1em;
-	background:rgb(31,31,31);
-	
+	background: rgb(31,31,31);
+	display: block;
+	border-bottom: solid;
+	border-bottom-width: 0.1em;
+	border-bottom-color: rgb(38, 38, 38);
+	transition: 250ms out ease;
+}
+.room:hover{
+	background: red;
 }
 .pseudo {
 	font-size: 1em;
