@@ -271,11 +271,23 @@ footer em{
 	word-wrap: break-word;
 }
 .chat_link{
-
 	color: rgb(112, 112, 176);
 	border-bottom: solid;
 	border-bottom-width: 1px;
-	
+}
+.room {
+	margin: 0;
+	padding: 1em;
+	background: rgb(31,31,31);
+	display: block;
+	border-bottom: solid;
+	border-bottom-width: 0.1em;
+	border-bottom-color: rgb(38, 38, 38);
+	transition: 250ms all ease;
+}
+.room:hover{
+	background: red;
+	cursor: pointer;
 }
 .pseudo {
 	font-size: 1em;
