@@ -76,6 +76,20 @@ module.exports = function(app, passport) {
 		});
 	});
 
+	// =====================================
+    // Visitor =============================
+    // =====================================
+    app.get('/visit', function(req, res) {
+        res.render('visit.ejs',{ message: req.flash('signupMessage') });
+    });
+	
+	app.post('/visit', passport.authenticate('local-visit', {
+        successRedirect : '/chat', // redirect to the secure chat section
+        failureRedirect : '/visit', // redirect back to the signup page if there is an error
+        failureFlash : true // allow flash messages
+    }));
+	
+	
     // =====================================
     // LOGOUT ==============================
     // =====================================

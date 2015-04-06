@@ -23,6 +23,8 @@ module.exports = function(io){
 					if(!sessions[user.local.name]){
 						socket.broadcast.emit('nouveau_client',user.local.name);
 					}
+					if(!user.local.email)
+						socket.visit = true;
 					socket.name = user.local.name;
 					socket.oid = id;
 					sessions[user.local.name] = {};
@@ -102,6 +104,14 @@ module.exports = function(io){
 						var list = listMaker.make(Object.keys(sessions));
 						console.log(Object.keys(sessions));
 						socket.broadcast.emit('list',list);
+						if(socket.visit){
+							User.remove({'_id':socket.oid}, function(err){
+								if(err)
+									console.log(err)
+								else
+									console.log('visitor removed from DB');
+							});
+						}
 						};
 					}, 5000);
 				}
