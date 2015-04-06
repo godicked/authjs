@@ -103,6 +103,12 @@
             })
 			socket.on('command',function(data){
 				store(htmlPrint(htmlMakeR(data)),localStorage);
+				if(blur==true && nouveau==false){
+                	actualise_titre('whisper');
+                }
+                if(blur==true){
+                	playSound('notif');
+                }
 			});
 			socket.on('whisper',function(data){
 				store(htmlPrint(htmlMakeR(data)),localStorage);
