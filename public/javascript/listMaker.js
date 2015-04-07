@@ -11,9 +11,9 @@ module.exports = {
 };
 function make_room(array){
 	var res = "<ul style:'list-style:none'>"
-	for(i in array)
+	for(i in array){
 		res += "<li class='liste_recherche'>"+array[i].name+"</li>"
-	});
+	}
 	res +='</ul>';
 	return res;
 }
