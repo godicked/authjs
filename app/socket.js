@@ -139,6 +139,20 @@ module.exports = function(io){
 			}
 		});
 		
+		socket.on('room_list',function(text){
+			Room.find({'name':(new RegExp(text, "i"))},{'name':1,'_id':0},function(err,room){
+				if(err)
+					console.log(err);
+				else{
+					console.log(room);
+					var data = {};
+					data.list = room;
+					data.text = text;
+					socket.emit('room_list',data);
+				}
+			});
+		});
+		
 		socket.on('disconnect',function(){
 			try{
 				sessions[socket.name].connected = false;

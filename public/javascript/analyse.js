@@ -87,6 +87,10 @@ function send(data,socket){
 		case 'room':
 			socket.emit('room',data);
 			break;
+		case 'room_list':
+			socket.emit('room_list',data.message);
+			break;
+			
 	}
 }
 
