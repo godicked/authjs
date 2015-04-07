@@ -178,13 +178,16 @@
             	var div = this.innerText;
             	for(i= 0;i<rooms.length;i++){
             		var hide = rooms[i].innerHTML;
+            		var temp = rooms[i];
             		if(hide != div){
+            			$(temp).attr('class','room');
             			$("#"+hide).css('visibility','hidden');
             			$("#"+hide).css('height',0);
             		}
             	}
             	$('#'+div).css('visibility','visible');
             	$('#'+div).css('height','auto');
+            	$(this).attr('class','room-active');
             	active = div;
             });
 		</script>
