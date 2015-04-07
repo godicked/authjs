@@ -226,7 +226,7 @@ a{
 .textbox:focus {
 	width: 50%;
 }
-.rechercher_room{
+#rechercher_room{
 	margin:3%;
 	width:70%;
 }

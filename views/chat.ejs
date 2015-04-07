@@ -199,7 +199,7 @@
             	active = div;
             });
             $('#rechercher_room').change(function(){
-            	socket.emit('room_list', this.value));
+            	socket.emit('room_list', this.value);
             });
 		</script>
 	</body>
