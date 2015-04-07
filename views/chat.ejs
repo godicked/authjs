@@ -37,7 +37,7 @@
 					</div>
 					<aside id='rooms'>
 						<div id='container-rooms'>
-							<span class='room'>Accueil</span>
+							<span class='room-active'>Accueil</span>
 							<span class='room'>Amis</span>
 							<span class='room'>League of Legends</span>
 							<span class='room'>Actualité</span>
@@ -176,26 +176,29 @@
 				$('#message').val('').focus();
 				return false; // Permet de bloquer l'envoi "classique" du formulaire
             });
-            $('.room').click(function(){
-            	var rooms = $('.room');
-            	var room_active = $('.room-active');
-            	var room_active_hide = $('.room-active').innerHTML;
-            	var div = this.innerText;
-            	for(i= 0;i<rooms.length;i++){
-            		var hide = rooms[i].innerHTML;
-            		if(hide != div){
-            			$("#"+hide).css('visibility','hidden');
-            			$("#"+hide).css('height',0);
-            		}
-            	}
-            	$('#'+div).css('visibility','visible');
-            	$('#'+div).css('height','auto');
-            	$('#'+room_active_hide).css('visibility','hidden');
-            	$('#'+room_active_hide).css('height','0');
-            	$(this).attr('class','room-active');
-            	$(room_active).attr('class','room');
-            	active = div;
-            });
+            $('.room').click(affiche_actif);
+            function affiche_actif(){
+	            $('.room').click(function(){
+	            	var rooms = $('.room');
+	            	var room_active = $('.room-active')[0];
+	            	var room_active_hide = $('.room-active')[0].innerHTML;
+	            	var div = this.innerText;
+	            	for(i= 0;i<rooms.length;i++){
+	            		var hide = rooms[i].innerHTML;
+	            		if(hide != div){
+	            			$("#"+hide).css('visibility','hidden');
+	            			$("#"+hide).css('height',0);
+	            		}
+	            	}
+	            	$('#'+div).css('visibility','visible');
+	            	$('#'+div).css('height','auto');
+	            	$('#'+room_active_hide).css('visibility','hidden');
+	            	$('#'+room_active_hide).css('height','0');
+	            	$(this).attr('class','room-active');
+	            	$(room_active).attr('class','room');
+	            	active = div;
+	            });
+	    	}
 		</script>
 	</body>
 </html>
