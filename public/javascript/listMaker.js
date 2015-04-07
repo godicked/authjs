@@ -8,7 +8,7 @@ function make_list(array){
 	}
 
 function make_room(array){
-	var res = "<ul style:'list-style:none'>";
+	var res = "<ul style:'list-style-type:none'>";
 	array.forEach(function(room){
 		res+="<li class='liste_recherche'>"+room.name+"</li>";
 	});
