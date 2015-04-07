@@ -55,6 +55,11 @@ function parse(message,room){
 				data.command = '/delete';
 				data.message = message.substring(8);
 				break;
+			case '/join':
+				data.type = 'room';
+				data.command = '/join';
+				data.message = message.substring(6);
+				break;
 			default:
 				data.type = 'wrong';
 				data.message = 'La commande: ' + command + ' n\'existe pas';
