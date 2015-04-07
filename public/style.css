@@ -226,11 +226,11 @@ a{
 .textbox:focus {
 	width: 50%;
 }
-#rechercher{
+.rechercher_room{
 	margin:3%;
 	width:70%;
 }
-#rechercher:hover {
+#rechercher_room:hover {
 	width:70%;
 }
 /* =================================================================*/
