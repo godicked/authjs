@@ -109,7 +109,6 @@
 				store(htmlPrint('<p class="info">Votre nom est: '+pseudo+'</p>'),localStorage);
 			});
             socket.on('message', function(data) {
-			$('#Accueil').append('<p>lalalalall</p>');
                 store(htmlPrint(htmlMakeR(data)),localStorage);
                 if(blur==true && nouveau==false){
                 	actualise_titre('message');
