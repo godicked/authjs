@@ -178,7 +178,7 @@
             });
             $('.room').click(function(){
             	var rooms = $('.room');
-            	if($('.room-active')!=null){
+            	if($('.room-active').length != 0){
 	            	var room_active = $('.room-active')[0];
 	            	var room_active_hide = $('.room-active')[0].innerHTML;
 	            }
@@ -192,7 +192,7 @@
             	}
             	$('#'+div).css('visibility','visible');
             	$('#'+div).css('height','auto');
-            	if($('.room-active')!=null){
+            	if($('.room-active').length != 0){
 	            	$('#'+room_active_hide).css('visibility','hidden');
 	            	$('#'+room_active_hide).css('height','0');
 	            }
