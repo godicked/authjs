@@ -289,6 +289,14 @@ footer em{
 	background: red;
 	cursor: pointer;
 }
+.room-active{
+	-moz-box-shadow: inset 0px 5px 5px 0px #656565;
+	-webkit-box-shadow: inset 0px 5px 5px 0px #656565;
+	-o-box-shadow: inset 0px 5px 5px 0px #656565;
+	box-shadow: inset 0px 5px 5px 0px #656565;
+	filter:progid:DXImageTransform.Microsoft.Shadow(color=#656565, Direction=180, Strength=5);
+	background:rgb(42,42,42);
+}
 .pseudo {
 	font-size: 1em;
 	font-family: 'Open Sans';
