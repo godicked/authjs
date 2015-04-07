@@ -13,6 +13,7 @@
 		<script src="/public/javascript/jquery.js"></script>
 		<script src="/public/javascript/url.js"></script>
 		<script src="/public/javascript/store.js"></script>
+		<script src="/public/javascript/listMaker.js"></script>
 		<title id="title">Hermessage</title>
 	</head>
 	<body>
@@ -140,7 +141,7 @@
 				store(message,localStorage);
             });
 			socket.on('list', function(message){
-				$('#liste-users').empty().append(message);
+				$('#liste-users').empty().append(make_list(message));
 				actualise_liste();
 			});
 			socket.on('wrong',function(message){
@@ -151,9 +152,12 @@
 				$('#Accueil').prepend('<p style="color: green;">'+message+'</p>');
 				store('<p style="color: green;">'+message+'</p>',localStorage);
 			});
-			socket.on('room_list',function(array){
-				var content = make_room(array);
-				$('#container_recherche').empty().append(content);
+			socket.on('room_list',function(data){
+				var val = $('#rechercher_room').val();
+				if(val == data.text){
+					var content = make_room(data.list);
+					$('#container_recherche').empty().append(content);
+				}
 			});
 
 // Action JQuerry ==============================================================
@@ -198,8 +202,11 @@
             	$(room_active).attr('class','room');
             	active = div;
             });
-            $('#rechercher_room').change(function(){
-            	socket.emit('room_list', this.value);
+            $('#rechercher_room').keyup(function(){
+				if(this.value)
+					socket.emit('room_list', this.value);
+				else
+					$('#container_recherche').empty();
             });
 		</script>
 	</body>

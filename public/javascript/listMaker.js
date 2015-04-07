@@ -1,19 +1,17 @@
-module.exports = {
-	make: function(array){
+function make_list(array){
 		var res ="<div id='container-users'>";
-		for(i in array){
-			res+="<span class='user'>"+array[i]+'</span>';
-		}
+		array.forEach(function(user){
+			res+="<span class='user'>"+user+'</span>';
+		});
 		res += '</div>';
 		return res;
 	}
 
-};
 function make_room(array){
 	var res = "<ul style:'list-style:none'>";
-	for(i in array){
-		res += "<li class='liste_recherche'>"+array[i].name+"</li>";
-	}
+	array.forEach(function(room){
+		res+="<li class='liste_recherche'>"+room.name+"</li>";
+	});
 	res +='</ul>';
 	return res;
 }
