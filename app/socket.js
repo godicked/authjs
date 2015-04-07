@@ -1,6 +1,5 @@
 var User = require('./models/user.js');
 var Room = require('./models/room.js');
-var listMaker = require('../public/javascript/listMaker.js');
 var ent = require('ent');
 var encode = require('ent/encode');
 var sessions = {}
@@ -31,8 +30,8 @@ module.exports = function(io){
 					sessions[user.local.name] = {};
 					sessions[user.local.name].id = socket.id;
 					sessions[user.local.name].connected = true;
-					var list = listMaker.make(Object.keys(sessions));
-					console.log(Object.keys(sessions));
+					var list = Object.keys(sessions);
+					console.log(list);
 					socket.broadcast.emit('list',list);
 					socket.emit('list',list);
 					user.local.rooms.forEach(function(room){
@@ -101,7 +100,16 @@ module.exports = function(io){
 		
 		socket.on('room',function(data){
 			if(data.command == '/join'){
-				socket.join(data.message);
+				Room.findOne({'name':data.message},function(err,room){
+					if(err)
+						console.log(err);
+					if(!room)
+						socket.emit('wrong','la room '+ data.message +' n\'existe pas');
+					else{
+						socket.join(data.message);
+						socket.emit('info','vous avez rejoins la room '+data.message);
+					}
+				});
 			}
 			if(data.command == '/leave'){
 				socket.leave(data.message);
@@ -161,8 +169,8 @@ module.exports = function(io){
 						delete sessions[socket.name];
 						console.log('session closed');
 						socket.broadcast.emit('deco','<p><em>'+socket.name+' est deconnecté</em></p>');
-						var list = listMaker.make(Object.keys(sessions));
-						console.log(Object.keys(sessions));
+						var list = Object.keys(sessions);
+						console.log(list);
 						socket.broadcast.emit('list',list);
 						if(socket.visit){
 							User.remove({'_id':socket.oid}, function(err){
