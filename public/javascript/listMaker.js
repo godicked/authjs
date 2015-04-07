@@ -10,9 +10,9 @@ module.exports = {
 
 };
 function make_room(array){
-	var res = "<ul style:'list-style:none'>"
+	var res = "<ul style:'list-style:none'>";
 	for(i in array){
-		res += "<li class='liste_recherche'>"+array[i].name+"</li>"
+		res += "<li class='liste_recherche'>"+array[i].name+"</li>";
 	}
 	res +='</ul>';
 	return res;
