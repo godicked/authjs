@@ -169,8 +169,8 @@ module.exports = function(io){
 						delete sessions[socket.name];
 						console.log('session closed');
 						socket.broadcast.emit('deco','<p><em>'+socket.name+' est deconnecté</em></p>');
-						var list = listMaker.make(Object.keys(sessions));
-						console.log(Object.keys(sessions));
+						var list = Object.keys(sessions);
+						console.log(list);
 						socket.broadcast.emit('list',list);
 						if(socket.visit){
 							User.remove({'_id':socket.oid}, function(err){
