@@ -179,7 +179,7 @@
             		var hide = rooms[i].innerHTML;
             		var temp = rooms[i];
             		if(hide != div){
-            			temp.attr('class','room');
+            			$(temp).attr('class','room');
             			$("#"+hide).css('visibility','hidden');
             			$("#"+hide).css('height',0);
             		}
