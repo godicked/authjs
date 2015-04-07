@@ -175,6 +175,7 @@
             $('.room').click(function(){
             	var rooms = $('.room');
             	var room_active = $('.room-active');
+            	var room_active_hide = $('.room-active').innerHTML;
             	var div = this.innerText;
             	for(i= 0;i<rooms.length;i++){
             		var hide = rooms[i].innerHTML;
@@ -185,6 +186,8 @@
             	}
             	$('#'+div).css('visibility','visible');
             	$('#'+div).css('height','auto');
+            	$('#'+room_active_hide).css('visibility','hidden');
+            	$('#'+room_active_hide).css('height','0');
             	$(this).attr('class','room-active');
             	$(room_active).attr('class','room');
             	active = div;
