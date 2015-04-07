@@ -236,8 +236,10 @@ a{
 /* =================================================================*/
 #container_recherche{
 	display: inline-block;
-	float: right;
-	width:100%;
+	left: 240px;
+	position: fixed;
+	top: 13.6em;
+	list-style: none;
 }
 .liste_recherche{
 	background: rgb(32,32,32);
@@ -326,7 +328,7 @@ footer em{
 	filter:progid:DXImageTransform.Microsoft.Shadow(color=#1A1A1A, Direction=180, Strength=5);
 	background:rgb(42,42,42);
 }
-#container-room{
+#container-rooms{
 	height:15em;
 	overflow-y:scroll;
 }
