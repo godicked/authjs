@@ -156,7 +156,7 @@
 				var val = $('#rechercher_room').val();
 				if(val == data.text){
 					var content = make_room(data.list);
-					if(!($('#container_recherche').is(':visible');)){
+					if(!($('#container_recherche').is(':visible'))){
 						$('#container_recherche').show(500);
 					}
 					$('#container_recherche').empty().append(content);
