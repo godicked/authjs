@@ -60,6 +60,14 @@ function parse(message,room){
 				data.command = '/join';
 				data.message = message.substring(6);
 				break;
+			case '/saussage':
+				data.type = 'command';
+				data.command = '/saussage';
+				break;
+			case '/fu':
+				data.type = 'command';
+				data.command = '/fu';
+				break;
 			default:
 				data.type = 'wrong';
 				data.message = 'La commande: ' + command + ' n\'existe pas';
@@ -121,6 +129,12 @@ function htmlMakeS(data,pseudo){
 				else
 					return '<p><span class="pseudo">' + pseudo + ' dit: </span><a href="http://'+data.message+'" class="chat_link">'+data.message+'</a>';
 				break;
+			case '/saussage':
+				return '<p><span class="pseudo">' + pseudo + ' dit: </span><img class="imagechat" src="/public/images/saussage.gif"></img></p>';
+				break;
+			case '/fu':
+				return '<p><span class="pseudo">' + pseudo + ' dit: </span><img class="imagechat" src="/public/images/fu.gif"></img></p>';
+				break;
 			
 			
 		}
@@ -160,6 +174,12 @@ function htmlMakeR(data){
 				break;
 			case '/nonick':
 				return '<p>' + data.from + ' devient ' + data.message + '</p>';
+				break;
+			case '/saussage':
+				return '<p><span class="pseudo">' + pseudo + ' dit: </span><img class="imagechat" src="/public/images/saussage.gif"></img></p>';
+				break;
+			case '/saussage':
+				return '<p><span class="pseudo">' + pseudo + ' dit: </span><img class="imagechat" src="/public/images/fu.gif"></img></p>';
 				break;
 			
 			
