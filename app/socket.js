@@ -1,4 +1,5 @@
 var User = require('./models/user.js');
+var Room = require('./models/room.js');
 var listMaker = require('../public/javascript/listMaker.js');
 var ent = require('ent');
 var encode = require('ent/encode');
@@ -35,6 +36,7 @@ module.exports = function(io){
 					socket.broadcast.emit('list',list);
 					socket.emit('list',list);
 					user.local.rooms.forEach(function(room){
+						console.log(socket.name+' join: '+room);
 						socket.join(room);
 					});
 				}
@@ -98,10 +100,15 @@ module.exports = function(io){
 		});
 		
 		socket.on('room',function(data){
-			if(data.command == '/join')
+			if(data.command == '/join'){
 				socket.join(data.message);
-			if(data.command == '/leave')
+			}
+			if(data.command == '/leave'){
 				socket.leave(data.message);
+			}
+			if(data.command == '/create'){
+				
+			}
 		});
 		
 		socket.on('disconnect',function(){

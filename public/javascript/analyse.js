@@ -1,7 +1,7 @@
 // function parse
-function parse(message){
+function parse(message,room){
 	var data = {};
-	data.room = 'Acceuil';
+	data.room = room;
 	if(message.charAt(0) == '/'){
 		var split = message.split(' ');
 		var command = split[0];
@@ -22,7 +22,10 @@ function parse(message){
 				break;
 			case '/w':
 				data.type = 'whisper';
-				data.to = split[1];
+				if(split[1].charAt(0) == '"')
+					data.to = message.split('"')[1];
+				else
+					data.to = split[1];
 				data.message = message.substring(4 + data.to.length);
 				break;
 			case '/link':

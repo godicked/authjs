@@ -39,20 +39,12 @@
 				if(!correct)
 					return false;
 			});
-			$("#input").keypress(function(e){
-				var charCode = !e.charCode ? e.which : e.charCode;
-				if(charCode == 32)
-					return false;
-			});
-			
+
 			$("#input").keyup(function(e){
-				var charCode = !e.charCode ? e.which : e.charCode;
-				if(charCode != 32){
-					var val = $('#input').val();
-					info.emit('name_free',val);
-					$('#info').replaceWith('<label id="info">wait</label>');
-					correct=false;
-				}
+				var val = $('#input').val();
+				info.emit('name_free',val);
+				$('#info').replaceWith('<label id="info">wait</label>');
+				correct=false;
 				return false;
 			});
 			
