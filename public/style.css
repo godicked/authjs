@@ -290,6 +290,13 @@ footer em{
 	cursor: pointer;
 }
 .room-active{
+	margin: 0;
+	padding: 1em;
+	display: block;
+	border-bottom: solid;
+	border-bottom-width: 0.1em;
+	border-bottom-color: rgb(38, 38, 38);
+	transition: 250ms all ease;
 	-moz-box-shadow: inset 0px 5px 5px 0px #656565;
 	-webkit-box-shadow: inset 0px 5px 5px 0px #656565;
 	-o-box-shadow: inset 0px 5px 5px 0px #656565;
