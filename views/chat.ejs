@@ -13,7 +13,11 @@
 		<script src="/public/javascript/jquery.js"></script>
 		<script src="/public/javascript/url.js"></script>
 		<script src="/public/javascript/store.js"></script>
+<<<<<<< HEAD
+		<script src="/public/javascript/listeMaker.js"></script>
+=======
 		<script src="/public/javascript/listMaker.js"></script>
+>>>>>>> origin/master
 		<title id="title">Hermessage</title>
 	</head>
 	<body>
@@ -207,6 +211,9 @@
 					socket.emit('room_list', this.value);
 				else
 					$('#container_recherche').empty();
+            });
+            $('#rechercher_room').blur(function(){
+            	$('#rechercher_room').empty();
             });
 		</script>
 	</body>
