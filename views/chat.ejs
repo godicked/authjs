@@ -151,7 +151,11 @@
 			});
 			socket.on('wrong',function(message){
 				$('#Accueil').prepend('<p style="color: red;">'+message+'</p>');
-				store(message);
+				store(message,localStorage);
+			});
+			socket.on('info',function(message){
+				$('#Accueil').prepend('<p style="color: green;">'+message+'</p>');
+				store(message,localStorage);
 			});
 
 // Action JQuerry ==============================================================

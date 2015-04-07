@@ -1,8 +1,8 @@
 function getStorage(localStorage){
 	if(localStorage.chat1){
-		$('#zone_chat').append(localStorage.chat1);
+		$('#Accueil').append(localStorage.chat1);
 		if(localStorage.chat2)
-			$('#zone_chat').append(localStorage.chat2);
+			$('#Accueil').append(localStorage.chat2);
 	}
 }
 function store(text,localStorage){

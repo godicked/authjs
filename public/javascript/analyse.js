@@ -22,11 +22,14 @@ function parse(message,room){
 				break;
 			case '/w':
 				data.type = 'whisper';
-				if(split[1].charAt(0) == '"')
+				if(split[1].charAt(0) == '"'){
 					data.to = message.split('"')[1];
-				else
+					data.message = message.substring(6 + data.to.length);
+				}
+				else{
 					data.to = split[1];
-				data.message = message.substring(4 + data.to.length);
+					data.message = message.substring(4 + data.to.length);
+				}
 				break;
 			case '/link':
 				data.type = 'command';
@@ -41,6 +44,16 @@ function parse(message,room){
 			case '/nonick':
 				data.type= 'command';
 				data.command = '/nonick';
+				break;
+			case '/create':
+				data.type = 'room';
+				data.command = '/create';
+				data.message = message.substring(8);
+				break;
+			case '/delete':
+				data.type = 'room';
+				data.command = '/delete';
+				data.message = message.substring(8);
 				break;
 			default:
 				data.type = 'wrong';
@@ -65,6 +78,9 @@ function send(data,socket){
 			break;
 		case 'whisper':
 			socket.emit('whisper',data);
+			break;
+		case 'room':
+			socket.emit('room',data);
 			break;
 	}
 }

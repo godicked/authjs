@@ -107,7 +107,35 @@ module.exports = function(io){
 				socket.leave(data.message);
 			}
 			if(data.command == '/create'){
-				
+				Room.findOne({'name':data.message},function(err,room){
+					if(err)
+						console.log(err);
+					if(!room){
+						var newRoom = new Room();
+						newRoom.name  = data.message;
+						newRoom.owner = socket.oid;
+						newRoom.save(function(err){
+							if(err)
+								console.log(err)
+							else{
+								console.log('new room: '+data.message);
+								socket.emit('info','La room '+ data.message + ' a été crée');
+								socket.join(data.message);
+							}
+						});
+					}
+					else{
+						socket.emit('wrong','La room existe deja');
+					}
+				});
+			}
+			if(data.command == '/delete'){
+				Room.remove({ 'name': data.message, 'owner':socket.oid }, function (err) {
+					  if (err)
+						  console.log(err);
+					  else
+						socket.emit('info','supprimé');
+				});
 			}
 		});
 		
