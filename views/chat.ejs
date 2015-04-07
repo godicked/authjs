@@ -161,7 +161,7 @@
 					clearStorage(localStorage);
 					$('#Accueil').empty();
 				}
-				else{
+				else if(message != ""){
 					var data = parse(message,active);
 					send(data,socket);
 					var toPrint = htmlMakeS(data,pseudo);
