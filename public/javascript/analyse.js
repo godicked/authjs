@@ -120,6 +120,8 @@ function htmlMakeS(data,pseudo){
 		return '<p><em class="whisp">[to: ' +data.to+'] : ' + data.message + '</em></p>';
 	if(data.type == 'wrong')
 		return '<p><span style="color: red;">'+data.message+'</span></p>';
+	else
+		return '';
 	
 }
 
