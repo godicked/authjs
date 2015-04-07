@@ -50,6 +50,7 @@ iframe {
 	width: 32.8%;
 	transition: 250ms ease-out;
 	font-family: 'Roboto';
+	overflow:hidden;
 }
 .user:hover{
 	background-color: red;
@@ -86,7 +87,7 @@ iframe {
 #profil{
 	display: block;
 	/*margin: 10px;*/
-	margin-top: 20px;
+	/*margin-top: 20px;*/
 	/*margin-left: 1em;*/
 }
 #profilpic{
@@ -233,6 +234,27 @@ a{
 	width:70%;
 }
 /* =================================================================*/
+#container_recherche{
+	display: inline-block;
+	float: right;
+	width:100%;
+}
+.liste_recherche{
+	background: rgb(32,32,32);
+	border-bottom:solid;
+	border-bottom-width:0.05em;
+	border-bottom-color:rgb(38,38,38);
+	border-top:solid;
+	border-top-width:0.05em;
+	border-top-color:rgb(38,38,38);
+	transition: 250ms all ease;
+	padding: 1em;
+}
+.liste_recherche:hover{
+	cursor: pointer;
+	background: red;
+}
+
 footer{
 	position: fixed;
 	width: 100%;
