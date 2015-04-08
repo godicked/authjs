@@ -2,8 +2,8 @@ var User = require('./models/user.js');
 var Room = require('./models/room.js');
 var ent = require('ent');
 var encode = require('ent/encode');
-var sessions = {}
-
+var sessions = {};
+var active = {};
 module.exports = function(io){
 	
 // Namespace /chat ======================================================================
@@ -27,6 +27,11 @@ module.exports = function(io){
 						socket.visit = true;
 					socket.name = user.local.name;
 					socket.oid = id;
+					if(active[id])
+						active[id].push(socket.id);
+					else
+						active[id] = [socket.id];
+					console.log(active[id]);
 					sessions[user.local.name] = {};
 					sessions[user.local.name].id = socket.id;
 					sessions[user.local.name].connected = true;
@@ -185,42 +190,51 @@ module.exports = function(io){
 		});
 		
 		socket.on('room_list',function(text){
-			Room.find({'name':(new RegExp(text, "i"))},{'name':1,'_id':0},function(err,room){
-				if(err)
-					console.log(err);
-				else{
-					console.log(room);
-					var data = {};
-					data.list = room;
-					data.text = text;
-					socket.emit('room_list',data);
-				}
-			});
+			if(text.indexOf('*') < 0){
+				Room.find({'name':(new RegExp(text, "i"))},{'name':1,'_id':0},function(err,room){
+					if(err)
+						console.log(err);
+					else{
+						console.log(room);
+						var data = {};
+						data.list = room;
+						data.text = text;
+						socket.emit('room_list',data);
+					}
+				});
+			}
 		});
 		
 		socket.on('disconnect',function(){
-			try{
-				sessions[socket.name].connected = false;
-				setTimeout(function () {
-					if (sessions[socket.name].connected == false){
-						delete sessions[socket.name];
-						console.log('session closed');
-						socket.broadcast.emit('deco','<p><em>'+socket.name+' est deconnecté</em></p>');
-						var list = Object.keys(sessions);
-						console.log(list);
-						socket.broadcast.emit('list',list);
-						if(socket.visit){
-							User.remove({'_id':socket.oid}, function(err){
-								if(err)
-									console.log(err)
-								else
-									console.log('visitor removed from DB');
-							});
+			if(socket.name){
+				var index = active[socket.oid].indexOf(socket.id);
+				active[socket.oid].splice(index,1);
+				if(active[socket.oid].length == 0){
+					try{
+						sessions[socket.name].connected = false;
+						setTimeout(function () {
+							if (sessions[socket.name].connected == false){
+								delete sessions[socket.name];
+								console.log('session closed');
+								socket.broadcast.emit('deco','<p><em>'+socket.name+' est deconnecté</em></p>');
+								var list = Object.keys(sessions);
+								console.log(list);
+								socket.broadcast.emit('list',list);
+								if(socket.visit){
+									User.remove({'_id':socket.oid}, function(err){
+										if(err)
+											console.log(err)
+										else
+											console.log('visitor removed from DB');
+									});
+								}
+								};
+							}, 5000);
 						}
-						};
-					}, 5000);
+					catch(err){}
 				}
-			catch(err){}
+			}
+			
 		});
 	});
 
