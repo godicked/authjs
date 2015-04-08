@@ -349,14 +349,14 @@ footer em{
 	width: 1em;
 	height: 1em;
 	padding: 1.56em;
-	padding-right: 3em;
+	padding-right: 2em;
 	border-top: solid;
 	border-bottom: solid;
 	border-bottom-color: rgb(31, 31, 31);
 	border-top-color: rgb(31, 31, 31);
 	border-bottom-width: 0.15em;
 	border-top-width: 0.15em;
-	padding-left: 1em;
+	padding-left: 2em;
 }
 #ajouter{
 	display: inline-block;
