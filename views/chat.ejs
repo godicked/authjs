@@ -192,21 +192,13 @@
             	$('#container_recherche').hide(0);
             });
 
-			
             $('.titre-section').click(function(){
-            var a = $($(this).parent()).children();
-	            	for(i = 1;i<a.length;i++){
-		            	if($(a[i]).is(':visible'))
-		            	{
-		            		$(a[i]).hide(250);
-		            	}
-		            	else
-		            	{
-		            		$(a[i]).show(250);
-		            	}
-
-	            	}
-			});
+           		var a = $($(this).parent()).children();
+	            for(i = 1;i<a.length;i++)
+	            {
+					$(a[i]).toggle(250);
+				}
+            });
 			
 		</script>
 	</body>
