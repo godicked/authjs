@@ -362,6 +362,9 @@ footer em{
 	display: inline-block;
 	width: 4em;
 }
+#ajouter{
+	cursor: pointer;
+}
 }
 p{
 	font-size: 1em;
