@@ -31,7 +31,8 @@
 					</div>
 				</div>
 				<div id='gestion_room'>
-					<h1 class='titre-section' style="text-align:left;padding-left:1em;">Rooms<img src='/public/images/bouton_ajouter.png' style='width:1em;margin-left:6em'></img></h1>
+					<h1 class='titre-section' style="text-align:left;padding-left:1em;">Rooms</h1>
+					<div id='ajouter'><img src='/public/images/bouton_ajouter.png' style='width:1em;margin-left:6em'></img><div>
 					<div id='bloc_recherche'>
 						<input class="textbox" type="text" name="recherche" id="rechercher_room" placeholder="Chercher une room" size="50" autocomplete="off"/>
 						<div id='container_recherche'></div>
@@ -223,6 +224,11 @@
 	            {
 					$(a[i]).toggle(250);
 				}
+            });
+            $('.chat_link').click(function()
+            {
+            	window.open(this.href);
+            	return false;
             });
 		</script>
 	</body>
