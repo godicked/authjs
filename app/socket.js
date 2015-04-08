@@ -120,6 +120,7 @@ module.exports = function(io){
 									else{
 										console.log(socket.name+' a rejoin la room: '+data.message);
 										socket.emit('info','vous avez rejoin la room: '+data.message);
+										socket.join(data.message);
 										socket.emit('my_room',user.local.rooms);
 									}
 								});
