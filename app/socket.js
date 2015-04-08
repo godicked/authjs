@@ -38,6 +38,7 @@ module.exports = function(io){
 						console.log(socket.name+' join: '+room);
 						socket.join(room);
 					});
+					socket.emit('my_room',user.local.rooms);
 				}
 			});
 		});
@@ -106,13 +107,48 @@ module.exports = function(io){
 					if(!room)
 						socket.emit('wrong','la room '+ data.message +' n\'existe pas');
 					else{
-						socket.join(data.message);
-						socket.emit('info','vous avez rejoins la room '+data.message);
+						User.findOne({'_id': socket.oid}, function (err, user) {
+							if(user.local.rooms.indexOf(data.message) >= 0)
+								socket.emit('wrong','vous etes deja dans cette room');
+							else{
+								user.local.rooms.push(data.message);
+
+								user.save(function (err) {
+									if(err) {
+										console.error('ERROR!');
+									}
+									else{
+										console.log(socket.name+' a rejoin la room: '+data.message);
+										socket.emit('info','vous avez rejoin la room: '+data.message);
+										socket.emit('my_room',user.local.rooms);
+									}
+								});
+							}
+						});
 					}
 				});
 			}
 			if(data.command == '/leave'){
-				socket.leave(data.message);
+				User.findOne({'_id': socket.oid}, function (err, user) {
+					var index = user.local.rooms.indexOf(data.message)
+					if(index < 0)
+						socket.emit('wrong','vous n\'etes pas dans cette room');
+					else{
+						user.local.rooms.splice(index,1);
+						console.log(user.local.rooms);
+
+						user.save(function (err) {
+							if(err) {
+								console.error('ERROR!');
+							}
+							else{
+								console.log(socket.name+' a quitté la room: '+data.message);
+								socket.emit('info','vous avez quitté la room: '+data.message);
+								socket.emit('my_room',user.local.rooms);
+							}
+						});
+					}
+				});
 			}
 			if(data.command == '/create'){
 				Room.findOne({'name':data.message},function(err,room){

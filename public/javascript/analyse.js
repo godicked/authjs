@@ -60,6 +60,11 @@ function parse(message,room){
 				data.command = '/join';
 				data.message = message.substring(6);
 				break;
+			case '/leave':
+				data.type = 'room';
+				data.command = '/leave';
+				data.message = message.substring(7);
+				break;
 			case '/saussage':
 				data.type = 'command';
 				data.command = '/saussage';
@@ -102,9 +107,9 @@ function send(data,socket){
 	}
 }
 
-function htmlPrint(message){
+function htmlPrint(message,room){
 	if(message)
-		$('#Accueil').prepend(message);
+		$('#room_'+room).prepend(message);
 	return message;
 }
 
@@ -176,10 +181,10 @@ function htmlMakeR(data){
 				return '<p>' + data.from + ' devient ' + data.message + '</p>';
 				break;
 			case '/saussage':
-				return '<p><span class="pseudo">' + pseudo + ' dit: </span><img class="imagechat" src="/public/images/saussage.gif"></img></p>';
+				return '<p><span class="pseudo">' + data.from + ' dit: </span><img class="imagechat" src="/public/images/saussage.gif"></img></p>';
 				break;
-			case '/saussage':
-				return '<p><span class="pseudo">' + pseudo + ' dit: </span><img class="imagechat" src="/public/images/fu.gif"></img></p>';
+			case '/fu':
+				return '<p><span class="pseudo">' + data.from + ' dit: </span><img class="imagechat" src="/public/images/fu.gif"></img></p>';
 				break;
 			
 			
