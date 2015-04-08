@@ -61,4 +61,30 @@
              function playSound(filename){   
                 document.getElementById("sound").innerHTML='<audio autoplay="autoplay"><source src="/public/son/' + filename + '.mp3" type="audio/mpeg" /> /><embed hidden="true" autostart="true" loop="false" src="/public/' + filename + '.mp3" /></audio>';
             }
+			function actualise_liste_room(){
+			$('.room').click(function(){
+            	var rooms = $('.room');
+            	if($('.room-active').length != 0){
+	            	var room_active = $('.room-active')[0];
+	            	var room_active_hide = $('.room-active')[0].innerHTML;
+	            }
+            	var div = this.innerText;
+            	for(i= 0;i<rooms.length;i++){
+            		var hide = rooms[i].innerHTML;
+            		if(hide != div){
+            			$("#room_"+hide).css('visibility','hidden');
+            			$("#room_"+hide).css('height',0);
+            		}
+            	}
+            	$('#room_'+div).css('visibility','visible');
+            	$('#room_'+div).css('height','auto');
+            	if($('.room-active').length != 0){
+	            	$('#room_'+room_active_hide).css('visibility','hidden');
+	            	$('#room_'+room_active_hide).css('height','0');
+	            }
+            	$(this).attr('class','room-active');
+            	$(room_active).attr('class','room');
+            	active = div;
+            });
+			}
             

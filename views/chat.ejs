@@ -39,11 +39,6 @@
 					</div>
 					<aside id='rooms'>
 						<div id='container-rooms'>
-							<span class='room'>Accueil</span>
-							<span class='room'>Amis</span>
-							<span class='room'>League of Legends</span>
-							<span class='room'>Actualité</span>
-							<span class='room'>Reddit</span>
 						</div>
 					</aside>
 				</div>
@@ -56,21 +51,8 @@
 					<span id="flr">#FLR</span>
 				</form>
 
-				<article id='Accueil' class="zone_chat">
-				</article>
-				<article id='Amis' class="zone_chat" style='visibility:hidden;'>
-				</article>
-				<article id='League of Legends' class="zone_chat" style='visibility:hidden;'>
-				</article>
-				<article id='Actualité' class="zone_chat" style='visibility:hidden;'>
-				</article>
-				<article id='Reddit' class="zone_chat" style='visibility:hidden;'>
-					<p>ici on parle de reddit</p>
-				</article>
-				<script>
-					getStorage(localStorage);
-				</script>
 			</section>
+			
 			<nav id='menu_droite' class='menu_droite'>
 				<header>
 				<a href='#'><h1>HERMÈS<span style="color : red;">S</span>AGE <img src="/public/images/hermessage.png" id="photo" /></h1></a>
@@ -97,6 +79,7 @@
 
 		<script src="/socket.io/socket.io.js"></script>
 		<script>
+			var roomList = [];
 			var active = 'Accueil';
 			initStore(localStorage);
 // Initialisation de session ===================================================
@@ -108,10 +91,10 @@
 // Reception socket=============================================================
 			socket.on('get_name',function(name){
 				pseudo = name;
-				store(htmlPrint('<p class="info">Vous devenez '+pseudo+'</p>'),localStorage);
+				//store(htmlPrint('<p class="info">Votre nom est: '+pseudo+'</p>'),localStorage);
 			});
             socket.on('message', function(data) {
-                store(htmlPrint(htmlMakeR(data)),localStorage);
+                store(htmlPrint(htmlMakeR(data),data.room),localStorage);
                 if(blur==true && nouveau==false){
                 	actualise_titre('message');
                 }
@@ -120,10 +103,10 @@
                 }
             })
 			socket.on('command',function(data){
-				store(htmlPrint(htmlMakeR(data)),localStorage);
+				store(htmlPrint(htmlMakeR(data),data.room),localStorage);
 			});
 			socket.on('whisper',function(data){
-				store(htmlPrint(htmlMakeR(data)),localStorage);
+				store(htmlPrint(htmlMakeR(data),data.room),localStorage);
 				if(blur==true && nouveau==false){
                 	actualise_titre('whisper');
                 }
@@ -132,13 +115,13 @@
                 }
 			});
             socket.on('nouveau_client', function(pseudo) {
-                $('#Accueil').prepend('<p><em>' + pseudo + ' a rejoint le Chat !</em></p>');
+                $('#room_Accueil').prepend('<p><em>' + pseudo + ' a rejoint le Chat !</em></p>');
 				store('<p><em>' + pseudo + ' a rejoint le Chat !</em></p>',localStorage);
 				actualise_liste();
 				playSound('connexion');
             });
 			socket.on('deco', function(message) {
-                $('#Accueil').prepend(message);
+                $('#room_Accueil').prepend(message);
 				store(message,localStorage);
             });
 			socket.on('list', function(message){
@@ -146,11 +129,11 @@
 				actualise_liste();
 			});
 			socket.on('wrong',function(message){
-				$('#Accueil').prepend('<p style="color: red;">'+message+'</p>');
+				$('#room_Accueil').prepend('<p style="color: red;">'+message+'</p>');
 				store('<p style="color: red;">'+message+'</p>',localStorage);
 			});
 			socket.on('info',function(message){
-				$('#Accueil').prepend('<p style="color: green;">'+message+'</p>');
+				$('#room_Accueil').prepend('<p style="color: green;">'+message+'</p>');
 				store('<p style="color: green;">'+message+'</p>',localStorage);
 			});
 			socket.on('room_list',function(data){
@@ -162,6 +145,22 @@
 					}
 					$('#container_recherche').empty().append(content);
 				}
+			});
+			socket.on('my_room',function(data){
+				var content = make_myroom(data);
+				$('#container-rooms').empty().append(content);
+				if(!roomList)
+					var toAdd = data;
+				else{
+					var toAdd = newInList(roomList,data);
+					var toRem = oldInList(roomList,data);
+				}
+				if(toAdd)
+					addRooms(toAdd);
+				if(toRem)
+					remRooms(toRem);
+				roomList = data;
+				actualise_liste_room()
 			});
 
 // Action JQuerry ==============================================================
@@ -175,37 +174,14 @@
 					var data = parse(message,active);
 					send(data,socket);
 					var toPrint = htmlMakeS(data,pseudo);
-					htmlPrint(toPrint);
+					htmlPrint(toPrint,data.room);
 					store(toPrint,localStorage);
 					
 				}
 				$('#message').val('').focus();
 				return false; // Permet de bloquer l'envoi "classique" du formulaire
             });
-            $('.room').click(function(){
-            	var rooms = $('.room');
-            	if($('.room-active').length != 0){
-	            	var room_active = $('.room-active')[0];
-	            	var room_active_hide = $('.room-active')[0].innerHTML;
-	            }
-            	var div = this.innerText;
-            	for(i= 0;i<rooms.length;i++){
-            		var hide = rooms[i].innerHTML;
-            		if(hide != div){
-            			$("#"+hide).css('visibility','hidden');
-            			$("#"+hide).css('height',0);
-            		}
-            	}
-            	$('#'+div).css('visibility','visible');
-            	$('#'+div).css('height','auto');
-            	if($('.room-active').length != 0){
-	            	$('#'+room_active_hide).css('visibility','hidden');
-	            	$('#'+room_active_hide).css('height','0');
-	            }
-            	$(this).attr('class','room-active');
-            	$(room_active).attr('class','room');
-            	active = div;
-            });
+			
             $('#rechercher_room').keyup(function(){
 				if(this.value)
 					socket.emit('room_list', this.value);
@@ -217,19 +193,22 @@
             	$('#container_recherche').hide(0);
             });
 
-            $('.titre-section').click(function()
-            {
+            $('.titre-section').click(function(){
            		var a = $($(this).parent()).children();
 	            for(i = 1;i<a.length;i++)
 	            {
 					$(a[i]).toggle(250);
 				}
             });
+<<<<<<< HEAD
             $('.chat_link').click(function()
             {
             	window.open(this.href);
             	return false;
             });
+=======
+			
+>>>>>>> origin/master
 		</script>
 	</body>
 </html>

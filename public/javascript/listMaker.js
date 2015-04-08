@@ -15,3 +15,50 @@ function make_room(array){
 	res +='</ul>';
 	return res;
 }
+
+function make_myroom(array){
+	var res = "";
+	array.forEach(function(room){
+		res+="<span class='room'>"+room+"</span>";
+	});
+	return res;
+}
+
+function oldInList(old,actual){
+	res = [];
+	old.forEach(function(room){
+		if(actual.indexOf(room) < 0)
+			res.push(room);
+	});
+	return res;
+}
+
+function newInList(old,actual){
+	res = [];
+	actual.forEach(function(room){
+		if(old.indexOf(room) < 0)
+			res.push(room);
+	});
+	return res;
+}
+
+function addRooms(array){
+	array.forEach(function(data){
+		$('#hermess_chat').append('<article id="room_'+data+'" class="zone_chat"></article>');
+	});
+}
+
+function remRooms(array){
+	array.forEach(function(data){
+		$('#room_'+data).remove();
+	});
+}
+		
+		
+		
+		
+		
+		
+		
+		
+		

@@ -60,6 +60,11 @@ function parse(message,room){
 				data.command = '/join';
 				data.message = message.substring(6);
 				break;
+			case '/leave':
+				data.type = 'room';
+				data.command = '/leave';
+				data.message = message.substring(7);
+				break;
 			case '/saussage':
 				data.type = 'command';
 				data.command = '/saussage';
@@ -106,9 +111,9 @@ function send(data,socket){
 	}
 }
 
-function htmlPrint(message){
+function htmlPrint(message,room){
 	if(message)
-		$('#Accueil').prepend(message);
+		$('#room_'+room).prepend(message);
 	return message;
 }
 
