@@ -73,6 +73,10 @@ function parse(message,room){
 				data.type = 'command';
 				data.command = '/fu';
 				break;
+			case '/glou':
+				data.type = 'command';
+				data.command = '/glou';
+				break;
 			default:
 				data.type = 'wrong';
 				data.message = 'La commande: ' + command + ' n\'existe pas';
@@ -140,8 +144,9 @@ function htmlMakeS(data,pseudo){
 			case '/fu':
 				return '<p><span class="pseudo">' + pseudo + ' dit: </span><img class="imagechat" src="/public/images/fu.gif"></img></p>';
 				break;
-			
-			
+			case '/glou':
+				return '<p><span class="pseudo">' + pseudo + ' dit: </span><img class="imagechat" src="/public/images/glou.gif"></img></p>';
+				break;
 		}
 	}
 	if(data.type == 'whisper')
@@ -186,8 +191,9 @@ function htmlMakeR(data){
 			case '/fu':
 				return '<p><span class="pseudo">' + data.from + ' dit: </span><img class="imagechat" src="/public/images/fu.gif"></img></p>';
 				break;
-			
-			
+			case '/glou':
+				return '<p><span class="pseudo">' + data.from + ' dit: </span><img class="imagechat" src="/public/images/glou.gif"></img></p>';
+				break;
 		}
 	}
 	if(data.type == 'whisper'){
