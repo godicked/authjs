@@ -157,7 +157,7 @@
 				if(val == data.text){
 					var content = make_room(data.list);
 					if(!($('#container_recherche').is(':visible'))){
-						$('#container_recherche').show(500);
+						$('#container_recherche').show(0);
 					}
 					$('#container_recherche').empty().append(content);
 				}
@@ -213,7 +213,17 @@
             });
             $('#rechercher_room').blur(function(){
             	$('#rechercher_room').val('');
-            	$('#container_recherche').hide(500);
+            	$('#container_recherche').hide(0);
+            });
+            $('#users').click(function(){
+            var a = $('#users').children[1]);
+            if($(a).is(':visible')){
+            	$(a).hide(250);
+            }
+            else
+            {
+            	$(a).show(250);
+            }
             });
 		</script>
 	</body>
