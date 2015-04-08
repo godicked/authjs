@@ -225,6 +225,19 @@
 	            	$(a).show(250);
 	            }
             });
+            $('#gestion_room').click(function(){
+            var a = $('#gestion_room').children()[1];
+            var b = $('#gestion_room').children()[2];
+	            if($(a).is(':visible')){
+	            	$(a).hide(250);
+	            	$(b).hide(250);
+	            }
+	            else
+	            {
+	            	$(a).show(250);
+	            	$(b).hide(250);
+	            }
+            });
 		</script>
 	</body>
 </html>
