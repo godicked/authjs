@@ -181,13 +181,13 @@ function htmlMakeR(data){
 				return '<p>' + data.from + ' devient ' + data.message + '</p>';
 				break;
 			case '/saussage':
-				return '<p><span class="pseudo">' + pseudo + ' dit: </span><img class="imagechat" src="/public/images/saussage.gif"></img></p>';
+				return '<p><span class="pseudo">' + data.from + ' dit: </span><img class="imagechat" src="/public/images/saussage.gif"></img></p>';
 				break;
 			case '/fu':
-				return '<p><span class="pseudo">' + pseudo + ' dit: </span><img class="imagechat" src="/public/images/fu.gif"></img></p>';
+				return '<p><span class="pseudo">' + data.from + ' dit: </span><img class="imagechat" src="/public/images/fu.gif"></img></p>';
 				break;
 			case '/glou':
-				return '<p><span class="pseudo">' + pseudo + ' dit: </span><img class="imagechat" src="/public/images/glou.gif"></img></p>';
+				return '<p><span class="pseudo">' + data.from + ' dit: </span><img class="imagechat" src="/public/images/glou.gif"></img></p>';
 				break;
 		}
 	}
