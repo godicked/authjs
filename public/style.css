@@ -240,8 +240,8 @@ a{
 	position: fixed;
 	top: 13.6em;
 	list-style: none;
-	height: 10em;
-	overflow:hidden;
+	height: 20em;
+	overflow:auto;
 }
 .liste_recherche{
 	background: rgb(32,32,32);
