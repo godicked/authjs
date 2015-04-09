@@ -312,6 +312,11 @@ footer em{
 	margin-right: auto;
 	max-width: 650px;
 }
+#hermess_chat p{
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
 .marge:before {
     content: "";
     display: inline-block;
