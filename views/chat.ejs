@@ -231,11 +231,11 @@
             $('#form_ajouter').submit(function()
             {
             	console.log('test');
-				var pass = $('ajouter-room-pass').val();
+				var pass = $('#ajouter-room-pass').val();
             	var data =
             	{
             		command : '/create',
-            		message : $('ajouter-room-input').val()
+            		message : $('#ajouter-room-input').val()
             	};
             	if(pass != '')
             	{
