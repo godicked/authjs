@@ -98,7 +98,7 @@
                 $('.liste_recherche').click(function()
                 {
                     var content = this.innerText;
-                    if(!(tab.indexOf(content)))
+                    if((tab.indexOf(content)))
                     {
                         console.log('test')
                         data = {
