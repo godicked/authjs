@@ -10,14 +10,12 @@ function make_list(array){
 function make_room(array){
 	var res = "<ul style='list-style-type:none'>";
 	var tab = [];
-	var i = 0;
 	var data={};
 	array.forEach(function(room){
 		if(room.password != null)
 		{
 			res+="<li class='liste_recherche'>"+room.name+"<img src='/public/images/icones/lock.png' style='width:1em;float:right'></li>";
-			tab[i] = room.name;
-			i++;
+			tab.push(room.name);
 		}
 		else
 		{
