@@ -125,6 +125,8 @@
                             password : $('entrer_room_pass').val()
                         };
                     socket.emit('room',data);
+                    $('#div_form_pass').hide(0);
+                    return false;
                 });
             }
 
