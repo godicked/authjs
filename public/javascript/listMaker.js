@@ -10,7 +10,14 @@ function make_list(array){
 function make_room(array){
 	var res = "<ul style='list-style-type:none'>";
 	array.forEach(function(room){
-		res+="<li class='liste_recherche'>"+room.name+"</li>";
+		if(room.password)
+		{
+			res+="<li class='liste_recherche'>"+room.name+"<img src='/public/images/icones/lock.png' style='width:10px'></img></li>";
+		}
+		else
+		{
+			res+="<li class='liste_recherche'>"+room.name+"</li>";
+		}
 	});
 	res +='</ul>';
 	return res;
