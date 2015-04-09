@@ -273,20 +273,10 @@
             	$('#ajouter-room-pass').val('');
             	return false;
             });
-            $('.liste_recherche').click(function()
-            {
-            	var content = this.innerText;
-            	console.log('test')
-            	data = {
-            		command : '/join',
-            		message : content
-            	};
-            	socket.emit('room',data);
-            	$('#container_recherche').hide(0);
-            });
             $('#hermess_chat').click(function()
             {
             	$('#container_recherche').hide(0);
+            	$('rechercher_room').val('');
             });
 		</script>
 	</body>

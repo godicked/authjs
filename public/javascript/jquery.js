@@ -90,4 +90,18 @@
                 	active = div;
                 });
 			}
+            function actualise_liste_recherche()
+            {
+                $('.liste_recherche').click(function()
+                {
+                    var content = this.innerText;
+                    console.log('test')
+                    data = {
+                        command : '/join',
+                        message : content
+                    };
+                    socket.emit('room',data);
+                    $('#container_recherche').hide(0);
+                });
+            }
 
