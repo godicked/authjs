@@ -178,6 +178,7 @@ module.exports = function(io){
 								console.log('new room: '+data.message);
 								socket.emit('info','La room '+ data.message + ' a été crée');
 								socket.join(data.message);
+								joinRoom(data,socket);
 							}
 						});
 					}
