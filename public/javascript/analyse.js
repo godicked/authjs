@@ -118,99 +118,113 @@ function htmlPrint(message,room){
 }
 
 function htmlMakeS(data,pseudo){
+	var res = "";
 	if(data.type == 'message')
-		return '<p><span class="pseudo">' + pseudo + ' dit: </span><em>' + data.message + '</em></p>';
+		res = '<span class="pseudo">' + pseudo + ' dit: </span><em>' + data.message + '</em></p>';
 
-	if(data.type == 'command'){
+	else if(data.type == 'command'){
 		switch(data.command){
 			case '/me':
-				return '<p><em>' + pseudo +' '+data.message +'</em></p>';
+				res = '<em>' + pseudo +' '+data.message +'</em></p>';
 				break;
 			case '/img':
-				return '<p><span class="pseudo">' + pseudo + ' dit: </span><img class="imagechat" src="'+ data.message +'"></img></p>';
+				res = '<span class="pseudo">' + pseudo + ' dit: </span><img class="imagechat" src="'+ data.message +'"></img></p>';
 				break;
 			case '/dance':
-				return '<p><span class="pseudo">' + pseudo + ' dit: </span><img class="imagechat" src="/public/images/dance.gif"></img></p>';
+				res = '<span class="pseudo">' + pseudo + ' dit: </span><img class="imagechat" src="/public/images/dance.gif"></img></p>';
 				break;
 			case '/link':
 				if((data.message.indexOf('http://') == 0) || (data.message.indexOf('https://') == 0))
-					return '<p><span class="pseudo">' + pseudo + ' dit: </span><a href="'+data.message+'" class="chat_link" target="_blank" >'+data.message+'</a>';
+					res = '<span class="pseudo">' + pseudo + ' dit: </span><a href="'+data.message+'" class="chat_link" target="_blank" >'+data.message+'</a>';
 				else
-					return '<p><span class="pseudo">' + pseudo + ' dit: </span><a href="http://'+data.message+'" class="chat_link" target="_blank" >'+data.message+'</a>';
+					res = '<span class="pseudo">' + pseudo + ' dit: </span><a href="http://'+data.message+'" class="chat_link" target="_blank" >'+data.message+'</a>';
 				break;
 			case '/saussage':
-				return '<p><span class="pseudo">' + pseudo + ' dit: </span><img class="imagechat" src="/public/images/saussage.gif"></img></p>';
+				res = '<span class="pseudo">' + pseudo + ' dit: </span><img class="imagechat" src="/public/images/saussage.gif"></img></p>';
 				break;
 			case '/fu':
-				return '<p><span class="pseudo">' + pseudo + ' dit: </span><img class="imagechat" src="/public/images/fu.gif"></img></p>';
+				res = '<span class="pseudo">' + pseudo + ' dit: </span><img class="imagechat" src="/public/images/fu.gif"></img></p>';
 				break;
 			case '/glou':
-				return '<p><span class="pseudo">' + pseudo + ' dit: </span><img class="imagechat" src="/public/images/glou.gif"></img></p>';
+				res = '<span class="pseudo">' + pseudo + ' dit: </span><img class="imagechat" src="/public/images/glou.gif"></img></p>';
 				break;
 		}
 	}
-	if(data.type == 'whisper')
-		return '<p><em class="whisp">[to: ' +data.to+'] : ' + data.message + '</em></p>';
-	if(data.type == 'wrong')
-		return '<p><span style="color: red;">'+data.message+'</span></p>';
+	else if(data.type == 'whisper')
+		res = '<em class="whisp">[to: ' +data.to+'] : ' + data.message + '</em></p>';
+	else if(data.type == 'wrong')
+		res = '<span style="color: red;">'+data.message+'</span></p>';
 	else
-		return '';
+		res = '';
+	return '<p><span class="time">['+time()+']</span>'+res;
 	
 }
 
 function htmlMakeR(data){
-	if(data.type == 'message')
+	res = "";
+	if(data.type == 'message'){
 		if(data.message.indexOf(name) == -1)
-			return '<p><span class="pseudo">' + data.from + ' dit: </span><em>' + data.message + '</em></p>';
+			res = '<span class="pseudo">' + data.from + ' dit: </span><em>' + data.message + '</em></p>';
 		else
 		{
 			var index = data.message.indexOf(name);
 			var ante = data.message.substring(0,index);
 			var center = data.message.substring(ante.length,ante.length+name.length);
 			var post = data.message.substring(ante.length+name.length);
-			return '<p><span class="pseudo">' + data.from + ' dit: </span><em>' + ante + "<span style='color:red'> "+center+"</span> " +post+'</span></em></p>';
+			res = '<span class="pseudo">' + data.from + ' dit: </span><em>' + ante + "<span style='color:red'> "+center+"</span> " +post+'</span></em></p>';
 		}
-
-	if(data.type == 'command'){
+	}
+	else if(data.type == 'command'){
 		switch(data.command){
 			case '/me':
-				return '<p><em>' + data.from +' '+data.message +'</em></p>';
+				res = '<em>' + data.from +' '+data.message +'</em></p>';
 				break;
 			case '/img':
-				return '<p><span class="pseudo">' + data.from + ' dit: </span><img class="imagechat" src="'+ data.message +'"></img></p>';
+				res = '<span class="pseudo">' + data.from + ' dit: </span><img class="imagechat" src="'+ data.message +'"></img></p>';
 				break;
 			case '/dance':
-				return '<p><span class="pseudo">' + data.from + ' dit: </span><img class="imagechat" src="/public/images/dance.gif"></img></p>';
+				res = '<span class="pseudo">' + data.from + ' dit: </span><img class="imagechat" src="/public/images/dance.gif"></img></p>';
 				break;
 			case '/link':
 				if((data.message.indexOf('http://') == 0) || (data.message.indexOf('https://') == 0))
-					return '<p><span class="pseudo">' + data.from + ' dit: </span><a href="'+data.message+'" target="_blank" class="chat_link">'+data.message+'</a>';
+					res = '<span class="pseudo">' + data.from + ' dit: </span><a href="'+data.message+'" target="_blank" class="chat_link">'+data.message+'</a>';
 				else
-					return '<p><span class="pseudo">' + data.from + ' dit: </span><a href="http://'+data.message+'" class="chat_link" target="_blank" >'+data.message+'</a>';
+					res = '<span class="pseudo">' + data.from + ' dit: </span><a href="http://'+data.message+'" class="chat_link" target="_blank" >'+data.message+'</a>';
 				break;
 			case '/nick':
-				return '<p>' + data.from + ' devient ' + data.message + '</p>';
+				res = '' + data.from + ' devient ' + data.message + '</p>';
 				break;
 			case '/nonick':
-				return '<p>' + data.from + ' devient ' + data.message + '</p>';
+				res = '' + data.from + ' devient ' + data.message + '</p>';
 				break;
 			case '/saussage':
-				return '<p><span class="pseudo">' + data.from + ' dit: </span><img class="imagechat" src="/public/images/saussage.gif"></img></p>';
+				res = '<span class="pseudo">' + data.from + ' dit: </span><img class="imagechat" src="/public/images/saussage.gif"></img></p>';
 				break;
 			case '/fu':
-				return '<p><span class="pseudo">' + data.from + ' dit: </span><img class="imagechat" src="/public/images/fu.gif"></img></p>';
+				res = '<span class="pseudo">' + data.from + ' dit: </span><img class="imagechat" src="/public/images/fu.gif"></img></p>';
 				break;
 			case '/glou':
-				return '<p><span class="pseudo">' + data.from + ' dit: </span><img class="imagechat" src="/public/images/glou.gif"></img></p>';
+				res = '<span class="pseudo">' + data.from + ' dit: </span><img class="imagechat" src="/public/images/glou.gif"></img></p>';
 				break;
 		}
 	}
-	if(data.type == 'whisper'){
-		return '<p><em class="whisp">[from: ' +data.from+'] : ' + data.message + '</em></p>';
+	else if(data.type == 'whisper'){
+		res = '<em class="whisp">[from: ' +data.from+'] : ' + data.message + '</em></p>';
 	}
+	
+	if(data.time)
+		return '<p><span class="time">['+data.time+']</span>'+res;
+	else
+		return '<p>'+res;
 }
 
-
+function time()
+{
+	var d = new Date();
+	var h = d.getHours();
+	var m = d.getMinutes();
+	return h+':'+m;
+}
 
 
 

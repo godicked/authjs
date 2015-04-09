@@ -52,6 +52,7 @@ module.exports = function(io){
 		});
 		socket.on('message',function(data)
 		{
+			data.time = time();
 			if(socket.name)
 			{
 				console.log('message envoyé de: ' + socket.name);
@@ -78,6 +79,7 @@ module.exports = function(io){
 		});
 		socket.on('whisper',function(data)
 		{
+			data.time = time();
 			if(socket.name)
 			{
 				data.from = socket.name;
@@ -97,6 +99,7 @@ module.exports = function(io){
 				socket.emit('wrong','votre session a expiré, veuillez recharger la page');
 		});
 		socket.on('command',function(data){
+			data.time = time();
 			if(socket.name)
 			{
 				if(socket.pseudo)
@@ -370,4 +373,12 @@ module.exports = function(io){
 			});
 		});
 	});
+	
+	function time()
+	{
+		    var d = new Date();
+			var h = d.getHours();
+			var m = d.getMinutes();
+			return h+':'+m;
+	}
 };
