@@ -71,7 +71,7 @@
     	            	var room_active = $('.room-active')[0];
     	            	var room_active_hide = $('.room-active')[0].innerHTML.replace(/ /g,'_');
     	            }
-                	var div = this.innerText.replace(/ /g,'_');
+                	var div = this.textContent.replace(/ /g,'_');
                 	for(i= 0;i<rooms.length;i++)
                     {
                 		var hide = rooms[i].innerHTML.replace(/ /g,'_');
