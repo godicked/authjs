@@ -217,10 +217,6 @@
             	$('#ajouter-room-input').focus();
 
             });
-            $('#form_ajouter').focusout(function()
-            {
-            	$(this).hide(250);
-            });
             $('#form_ajouter').submit(function()
             {
             	console.log('test');
@@ -241,10 +237,10 @@
             	$('ajouter-room-pass').val('');
             	return false;
             });
-            /*$('#hermess_chat').click(function()
-            	{
-            		$('#form_ajouter').hide();
-            	});*/
+            $('#hermess_chat').click(function()
+        	{
+        		$('#form_ajouter').hide();
+        	});
 		</script>
 	</body>
 </html>
