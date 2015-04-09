@@ -247,7 +247,7 @@
             });
             $('#image_ajouter').click(function()
             {
-            	$('#form_ajouter').toggle(250);
+            	$('#div_form_ajouter').toggle(250);
             	$('#ajouter-room-input').focus();
 
             });
@@ -257,7 +257,7 @@
             	{
 					if (!event.delegateTarget.contains(document.activeElement))
 					{
-						$('#form_ajouter').hide(250);
+						$('#div_form_ajouter').hide(250);
 					}
 				}, 0);
             });
