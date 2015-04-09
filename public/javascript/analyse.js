@@ -160,7 +160,16 @@ function htmlMakeS(data,pseudo){
 
 function htmlMakeR(data){
 	if(data.type == 'message')
-		return '<p><span class="pseudo">' + data.from + ' dit: </span><em>' + data.message + '</em></p>';
+		if(data.message.indexOf(name) == -1)
+			return '<p><span class="pseudo">' + data.from + ' dit: </span><em>' + data.message + '</em></p>';
+		else
+		{
+			var index = data.message.indexOf(name);
+			var ante = data.message.substring(0,index);
+			var center = data.message.substring(ante.length,ante.length+name.length);
+			var post = data.message.substring(ante.length+name.length);
+			return '<p><span class="pseudo">' + data.from + ' dit: </span><em>' + ante + "<span style='color:red'> "+center+"</span> " +post+'</span></em></p>';
+		}
 
 	if(data.type == 'command'){
 		switch(data.command){

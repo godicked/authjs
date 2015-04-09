@@ -102,7 +102,6 @@ iframe {
 }
 #gestion_room{
 	margin-top: 6em;
-	overflow: hidden;
 	/*margin-left: 1em;*/
 }
 #pseudo{
@@ -380,7 +379,7 @@ footer em{
 	width: 1em;
 	height: 1em;
 	padding: 1.56em;
-	padding-right: 2.2em;
+	padding-right: 1.8em;
 	border-top: solid;
 	border-bottom: solid;
 	border-bottom-color: rgb(31, 31, 31);
@@ -437,3 +436,8 @@ p{
 	-webkit-border-bottom-right-radius: .3125em .5625em;
 	-webkit-border-bottom-left-radius: .3125em .5625em;
 }
+-webkit-user-select: none;
+-khtml-user-select: none;
+-moz-user-select: none;
+-o-user-select: none;
+user-select: none; // Default
