@@ -219,6 +219,25 @@ module.exports = function(io){
 				});
 			}
 		});
+		socket.on('ask_history',function(room_name)
+		{
+			var res=[];
+			Room.findOne({'name':room_name},function(err,room)
+			{
+				if(room)
+				{
+					for(i = room.storage.length-1;(i>=0);i--)
+					{
+						res.push(room.storage[i]);
+					}
+				}
+				socket.emit('ask_history',{'storage':res,'room':room.name});
+			});
+		});
+
+
+
+					
 		socket.on('disconnect',function()
 		{
 			if(socket.name)

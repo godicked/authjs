@@ -188,6 +188,14 @@
 				roomList = data;
 				actualise_liste_room();
 			});
+			socket.on('ask_history',function(data)
+			{
+				data.room = data.room.replace(/ /g,"_");
+				data.storage.forEach(function(line)
+				{
+					$('#room_'+data.room).append(htmlMakeR(line));
+				});
+			});
 
 // Action JQuerry ==============================================================
             $('#formulaire_chat').submit(function() 
