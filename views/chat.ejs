@@ -224,18 +224,6 @@
 				else
 					$('#container_recherche').empty();
             });
-            $('#rechercher_room').focusout(function(event)
-            {
-            	$('#rechercher_room').val('');
-            	setTimeout(function()
-            	{
-					if (!($.contains(('#container_recherche'),document.activeElement)))
-					{
-						$('#container_recherche').hide(0);
-					}
-				}, 0);
-            	
-            });
 
             $('.titre-section').click(function()
             {
@@ -294,6 +282,7 @@
             		message : content
             	};
             	socket.emit('room',data);
+            	$('#container_recherche').hide(0);
             });
 		</script>
 	</body>
