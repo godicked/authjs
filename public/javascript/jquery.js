@@ -119,10 +119,11 @@
             {
                 $('#form_pass').submit(function()
                 {
+                    var pass= $('entrer_room_pass').val();
                     var data = {
                             command : '/join',
                             message : room,
-                            password : $('entrer_room_pass').val()
+                            password : pass
                         };
                     socket.emit('room',data);
                     $('#div_form_pass').hide(0);
