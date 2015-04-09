@@ -53,12 +53,3 @@ function remRooms(array){
 		$('#room_'+data).remove();
 	});
 }
-		
-		
-		
-		
-		
-		
-		
-		
-		

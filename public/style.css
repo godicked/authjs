@@ -102,6 +102,7 @@ iframe {
 }
 #gestion_room{
 	margin-top: 6em;
+	overflow: hidden;
 	/*margin-left: 1em;*/
 }
 #pseudo{
@@ -226,11 +227,19 @@ a{
 .textbox:focus {
 	width: 50%;
 }
+.static-textbox{
+	background: #333;
+	color: #ccc;
+	width: 30%;
+	padding: 6px 15px 6px 35px;
+	border-radius: 20px;
+	border:none !important;
+	outline:none !important;
+	outline-offset:none !important;
+	font-size:1em;
+}
 #rechercher_room{
 	margin:3%;
-	width:70%;
-}
-#rechercher_room:hover {
 	width:70%;
 }
 /* =================================================================*/
@@ -358,12 +367,13 @@ footer em{
 	border-top-width: 0.15em;
 	padding-left: 1.8em;
 }
+#image_ajouter:hover{
+	cursor: pointer;
+	background:rgb(42,42,42);
+}
 #ajouter{
 	display: inline-block;
 	width: 4em;
-}
-#ajouter{
-	cursor: pointer;
 }
 }
 p{

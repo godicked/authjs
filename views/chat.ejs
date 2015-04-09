@@ -32,9 +32,15 @@
 				</div>
 				<div id='gestion_room'>
 					<h1 id ='Titre_Room' class='titre-section' style="text-align: left;padding-left: 1em;width: 65%;display: inline-block;float: left;">Rooms</h1>
-					<div id='ajouter'><img id = image_ajouter src='/public/images/bouton_ajouter.png' style='width:1em;'></img></div><div id='container-form'></div>
+					<div id='ajouter'><img id = image_ajouter src='/public/images/bouton_ajouter.png' style='width:1em;'></img></div>
+					<div id='form_ajouter' style='display:none'>
+						<form action='/' method='post' id='form_ajouter'>
+							<input type ='text' class="static-textbox" placeholder='Entrez nom de room' size='50' autocomplete='off'>
+							<input type ='password' class="static-textbox" placeholder='pass(optionnel)' size='50' autocomplete='off'>
+						</form>
+					</div>
 					<div id='bloc_recherche'>
-					<input class="textbox" type="text" name="recherche" id="rechercher_room" placeholder="Chercher une room" size="50" autocomplete="off"/>
+					<input class="static-textbox" type="text" name="recherche" id="rechercher_room" placeholder="Chercher une room" size="50" autocomplete="off"/>
 					<div id='container_recherche'></div>
 					</div>
 					<aside id='rooms'>
@@ -160,7 +166,7 @@
 				if(toRem)
 					remRooms(toRem);
 				roomList = data;
-				actualise_liste_room()
+				actualise_liste_room();
 			});
 
 // Action JQuerry ==============================================================
@@ -176,12 +182,10 @@
 					var toPrint = htmlMakeS(data,pseudo);
 					htmlPrint(toPrint,data.room);
 					store(toPrint,localStorage);
-					
 				}
 				$('#message').val('').focus();
 				return false; // Permet de bloquer l'envoi "classique" du formulaire
             });
-			
             $('#rechercher_room').keyup(function(){
 				if(this.value)
 					socket.emit('room_list', this.value);
@@ -204,15 +208,10 @@
 					$(a[i]).toggle(250);
 				}
             });
+            $('#image_ajouter').click(function(){
+            	$('#form_ajouter').toggle(250);
 
-            $('.chat_link').click(function()
-            {
-            	window.open(this.href);
-            	return false;
             });
-
-			
-
 		</script>
 	</body>
 </html>
