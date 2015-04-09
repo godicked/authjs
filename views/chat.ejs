@@ -34,7 +34,7 @@
 					<h1 id ='Titre_Room' class='titre-section' style="text-align: left;padding-left: 1em;width: 65%;display: inline-block;float: left;">Rooms</h1>
 					<div id='ajouter'><img id = image_ajouter src='/public/images/bouton_ajouter.png' style='width:1em;'></img></div>
 					<div id='form_ajouter' style='display:none'>
-						<form action='/' method='post' id='form_ajouter'>
+						<form action='/' method='post' id='form_ajouter' autocomplete='off'>
 							<input type ='text' class="static-textbox" placeholder='Entrez nom de room' size='50' autocomplete='off' id ='ajouter-room-input'>
 							<input type ='password' class="static-textbox" placeholder='Password (optionnel)' size='50' autocomplete='off'id ='ajouter-room-pass'>
 						</form>
@@ -232,6 +232,9 @@
             	}
             	socket.emit('room',data);
             	$(this).hide(250);
+            	console.log('on envoie un emit!');
+            	$('ajouter-room-input').val('');
+            	$('ajouter-room-pass').val('');
             	return false;
             });
 		</script>
