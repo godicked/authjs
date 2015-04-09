@@ -113,7 +113,7 @@ function send(data,socket){
 
 function htmlPrint(message,room){
 	if(message)
-		$('#room_'+room).prepend(message);
+		$('#room_'+room.replace(/ /g,"_")).prepend(message);
 	return message;
 }
 

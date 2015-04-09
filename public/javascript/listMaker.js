@@ -44,7 +44,7 @@ function newInList(old,actual){
 
 function addRooms(array){
 	array.forEach(function(data){
-		$('#hermess_chat').append('<article id="room_'+data+'" class="zone_chat"></article>');
+		$('#hermess_chat').append('<article id="room_'+data.replace(/ /g,"_")+'" class="zone_chat"></article>');
 	});
 }
 
