@@ -1,3 +1,6 @@
+.blue{
+	color:rgb(83,170,255);
+}
 body{
 	font-family: 'Raleway', sans-serif;
 	/*background-color: #222222;*/
@@ -201,9 +204,7 @@ a{
 .bouton:hover{
 	background:rgb(182, 172, 172);
 }
-.blue{
-	color:rgb(83,170,255);
-}
+
 #flr:hover{
     cursor:pointer;
 }
