@@ -36,7 +36,7 @@
 					<div id='form_ajouter' style='display:none'>
 						<form action='/' method='post' id='form_ajouter'>
 							<input type ='text' class="static-textbox" placeholder='Entrez nom de room' size='50' autocomplete='off' id ='ajouter-room-input'>
-							<input type ='password' class="static-textbox" placeholder='pass(optionnel)' size='50' autocomplete='off'id ='ajouter-room-input'>
+							<input type ='password' class="static-textbox" placeholder='Password (optionnel)' size='50' autocomplete='off'id ='ajouter-room-pass'>
 						</form>
 					</div>
 					<div id='bloc_recherche'>
@@ -202,16 +202,38 @@
            		var a = $($(this).parent()).children();
            		if($(this).text() == 'Rooms'){
            			j = 3;
+           			$(a[2]).hide(250);
            		}
 	            for(i = j;i<a.length;i++)
 	            {
 					$(a[i]).toggle(250);
 				}
             });
-            $('#image_ajouter').click(function(){
+            $('#image_ajouter').click(function()
+            {
             	$('#form_ajouter').toggle(250);
 
             });
+            $('#form_ajouter').blur()
+            {
+            	$(this).hide(250);
+            }
+            $('#form_ajouter').submit(function ()
+            {
+				var pass = $('ajouter-room-pass').val();
+            	var data =
+            	{
+            		command : '/create',
+            		message : $('ajouter-room-input').val()
+            	};
+            	if(pass != '')
+            	{
+            		data.password = pass;
+            	}
+            	socket.emit('room',data);
+            	$(this).hide(250);
+            	return false;
+            }
 		</script>
 	</body>
 </html>
