@@ -119,7 +119,7 @@
             {
                 $('#form_pass').submit(function()
                 {
-                    var pass= $('entrer_room_pass').val();
+                    var pass= $('#entrer_room_pass').val();
                     var data = {
                             command : '/join',
                             message : room,
