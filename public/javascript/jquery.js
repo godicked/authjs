@@ -93,18 +93,37 @@
                 	active = div;
                 });
 			}
-            function actualise_liste_recherche()
+            function actualise_liste_recherche(tab)
             {
                 $('.liste_recherche').click(function()
                 {
                     var content = this.innerText;
-                    console.log('test')
-                    data = {
-                        command : '/join',
-                        message : content
-                    };
-                    socket.emit('room',data);
-                    $('#container_recherche').hide(0);
+                    if(!(tab.indexOf(content))
+                    {
+                        console.log('test')
+                        data = {
+                            command : '/join',
+                            message : content
+                        };
+                        socket.emit('room',data);
+                        $('#container_recherche').hide(0);
+                    }
+                    else
+                    {
+                        $('#div_form_pass').show(0);
+                        entrer_room(content);
+                    }
+                });
+            }
+            function entrer_room(room)
+            {
+                $('#form_pass').submit(function()
+                {
+                    var data = {
+                            command : '/join',
+                            message : room,
+                            password : $('entrer_room_pass').val()
+                        };
                 });
             }
 
