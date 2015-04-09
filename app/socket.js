@@ -105,6 +105,7 @@ module.exports = function(io){
 		});
 		
 		socket.on('room',function(data){
+			var ok = false;
 			if(data.command == '/join'){
 				Room.findOne({'name':data.message},function(err,room){
 					if(err)
@@ -116,19 +117,33 @@ module.exports = function(io){
 							if(user.local.rooms.indexOf(data.message) >= 0)
 								socket.emit('wrong','vous etes deja dans cette room');
 							else{
-								user.local.rooms.push(data.message);
+								if(room.password){
+									if(data.password){
+										if(room.validPassword(data.password))
+											ok = true;
+									}
+									else
+										ok = false;
+								}
+								else
+									ok = true;
+								if(ok){
+									user.local.rooms.push(data.message);
 
-								user.save(function (err) {
-									if(err) {
-										console.error('ERROR!');
-									}
-									else{
-										console.log(socket.name+' a rejoin la room: '+data.message);
-										socket.emit('info','vous avez rejoin la room: '+data.message);
-										socket.join(data.message);
-										socket.emit('my_room',user.local.rooms);
-									}
-								});
+									user.save(function (err) {
+										if(err) {
+											console.error('ERROR!');
+										}
+										else{
+											console.log(socket.name+' a rejoin la room: '+data.message);
+											socket.emit('info','vous avez rejoin la room: '+data.message);
+											socket.join(data.message);
+											socket.emit('my_room',user.local.rooms);
+										}
+									});
+								}
+								else
+									socket.emit('wrong','mauvais mot de passe');
 							}
 						});
 					}
@@ -164,6 +179,9 @@ module.exports = function(io){
 						var newRoom = new Room();
 						newRoom.name  = data.message;
 						newRoom.owner = socket.oid;
+						if(data.password)
+							newRoom.password = newRoom.generateHash(data.password);
+						
 						newRoom.save(function(err){
 							if(err)
 								console.log(err)
