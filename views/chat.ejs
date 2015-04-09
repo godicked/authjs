@@ -99,64 +99,80 @@
 
 
 // Reception socket=============================================================
-			socket.on('get_name',function(name){
+			socket.on('get_name',function(name)
+			{
 				pseudo = name;
 				//store(htmlPrint('<p class="info">Votre nom est: '+pseudo+'</p>'),localStorage);
 			});
-            socket.on('message', function(data) {
+            socket.on('message', function(data) 
+            {
                 store(htmlPrint(htmlMakeR(data),data.room),localStorage);
-                if(blur==true && nouveau==false){
+                if(blur==true && nouveau==false)
+                {
                 	actualise_titre('message');
                 }
                 if(blur==true){
                 	playSound('notif');
                 }
             })
-			socket.on('command',function(data){
+			socket.on('command',function(data)
+			{
 				store(htmlPrint(htmlMakeR(data),data.room),localStorage);
 			});
-			socket.on('whisper',function(data){
+			socket.on('whisper',function(data)
+			{
 				store(htmlPrint(htmlMakeR(data),data.room),localStorage);
-				if(blur==true && nouveau==false){
+				if(blur==true && nouveau==false)
+				{
                 	actualise_titre('whisper');
                 }
-                if(blur==true){
+                if(blur==true)
+                {
                 	playSound('notif');
                 }
 			});
-            socket.on('nouveau_client', function(pseudo) {
+            socket.on('nouveau_client', function(pseudo) 
+            {
                 $('#room_Accueil').prepend('<p><em>' + pseudo + ' a rejoint le Chat !</em></p>');
 				store('<p><em>' + pseudo + ' a rejoint le Chat !</em></p>',localStorage);
 				actualise_liste();
 				playSound('connexion');
             });
-			socket.on('deco', function(message) {
+			socket.on('deco', function(message) 
+			{
                 $('#room_Accueil').prepend(message);
 				store(message,localStorage);
             });
-			socket.on('list', function(message){
+			socket.on('list', function(message)
+			{
 				$('#liste-users').empty().append(make_list(message));
 				actualise_liste();
 			});
-			socket.on('wrong',function(message){
+			socket.on('wrong',function(message)
+			{
 				$('#room_Accueil').prepend('<p style="color: red;">'+message+'</p>');
 				store('<p style="color: red;">'+message+'</p>',localStorage);
 			});
-			socket.on('info',function(message){
+			socket.on('info',function(message)
+			{
 				$('#room_Accueil').prepend('<p style="color: green;">'+message+'</p>');
 				store('<p style="color: green;">'+message+'</p>',localStorage);
 			});
-			socket.on('room_list',function(data){
+			socket.on('room_list',function(data)
+			{
 				var val = $('#rechercher_room').val();
-				if(val == data.text){
+				if(val == data.text)
+				{
 					var content = make_room(data.list);
-					if(!($('#container_recherche').is(':visible'))){
+					if(!($('#container_recherche').is(':visible')))
+					{
 						$('#container_recherche').show(0);
 					}
 					$('#container_recherche').empty().append(content);
 				}
 			});
-			socket.on('my_room',function(data){
+			socket.on('my_room',function(data)
+			{
 				var content = make_myroom(data);
 				$('#container-rooms').empty().append(content);
 				if(!roomList)
@@ -174,13 +190,16 @@
 			});
 
 // Action JQuerry ==============================================================
-            $('#formulaire_chat').submit(function () {
+            $('#formulaire_chat').submit(function() 
+            {
                 var message = $('#message').val();
-				if(message == '/clear'){
+				if(message == '/clear')
+				{
 					clearStorage(localStorage);
 					$('#Accueil').empty();
 				}
-				else if(message != ""){
+				else if(message != "")
+				{
 					var data = parse(message,active);
 					send(data,socket);
 					var toPrint = htmlMakeS(data,pseudo);
@@ -190,21 +209,32 @@
 				$('#message').val('').focus();
 				return false; // Permet de bloquer l'envoi "classique" du formulaire
             });
-            $('#rechercher_room').keyup(function(){
+            $('#rechercher_room').keyup(function()
+            {
 				if(this.value)
 					socket.emit('room_list', this.value);
 				else
 					$('#container_recherche').empty();
             });
-            $('#rechercher_room').blur(function(){
+            $('#rechercher_room').focusout(function(event)
+            {
             	$('#rechercher_room').val('');
-            	$('#container_recherche').hide(0);
+            	setTimeout(function()
+            	{
+					if (!($('#container_recherche').contains(document.activeElement))
+					{
+						$('#container_recherche').hide(0);
+					}
+				}, 0);
+            	
             });
 
-            $('.titre-section').click(function(){
+            $('.titre-section').click(function()
+            {
             	var j = 1;
            		var a = $($(this).parent()).children();
-           		if($(this).text() == 'Rooms'){
+           		if($(this).text() == 'Rooms')
+           		{
            			j = 3;
            			$(a[2]).hide(250);
            		}
@@ -247,7 +277,8 @@
             	$('#ajouter-room-pass').val('');
             	return false;
             });
-            $('.liste_recherche').click(function(){
+            $('.liste_recherche').click(function()
+            {
             	var content = this.innerText;
             	console.log('test')
             	data = {
