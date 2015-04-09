@@ -267,7 +267,7 @@ a{
 	position: fixed;
 	top: 13.6em;
 	list-style: none;
-	height: 20em;
+	height: 40em;
 	overflow:auto;
 }
 #form_ajouter{
@@ -279,13 +279,13 @@ a{
 	top: 10.5em;
 }
 .liste_recherche{
-	background: rgb(32,32,32);
+	background: #333;
 	border-bottom:solid;
 	border-bottom-width:0.1em;
-	border-bottom-color:rgb(38,38,38);
+	border-bottom-color:rgb(32,32,32);
 	border-top:solid;
 	border-top-width:0.1em;
-	border-top-color:rgb(38,38,38);
+	border-top-color:rgb(32,32,32);
 	transition: 250ms all ease;
 	padding: 1em;
 }
