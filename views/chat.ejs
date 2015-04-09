@@ -169,6 +169,7 @@
 						$('#container_recherche').show(0);
 					}
 					$('#container_recherche').empty().append(content);
+					actualise_liste_recherche();
 				}
 			});
 			socket.on('my_room',function(data)

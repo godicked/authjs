@@ -20,7 +20,6 @@ function make_room(array){
 		}
 	});
 	res +='</ul>';
-	actualise_liste_recherche();
 	return res;
 }
 
