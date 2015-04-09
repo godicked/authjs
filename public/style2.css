@@ -273,7 +273,7 @@ a{
 	top: 10.5em;
 }
 .liste_recherche{
-	background: rgb(38,38,38);
+	background: #333;
 	border-bottom:solid;
 	border-bottom-width:0.1em;
 	border-bottom-color:rgb(32,32,32);
