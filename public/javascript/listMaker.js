@@ -10,9 +10,9 @@ function make_list(array){
 function make_room(array){
 	var res = "<ul style='list-style-type:none'>";
 	array.forEach(function(room){
-		if(room.password)
+		if(room.password != null)
 		{
-			res+="<li class='liste_recherche'>"+room.name+"<img src='/public/images/icones/lock.png' style='width:10px'></img></li>";
+			res+="<li class='liste_recherche'>"+room.name+"<img src='/public/images/icones/lock.png' style='width:1em'></li>";
 		}
 		else
 		{
