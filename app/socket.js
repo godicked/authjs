@@ -178,6 +178,7 @@ module.exports = function(io){
 								console.log('new room: '+data.message);
 								socket.emit('info','La room '+ data.message + ' a été crée');
 								socket.join(data.message);
+								console.log(data);
 								joinRoom(data,socket);
 							}
 						});
@@ -271,6 +272,7 @@ module.exports = function(io){
 			else{
 				User.findOne({'_id': socket.oid}, function (err, user)
 				 {
+					 console.log(data);
 					if(room.password)
 					{
 						if(data.password)
@@ -278,10 +280,12 @@ module.exports = function(io){
 							if(room.validPassword(data.password))
 								ok = true;
 						}
-						if(room.whitelist.indexOf(socket.name) >= 0)
+						else if(room.whitelist.indexOf(socket.name) >= 0){
 							ok = true;
-						else
+						}
+						else{
 							ok = false;
+						}
 					}
 					else
 						ok = true;
