@@ -37,6 +37,9 @@ iframe {
 	min-width: 250px;
 	/*max-width: 270px;*/
 }
+.blue{
+	color:red;
+}
 .user{
 	background: rgb(38, 38, 38);
 	margin: 0.2em;

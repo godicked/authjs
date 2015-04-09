@@ -69,12 +69,12 @@
                 	var rooms = $('.room');
                 	if($('.room-active').length != 0){
     	            	var room_active = $('.room-active')[0];
-    	            	var room_active_hide = $('.room-active')[0].innerHTML;
+    	            	var room_active_hide = $('.room-active')[0].innerHTML.replace(/ /g,'_');
     	            }
-                	var div = this.innerText;
+                	var div = this.innerText.replace(/ /g,'_');
                 	for(i= 0;i<rooms.length;i++)
                     {
-                		var hide = rooms[i].innerHTML;
+                		var hide = rooms[i].innerHTML.replace(/ /g,'_');
                 		if(hide != div)
                         {
                 			$("#room_"+hide).hide(0);

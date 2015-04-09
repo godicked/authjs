@@ -201,6 +201,9 @@ a{
 .bouton:hover{
 	background:rgb(182, 172, 172);
 }
+.blue{
+	color:rgb(83,170,255);
+}
 #flr:hover{
     cursor:pointer;
 }
