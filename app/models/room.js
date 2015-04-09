@@ -9,7 +9,9 @@ var roomSchema = mongoose.Schema({
 	owner        : String,
 	moderator    : [String],
 	blacklist    : [String],
-	whitelist    : [String]
+	whitelist    : [String],
+	storage      : [],
+	volume       : Number
     
 });
 

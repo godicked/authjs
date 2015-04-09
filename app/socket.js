@@ -40,8 +40,7 @@ module.exports = function(io){
 					socket.broadcast.emit('list',list);
 					socket.emit('list',list);
 					user.local.rooms.forEach(function(room){
-						console.log(socket.name+' join: '+room);
-						socket.join(room);
+						joinRoom({'message':room},socket);
 					});
 					socket.emit('my_room',user.local.rooms);
 				}
@@ -58,6 +57,14 @@ module.exports = function(io){
 				data.message = encode(data.message);
 				console.log('send to room: '+data.room);
 				socket.to(data.room).emit('message',data);
+				Room.findOne({'name':data.room},function(err,room){
+					if(room){
+						room.storage.push(data);
+						if(room.storage.length > room.volume)
+							room.storage.shift();
+						room.save(function(err){});
+					}
+				});
 			}
 			else
 				socket.emit('wrong','votre session a expiré, veuillez recharger la page');
@@ -105,49 +112,8 @@ module.exports = function(io){
 		});
 		
 		socket.on('room',function(data){
-			var ok = false;
 			if(data.command == '/join'){
-				Room.findOne({'name':data.message},function(err,room){
-					if(err)
-						console.log(err);
-					if(!room)
-						socket.emit('wrong','la room '+ data.message +' n\'existe pas');
-					else{
-						User.findOne({'_id': socket.oid}, function (err, user) {
-							if(user.local.rooms.indexOf(data.message) >= 0)
-								socket.emit('wrong','vous etes deja dans cette room');
-							else{
-								if(room.password){
-									if(data.password){
-										if(room.validPassword(data.password))
-											ok = true;
-									}
-									else
-										ok = false;
-								}
-								else
-									ok = true;
-								if(ok){
-									user.local.rooms.push(data.message);
-
-									user.save(function (err) {
-										if(err) {
-											console.error('ERROR!');
-										}
-										else{
-											console.log(socket.name+' a rejoin la room: '+data.message);
-											socket.emit('info','vous avez rejoin la room: '+data.message);
-											socket.join(data.message);
-											socket.emit('my_room',user.local.rooms);
-										}
-									});
-								}
-								else
-									socket.emit('wrong','mauvais mot de passe');
-							}
-						});
-					}
-				});
+				joinRoom(data,socket);
 			}
 			if(data.command == '/leave'){
 				User.findOne({'_id': socket.oid}, function (err, user) {
@@ -179,6 +145,7 @@ module.exports = function(io){
 						var newRoom = new Room();
 						newRoom.name  = data.message;
 						newRoom.owner = socket.oid;
+						newRoom.volume= 30;
 						if(data.password)
 							newRoom.password = newRoom.generateHash(data.password);
 						
@@ -255,6 +222,63 @@ module.exports = function(io){
 			
 		});
 	});
+	
+	function joinRoom(data,socket){
+		var ok = false;
+		Room.findOne({'name':data.message},function(err,room){
+			if(err)
+				console.log(err);
+			if(!room)
+				socket.emit('wrong','la room '+ data.message +' n\'existe pas');
+			if(room.blacklist.indexOf(socket.oid) >= 0)
+				socket.emit('wrong','vous etes banni de cette room');
+			else{
+				User.findOne({'_id': socket.oid}, function (err, user) {
+					if(room.password){
+						if(data.password){
+							if(room.validPassword(data.password))
+								ok = true;
+						}
+						if(room.whitelist.indexOf(socket.name) >= 0)
+							ok = true;
+						else
+							ok = false;
+					}
+					else
+						ok = true;
+					if(ok){
+						if(user.local.rooms.indexOf(data.message) >= 0){
+							console.log(socket.name+' a rejoint la room: '+data.message);
+							socket.emit('info','vous avez rejoint la room: '+data.message);
+							socket.join(data.message);
+						}
+						else{
+							user.local.rooms.push(data.message);
+							
+							if(room.password){
+								room.whitelist.push(socket.name);
+								room.save(function(err){});
+							}
+							user.save(function (err) {
+								if(err) {
+									console.error('ERROR!');
+								}
+								else{
+									console.log(socket.name+' a rejoint la room: '+data.message);
+									socket.emit('info','vous avez rejoint la room: '+data.message);
+									socket.join(data.message);
+									socket.emit('my_room',user.local.rooms);
+								}
+							});
+						}
+					}
+					else
+						socket.emit('wrong','mauvais mot de passe');
+				
+				});
+			}
+		});
+	}
 
 
 // Namespace /info ======================================================================
