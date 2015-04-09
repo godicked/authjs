@@ -221,6 +221,8 @@ module.exports = function(io){
 		});
 		socket.on('ask_history',function(room_name)
 		{
+			var d = new Date();
+			var start = d.getTime();
 			var res=[];
 			Room.findOne({'name':room_name},function(err,room)
 			{
@@ -232,6 +234,9 @@ module.exports = function(io){
 					}
 				}
 				socket.emit('ask_history',{'storage':res,'room':room.name});
+				console.log(d.getTime());
+				d = new Date();
+				console.log(d.getTime()-start);
 			});
 		});
 
