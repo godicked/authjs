@@ -243,11 +243,11 @@
             	}
             	socket.emit('room',data);
             	$(this).hide(250);
-            	$('ajouter-room-input').val('');
-            	$('ajouter-room-pass').val('');
+            	$('#ajouter-room-input').val('');
+            	$('#ajouter-room-pass').val('');
             	return false;
             });
-            $('liste_recherche').click(function(){
+            $('.liste_recherche').click(function(){
             	var content = this.innerText;
             	console.log('test')
             	data = {
@@ -255,7 +255,6 @@
             		message : content
             	};
             	socket.emit('room',data);
-
             });
 		</script>
 	</body>
