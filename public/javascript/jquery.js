@@ -124,6 +124,7 @@
                             message : room,
                             password : $('entrer_room_pass').val()
                         };
+                    socket.emit('room',data);
                 });
             }
 
