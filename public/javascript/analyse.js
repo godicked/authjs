@@ -134,9 +134,9 @@ function htmlMakeS(data,pseudo){
 				break;
 			case '/link':
 				if((data.message.indexOf('http://') == 0) || (data.message.indexOf('https://') == 0))
-					return '<p><span class="pseudo">' + pseudo + ' dit: </span><a href="'+data.message+'" class="chat_link">'+data.message+'</a>';
+					return '<p><span class="pseudo">' + pseudo + ' dit: </span><a href="'+data.message+'" class="chat_link" target="_blank" >'+data.message+'</a>';
 				else
-					return '<p><span class="pseudo">' + pseudo + ' dit: </span><a href="http://'+data.message+'" class="chat_link">'+data.message+'</a>';
+					return '<p><span class="pseudo">' + pseudo + ' dit: </span><a href="http://'+data.message+'" class="chat_link" target="_blank" >'+data.message+'</a>';
 				break;
 			case '/saussage':
 				return '<p><span class="pseudo">' + pseudo + ' dit: </span><img class="imagechat" src="/public/images/saussage.gif"></img></p>';
@@ -175,9 +175,9 @@ function htmlMakeR(data){
 				break;
 			case '/link':
 				if((data.message.indexOf('http://') == 0) || (data.message.indexOf('https://') == 0))
-					return '<p><span class="pseudo">' + data.from + ' dit: </span><a href="'+data.message+'" class="chat_link">'+data.message+'</a>';
+					return '<p><span class="pseudo">' + data.from + ' dit: </span><a href="'+data.message+'" target="_blank" class="chat_link">'+data.message+'</a>';
 				else
-					return '<p><span class="pseudo">' + data.from + ' dit: </span><a href="http://'+data.message+'" class="chat_link">'+data.message+'</a>';
+					return '<p><span class="pseudo">' + data.from + ' dit: </span><a href="http://'+data.message+'" class="chat_link" target="_blank" >'+data.message+'</a>';
 				break;
 			case '/nick':
 				return '<p>' + data.from + ' devient ' + data.message + '</p>';

@@ -102,6 +102,7 @@ iframe {
 }
 #gestion_room{
 	margin-top: 6em;
+	overflow: hidden;
 	/*margin-left: 1em;*/
 }
 #pseudo{
@@ -226,12 +227,29 @@ a{
 .textbox:focus {
 	width: 50%;
 }
+.static-textbox{
+	background: #333;
+	color: #ccc;
+	width: 70%;
+	padding: 6px 15px 6px 35px;
+	border-radius: 20px;
+	border:none !important;
+	outline:none !important;
+	outline-offset:none !important;
+	font-size:1em;
+}
 #rechercher_room{
 	margin:3%;
-	width:70%;
 }
-#rechercher_room:hover {
-	width:70%;
+#ajouter-room-input{
+	display: block;
+	margin: 1em;
+	margin-left: 0.7em;
+}
+#ajouter-room-pass{
+	display: block;
+	margin: 1em;
+	margin-left: 0.7em;
 }
 /* =================================================================*/
 #container_recherche{
@@ -242,6 +260,14 @@ a{
 	list-style: none;
 	height: 20em;
 	overflow:auto;
+}
+#form_ajouter{
+	display: block;
+	position: fixed;
+	left: 280px;
+	background: rgb(31, 31, 31);
+	width: 15em;
+	top: 10.5em;
 }
 .liste_recherche{
 	background: rgb(32,32,32);
@@ -286,6 +312,11 @@ footer em{
 	margin-right: auto;
 	max-width: 650px;
 }
+#hermess_chat p{
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
 .marge:before {
     content: "";
     display: inline-block;
@@ -358,12 +389,13 @@ footer em{
 	border-top-width: 0.15em;
 	padding-left: 1.8em;
 }
+#image_ajouter:hover{
+	cursor: pointer;
+	background:rgb(42,42,42);
+}
 #ajouter{
 	display: inline-block;
 	width: 4em;
-}
-#ajouter{
-	cursor: pointer;
 }
 }
 p{
