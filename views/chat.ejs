@@ -60,7 +60,6 @@
 				</form>
 
 			</section>
-			
 			<nav id='menu_droite' class='menu_droite'>
 				<header>
 				<a href='#'><h1>HERMÈS<span style="color : red;">S</span>AGE <img src="/public/images/hermessage.png" id="photo" /></h1></a>
@@ -217,12 +216,13 @@
             	$('#form_ajouter').toggle(250);
 
             });
-            $('#form_ajouter').blur(function()
+            $('#form_ajouter').on('focusout',(function()
             {
             	$(this).hide(250);
             });
             $('#form_ajouter').submit(function ()
             {
+            	console.log('test');
 				var pass = $('ajouter-room-pass').val();
             	var data =
             	{
@@ -240,6 +240,10 @@
             	$('ajouter-room-pass').val('');
             	return false;
             });
+            /*$('#hermess_chat').click(function()
+            	{
+            		$('#form_ajouter').hide();
+            	});*/
 		</script>
 	</body>
 </html>
