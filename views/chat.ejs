@@ -244,10 +244,12 @@
             	$(this).hide(250);
             	$('ajouter-room-input').val('');
             	$('ajouter-room-pass').val('');
+            	actualise_liste_room();
             	return false;
             });
             $('liste_recherche').click(function(){
             	var content = this.innerText;
+            	console.log('test')
             	data = {
             		command : '/join',
             		message : content
