@@ -230,7 +230,7 @@ a{
 .static-textbox{
 	background: #333;
 	color: #ccc;
-	width: 30%;
+	width: 70%;
 	padding: 6px 15px 6px 35px;
 	border-radius: 20px;
 	border:none !important;
@@ -240,7 +240,11 @@ a{
 }
 #rechercher_room{
 	margin:3%;
-	width:70%;
+}
+#ajouter-room-input{
+	display: block;
+	margin: 1em;
+	margin-left: 0.7em;
 }
 /* =================================================================*/
 #container_recherche{
@@ -251,6 +255,14 @@ a{
 	list-style: none;
 	height: 20em;
 	overflow:auto;
+}
+#form_ajouter{
+	display: block;
+	position: fixed;
+	left: 280px;
+	background: rgb(31, 31, 31);
+	width: 15em;
+	top: 10.5em;
 }
 .liste_recherche{
 	background: rgb(32,32,32);
