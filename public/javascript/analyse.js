@@ -157,7 +157,7 @@ function htmlMakeS(data,pseudo){
 		res = '<span style="color: red;">'+data.message+'</span></p>';
 	else
 		res = '';
-	return '<p><span class="time">['+time()+']</span>'+res;
+	return '<p><span class="time">['+time()+']</span> '+res;
 	
 }
 
@@ -214,7 +214,7 @@ function htmlMakeR(data){
 	}
 	
 	if(data.time)
-		return '<p><span class="time">['+data.time+']</span>'+res;
+		return '<p><span class="time">['+data.time+']</span> '+res;
 	else
 		return '<p>'+res;
 }
