@@ -12,7 +12,7 @@ function make_room(array){
 	array.forEach(function(room){
 		if(room.password != null)
 		{
-			res+="<li class='liste_recherche'>"+room.name+"<img src='/public/images/icones/lock.png' style='width:1em';margin-left:2em></li>";
+			res+="<li class='liste_recherche'>"+room.name+"<img src='/public/images/icones/lock.png' style='width:1em;float:right'></li>";
 		}
 		else
 		{
