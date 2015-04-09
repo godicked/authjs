@@ -203,7 +203,7 @@ module.exports = function(io){
 		{
 			if(text.indexOf('*') < 0)
 			{
-				Room.find({'name':(new RegExp(text, "i"))},{'name':1,'_id':0},function(err,room)
+				Room.find({'name':(new RegExp(text, "i"))},{'name':1,' password':1, '_id':0},function(err,room)
 				{
 					if(err)
 						console.log(err);
