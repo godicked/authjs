@@ -248,9 +248,9 @@ module.exports = function(io){
 											console.log('visitor removed from DB');
 									});
 								}
-								};
-							}, 5000);
-						}
+							};
+						}, 5000);
+					}
 					catch(err){}
 				}
 			}
