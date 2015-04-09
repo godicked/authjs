@@ -165,7 +165,7 @@ function htmlMakeR(data){
 		else
 		{
 			var index = data.message.indexOf(name);
-			var ante = message.substring(0,index);
+			var ante = data.message.substring(0,index);
 			var center = data.message.substring(index,name.length);
 			var post = data.message.substring(index+name.length);
 			return '<p><span class="pseudo">' + data.from + ' dit: </span><em>' + ante + "<span style='color:red'> "+center+"</span> " +post+'</em></p>';

@@ -135,8 +135,8 @@ module.exports = function(io){
 											console.error('ERROR!');
 										}
 										else{
-											console.log(socket.name+' a rejoin la room: '+data.message);
-											socket.emit('info','vous avez rejoin la room: '+data.message);
+											console.log(socket.name+' a rejoint la room: '+data.message);
+											socket.emit('info','vous avez rejoint la room: '+data.message);
 											socket.join(data.message);
 											socket.emit('my_room',user.local.rooms);
 										}
