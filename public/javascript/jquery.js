@@ -69,12 +69,15 @@
                 	var rooms = $('.room');
                 	if($('.room-active').length != 0){
     	            	var room_active = $('.room-active')[0];
-    	            	var room_active_hide = $('.room-active')[0].innerHTML.replace(/ /g,'_');
+                        var temp = $('.room-active')[0].innerHTML.replace(/ /g,'_');
+    	            	var room_active_hide = temp.replace(/'/g,'_');
     	            }
-                	var div = this.textContent.replace(/ /g,'_');
+                	var temp = this.textContent.replace(/ /g,'_');
+                    var div = temp.replace(/'/g,'_');
                 	for(i= 0;i<rooms.length;i++)
                     {
-                		var hide = rooms[i].innerHTML.replace(/ /g,'_');
+                		var temp = rooms[i].innerHTML.replace(/ /g,'_');
+                        var hide = temp.replace(/'/g,'_');
                 		if(hide != div)
                         {
                 			$("#room_"+hide).hide(0);
@@ -90,4 +93,18 @@
                 	active = div;
                 });
 			}
+            function actualise_liste_recherche()
+            {
+                $('.liste_recherche').click(function()
+                {
+                    var content = this.innerText;
+                    console.log('test')
+                    data = {
+                        command : '/join',
+                        message : content
+                    };
+                    socket.emit('room',data);
+                    $('#container_recherche').hide(0);
+                });
+            }
 
