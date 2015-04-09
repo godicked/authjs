@@ -214,10 +214,10 @@
             	$('#form_ajouter').toggle(250);
 
             });
-            $('#form_ajouter').blur()
+            $('#form_ajouter').blur(function()
             {
             	$(this).hide(250);
-            }
+            });
             $('#form_ajouter').submit(function ()
             {
 				var pass = $('ajouter-room-pass').val();
