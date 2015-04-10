@@ -140,11 +140,11 @@
                 	notifs[data.room] += 1;
                 	var content = ajoute_notif(data.room,notifs);
                 	var tab_rooms = $('.room');
-                	tab_rooms.forEach(function(room)
+                	tab_rooms.each(function(index)
                 	{
-                		if($(room).val() == data.room)
+                		if($(this).text() == data.room)
                 		{
-                			$(room+'.container_notif').empty().append(content);
+                			$(this+'.container_notif').empty().append(content);
                 		}
                 	});
                 }
