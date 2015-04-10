@@ -116,7 +116,7 @@
 			socket.on('get_name',function(name)
 			{
 				pseudo = name;
-				$('#pseudo') = pseudo;
+				$('#pseudo').val(pseudo);
 				//store(htmlPrint('<p class="info">Votre nom est: '+pseudo+'</p>'),localStorage);
 			});
             socket.on('message', function(data) 
