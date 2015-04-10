@@ -110,7 +110,7 @@
                     }
                     else
                     {
-                        $('#div_form_pass').show(0);
+                        $('#div_fond_popup').show(0);
                         $('#entrer_room_pass').focus();
                         entrer_room(content);
                     }
