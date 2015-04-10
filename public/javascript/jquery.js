@@ -111,6 +111,7 @@
                     else
                     {
                         $('#div_fond_popup').show(0);
+                        $('#div_form_pass').show(0);
                         $('#entrer_room_pass').focus();
                         entrer_room(content);
                     }
@@ -128,6 +129,7 @@
                         };
                     socket.emit('room',data);
                     $('#div_form_pass').hide(0);
+                    $('#div_fond_popup').hide(0);
                     return false;
                 });
             }
