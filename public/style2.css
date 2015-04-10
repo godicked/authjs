@@ -1,5 +1,5 @@
 .blue{
-	color:rgb(83,170,255);
+	color:rgb(47, 116, 184);
 }
 body{
 	font-family: 'Raleway', sans-serif;
@@ -56,7 +56,7 @@ iframe {
 	overflow:hidden;
 }
 .user:hover{
-	background-color: rgb(83,170,255);
+	background-color: rgb(47, 116, 184);
 	cursor: pointer;
 }
 .titre-section {
@@ -192,7 +192,7 @@ a{
 .bouton {
 	display: inline-block;
 	float: left;
-	background: rgb(83,170,255);
+	background: rgb(47, 116, 184);
 	padding: 0.4em;
 	font-family: 'Roboto';
 	font-size: 0.9em;
@@ -285,7 +285,7 @@ a{
 }
 .liste_recherche:hover{
 	cursor: pointer;
-	background: rgb(83,170,255);
+	background: rgb(47, 116, 184);
 }
 
 footer{
@@ -346,7 +346,7 @@ footer em{
 	transition: 250ms all ease;
 }
 .room:hover{
-	background: rgb(83,170,255);
+	background: rgb(47, 116, 184);
 	cursor: pointer;
 }
 .room-active{

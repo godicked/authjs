@@ -1,5 +1,4 @@
 
-            // Connexion à socket.io
             var timer;
             var rage = 0; 
             var blur;
@@ -7,7 +6,7 @@
             document.onblur = window.onblur;
             document.focus = window.focus;
             
-            // Ajoute un message dans la page
+
           
             function actualise_titre(content){
             nouveau = true;
