@@ -117,7 +117,7 @@
 			{
 				pseudo = name;
 				$('#pseudo').val(pseudo);
-				//store(htmlPrint('<p class="info">Votre nom est: '+pseudo+'</p>'),localStorage);
+				store(htmlPrint('<p class="info">Vous devenez '+pseudo+'</p>'),localStorage);
 			});
             socket.on('message', function(data) 
             {
