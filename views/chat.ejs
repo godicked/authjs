@@ -144,7 +144,7 @@
                 	{
                 		if($(this).text() == data.room)
                 		{
-                			$(this+'.container_notif').empty().append(content);
+                			$($(this).children()[0]).empty().append(content);
                 		}
                 	});
                 }
