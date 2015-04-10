@@ -24,7 +24,7 @@
 			<div id='div_form_pass' style='display:none'>
 				<form action='/' method='post' id='form_pass' autocomplete='off'>
 					<input style="display:none" type="password" name="fakepasswordremembered"/>
-					<input type ='password' class="static-textbox" placeholder='Entrez mot de passe' size='50' autocomplete='off'id ='entrer_room_pass' style='opacity:1;background:white;'>
+					<input type ='password' class="static-textbox" placeholder='Mot de passe' size='50' autocomplete='off'id ='entrer_room_pass' style='opacity:1;background:white;'>
 					<input type='submit' style='display:none'>
 				</form>
 			</div>
@@ -33,15 +33,17 @@
 				<div id='profil'>
 					<a class='statut' href=''></a>
 					<h1 class='titre-section' style="text-align:left;padding-left:1em;">Profil</h1>
+					<div class='bloc'>
 					<img id='profilpic' src='/public/images/profil_pic.PNG'>
-					<div id='container_profil'>
-						<p>
-							<span class='pseudo' style='float:left;margin-top:0.5em'>Nom: <%=user.local.name%></span>
-						<p>
-						<p>
-							<span class='pseudo' style='float:left'>Pseudo:  </span>
-							<input type="text" id="pseudo" value="<%=user.local.name%>" size="5" autocomplete="off"/>
-						</p>
+						<div id='container_profil'>
+							<p>
+								<span class='pseudo' style='float:left;margin-top:0.5em'>Nom: <%=user.local.name%></span>
+							<p>
+							<p>
+								<span class='pseudo' style='float:left'>Pseudo:  </span>
+								<input type="text" id="pseudo" value="<%=user.local.name%>" size="5" autocomplete="off"/>
+							</p>
+						</div>
 					</div>
 				</div>
 				<div id='gestion_room'>
