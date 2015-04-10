@@ -294,65 +294,67 @@ module.exports = function(io){
 				console.log(err);
 			if(!room)
 				socket.emit('wrong','la room '+ data.message +' n\'existe pas');
-			if(room.blacklist.indexOf(socket.oid) >= 0)
-				socket.emit('wrong','vous etes banni de cette room');
 			else{
-				User.findOne({'_id': socket.oid}, function (err, user)
-				 {
-					 console.log(data);
-					if(room.password)
-					{
-						if(data.password)
+				if(room.blacklist.indexOf(socket.oid) >= 0)
+					socket.emit('wrong','vous etes banni de cette room');
+				else{
+					User.findOne({'_id': socket.oid}, function (err, user)
+					 {
+						 console.log(data);
+						if(room.password)
 						{
-							if(room.validPassword(data.password))
+							if(data.password)
+							{
+								if(room.validPassword(data.password))
+									ok = true;
+							}
+							else if(room.whitelist.indexOf(socket.name) >= 0){
 								ok = true;
-						}
-						else if(room.whitelist.indexOf(socket.name) >= 0){
-							ok = true;
-						}
-						else{
-							ok = false;
-						}
-					}
-					else
-						ok = true;
-					if(ok)
-					{
-						if(user.local.rooms.indexOf(data.message) >= 0)
-						{
-							console.log(socket.name+' a rejoint la room: '+data.message);
-							socket.emit('info','vous avez rejoint la room: '+data.message);
-							socket.join(data.message);
+							}
+							else{
+								ok = false;
+							}
 						}
 						else
+							ok = true;
+						if(ok)
 						{
-							user.local.rooms.push(data.message);
-
-							if(room.password)
+							if(user.local.rooms.indexOf(data.message) >= 0)
 							{
-								room.whitelist.push(socket.name);
-								room.save(function(err){});
+								console.log(socket.name+' a rejoint la room: '+data.message);
+								socket.emit('info','vous avez rejoint la room: '+data.message);
+								socket.join(data.message);
 							}
-							user.save(function (err) 
+							else
 							{
-								if(err) 
-								{
-									console.error('ERROR!');
-								}
-								else
-								{
-									console.log(socket.name+' a rejoint la room: '+data.message);
-									socket.emit('info','vous avez rejoint la room: '+data.message);
-									socket.join(data.message);
-									socket.emit('my_room',user.local.rooms);
-								}
-							});
-						}
-					}
-					else
-						socket.emit('wrong','mauvais mot de passe');
+								user.local.rooms.push(data.message);
 
-				});
+								if(room.password)
+								{
+									room.whitelist.push(socket.name);
+									room.save(function(err){});
+								}
+								user.save(function (err) 
+								{
+									if(err) 
+									{
+										console.error('ERROR!');
+									}
+									else
+									{
+										console.log(socket.name+' a rejoint la room: '+data.message);
+										socket.emit('info','vous avez rejoint la room: '+data.message);
+										socket.join(data.message);
+										socket.emit('my_room',user.local.rooms);
+									}
+								});
+							}
+						}
+						else
+							socket.emit('wrong','mauvais mot de passe');
+
+					});
+				}
 			}
 		});
 	}
