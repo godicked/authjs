@@ -428,6 +428,14 @@ p{
 	margin-top: 0.4em;
 	margin-bottom: 0.4em;
 }
+.petit_statut {
+	float: right;
+	display: block;
+	background: green;
+	border-radius: 50%;
+	width: 0.5em;
+	height: 0.5em;
+}
 ::-webkit-scrollbar {
 	width: .875em;
 	height: .875em;
