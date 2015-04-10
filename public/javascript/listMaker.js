@@ -31,7 +31,7 @@ function make_room(array){
 function make_myroom(array){
 	var res = "";
 	array.forEach(function(room){
-		res+="<span class='room'>"+room+"</span>";
+		res+="<span class='room'>"+room+"<span class='container_notif'></span></span>";
 	});
 	return res;
 }

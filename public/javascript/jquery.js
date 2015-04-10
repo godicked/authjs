@@ -87,6 +87,7 @@
                 	$(this).attr('class','room-active');
                 	$(room_active).attr('class','room');
                 	active = idToString(div);
+                    notifs[active] = 0;
                 });
 			}
             function actualise_liste_recherche(tab)
@@ -129,4 +130,8 @@
                     return false;
                 });
             }
-
+            function ajoute_notif(room, tab)
+            {
+                var res = "<span class='notif'>"+tab[room]+"</span>";
+                return res;
+            }

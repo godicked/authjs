@@ -106,6 +106,7 @@
 		<script>
 			var roomList = [];
 			var active = 'Accueil';
+			var notifs = {};
 			initStore(localStorage);
 // Initialisation de session ===================================================
 			var pseudo = '<%=user.local.name%>';
@@ -121,15 +122,31 @@
 				$('#pseudo').val(pseudo);
 				htmlPrint('<p class="info">Vous devenez '+pseudo+'</p>','Accueil');
 			});
-            socket.on('message', function(data) 
+            socket.on('message', function(data)
             {
                 store(htmlPrint(htmlMakeR(data),data.room),localStorage);
                 if(blur==true && nouveau==false)
                 {
                 	actualise_titre('message');
                 }
-                if(blur==true){
+                if(blur==true)
+                {
                 	playSound('notif');
+                }
+                if(data.room != active)
+                {
+                	if(!notifs[data.room])
+                		notfis[data.room]=0;
+                	notifs[data.room] += 1;
+                	var content = ajoute_notif(data.room,notifs);
+                	var tab_rooms = $('.room');
+                	tab_rooms.forEach(function(room)
+                	{
+                		if($(room).val() == data.room)
+                		{
+                			$(room+'.container_notif').empty().append(content);
+                		}
+                	});
                 }
             })
 			socket.on('command',function(data)

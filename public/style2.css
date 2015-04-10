@@ -439,14 +439,15 @@ p{
 .notif{
 	float: right;
 	display: block;
-	background:color:rgb(47, 116, 184);;
+	background: rgb(47, 116, 184);
+	font-size: 0.6em;
+	width: 1.3em;
+	height: 1.3em;
+	text-align: center;
 	border-radius: 50%;
-	width: 0.5em;
-	height: 0.5em;
-	margin-right: 0.5em;
-	padding:0.5em;
+	padding: 0.4em;
 }
-::-webkit-scrollbar {
+webkit-scrollbar {
 	width: .875em;
 	height: .875em;
 	background: rgb(38, 38, 38);
