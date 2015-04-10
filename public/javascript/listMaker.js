@@ -1,7 +1,7 @@
 function make_list(array){
 		var res ="<div id='container-users'>";
 		array.forEach(function(user){
-			res+="<span class='user'>"+user+"<span class='petit_statut'> </span>";
+			res+="<span class='user'>"+user+"<span class='petit_statut'> </span></span>";
 		});
 		res += '</div>';
 		return res;
