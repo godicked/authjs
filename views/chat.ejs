@@ -119,7 +119,7 @@
 			{
 				pseudo = name;
 				$('#pseudo').val(pseudo);
-				store(htmlPrint('<p class="info">Vous devenez '+pseudo+'</p>'),localStorage);
+				htmlPrint('<p class="info">Vous devenez '+pseudo+'</p>','Accueil');
 			});
             socket.on('message', function(data) 
             {
@@ -167,12 +167,12 @@
 			});
 			socket.on('wrong',function(message)
 			{
-				$('#room_Accueil').prepend('<p style="color: red;">'+message+'</p>');
+				$('#room_'+stringToId('Accueil')).prepend('<p style="color: red;">'+message+'</p>');
 				store('<p style="color: red;">'+message+'</p>',localStorage);
 			});
 			socket.on('info',function(message)
 			{
-				$('#room_Accueil').prepend('<p style="color: green;">'+message+'</p>');
+				$('#room_'+stringToId("Accueil")).prepend('<p style="color: green;">'+message+'</p>');
 				store('<p style="color: green;">'+message+'</p>',localStorage);
 			});
 			socket.on('room_list',function(data)
