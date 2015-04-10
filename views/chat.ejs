@@ -20,20 +20,35 @@
 	<body>
 		
 		<div id="page_block">
+		<div id = 'div_fond_popup display:none'>
+			<div id='div_form_pass' style='display:none'>
+				<form action='/' method='post' id='form_pass' autocomplete='off'>
+					<input style="display:none" type="password" name="fakepasswordremembered"/>
+					<input type ='password' class="static-textbox" placeholder='Password (optionnel)' size='50' autocomplete='off'id ='entrer_room_pass'>
+				</form>
+			</div>
+		</div>
 			<nav id='menu_gauche' class='menu_gauche'>
 				<div id='profil'>
 					<a class='statut' href=''></a>
 					<h1 class='titre-section' style="text-align:left;padding-left:1em;">Profil</h1>
 					<img id='profilpic' src='/public/images/profil_pic.PNG'>
 					<div id='container_profil'>
-						<p><span class='pseudo' style='float:left'>Pseudo:  </span>
+						<p>
+							<span class='pseudo' style='float:left;margin-top:0.5em'>Nom: <%=user.local.name%></span>
+						<p>
+						<p>
+							<span class='pseudo' style='float:left'>Pseudo:  </span>
+						</p>
 						<input type="text" id="pseudo" value="<%=user.local.name%>" size="5" autocomplete="off"/>
-						<p><span class='pseudo' style='float:left;margin-top:0.5em'>Premium: Oui</span><p>
+
 					</div>
 				</div>
 				<div id='gestion_room'>
 					<h1 id ='Titre_Room' class='titre-section' style="text-align: left;padding-left: 1em;width: 65%;display: inline-block;float: left;">Rooms</h1>
-					<div id='ajouter'><img id = image_ajouter src='/public/images/bouton_ajouter.png' style='width:1em;'></img></div>
+					<div id='ajouter'>
+						<img id = image_ajouter src='/public/images/bouton_ajouter.png' style='width:1em;'></img>
+					</div>
 					<div id='div_form_ajouter' style='display:none'>
 						<form action='/' method='post' id='form_ajouter' autocomplete='off'>
 							<input style="display:none" type="text" name="fakeusernameremembered"/>
@@ -44,20 +59,12 @@
 						</form>
 					</div>
 					<div id='bloc_recherche'>
-					<input class="static-textbox" type="text" name="recherche" id="rechercher_room" placeholder="Chercher une room" size="50" autocomplete="off"/>
-					<div id='container_recherche'></div>
+						<input class="static-textbox" type="text" name="recherche" id="rechercher_room" placeholder="Chercher une room" size="50" autocomplete="off"/>
+						<div id='container_recherche'></div>
 					</div>
 					<aside id='rooms'>
 						<div id='container-rooms'>
 						</div>
-						<div id = 'div_fond_popup display:none'>
-							<div id='div_form_pass' style='display:none'>
-								<form action='/' method='post' id='form_pass' autocomplete='off'>
-									<input style="display:none" type="password" name="fakepasswordremembered"/>
-									<input type ='password' class="static-textbox" placeholder='Password (optionnel)' size='50' autocomplete='off'id ='entrer_room_pass'>
-								</form>
-						</div>
-					</div>
 					</aside>
 				</div>
 
