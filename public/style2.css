@@ -77,12 +77,6 @@ iframe {
 	border-top: solid;
 	border-top-width: 0.1em;
 	border-top-color: rgb(31, 31, 31);
-	-webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
 }
 .titre-section:hover{
 	background: rgb(42, 42, 42);
@@ -267,7 +261,7 @@ a{
 	position: fixed;
 	top: 13.6em;
 	list-style: none;
-	height: 40em;
+	height: 20em;
 	overflow:auto;
 }
 #form_ajouter{
@@ -279,13 +273,13 @@ a{
 	top: 10.5em;
 }
 .liste_recherche{
-	background: #333;
+	background: rgb(32,32,32);
 	border-bottom:solid;
 	border-bottom-width:0.1em;
-	border-bottom-color:rgb(32,32,32);
+	border-bottom-color:rgb(38,38,38);
 	border-top:solid;
 	border-top-width:0.1em;
-	border-top-color:rgb(32,32,32);
+	border-top-color:rgb(38,38,38);
 	transition: 250ms all ease;
 	padding: 1em;
 }
@@ -406,6 +400,28 @@ footer em{
 	display: inline-block;
 	width: 4em;
 }
+#div_form_pass{
+	z-index:9002;
+	position: fixed;
+	top:40%;
+	left:40%;
+	width:20%;
+	background: transparent;
+	-moz-box-shadow: 10px 10px 200px 30px #000000;
+	-webkit-box-shadow: 10px 10px 200px 30px #000000;
+	-o-box-shadow: 10px 10px 200px 30px #000000;
+	box-shadow: 10px 10px 200px 30px #000000;
+	filter:progid:DXImageTransform.Microsoft.Shadow(color=#000000, Direction=134, Strength=200);
+}
+#div_fond_popup{
+	z-index:9001;
+	position: fixed;
+	left:0;
+	top:0;
+	width: 100%;
+	height:100%;
+	background: rgb(32,32,32);
+	opacity:0.7;
 }
 p{
 	font-size: 1em;
@@ -446,8 +462,8 @@ p{
 	-webkit-border-bottom-right-radius: .3125em .5625em;
 	-webkit-border-bottom-left-radius: .3125em .5625em;
 }
-::-webkit-user-select: none;
-::-khtml-user-select: none;
-::-moz-user-select: none;
-::-o-user-select: none;
+-webkit-user-select: none;
+-khtml-user-select: none;
+-moz-user-select: none;
+-o-user-select: none;
 user-select: none; // Default

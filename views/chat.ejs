@@ -20,20 +20,37 @@
 	<body>
 		
 		<div id="page_block">
+		<div id = 'div_fond_popup' style =  'display:none'></div>
+			<div id='div_form_pass' style='display:none'>
+				<form action='/' method='post' id='form_pass' autocomplete='off' style='width:130%'>
+					<input style="display:none" type="password" name="fakepasswordremembered"/>
+					<input type ='password' class="static-textbox" placeholder='Mot de passe' size='50' autocomplete='off'id ='entrer_room_pass' style='opacity:1;background:white;'>
+					<input type='submit' style='display:none'>
+				</form>
+			</div>
+
 			<nav id='menu_gauche' class='menu_gauche'>
 				<div id='profil'>
 					<a class='statut' href=''></a>
 					<h1 class='titre-section' style="text-align:left;padding-left:1em;">Profil</h1>
+					<div class='bloc'>
 					<img id='profilpic' src='/public/images/profil_pic.PNG'>
-					<div id='container_profil'>
-						<p><span class='pseudo' style='float:left'>Pseudo:  </span>
-						<input type="text" id="pseudo" value="<%=user.local.name%>" size="5" autocomplete="off"/>
-						<p><span class='pseudo' style='float:left;margin-top:0.5em'>Premium: Oui</span><p>
+						<div id='container_profil'>
+							<p>
+								<span class='pseudo' style='float:left;margin-top:0.5em'>Nom: <%=user.local.name%></span>
+							<p>
+							<p>
+								<span class='pseudo' style='float:left'>Pseudo:  </span>
+								<input type="text" id="pseudo" value="<%=user.local.name%>" size="5" autocomplete="off"/>
+							</p>
+						</div>
 					</div>
 				</div>
 				<div id='gestion_room'>
 					<h1 id ='Titre_Room' class='titre-section' style="text-align: left;padding-left: 1em;width: 65%;display: inline-block;float: left;">Rooms</h1>
-					<div id='ajouter'><img id = image_ajouter src='/public/images/bouton_ajouter.png' style='width:1em;'></img></div>
+					<div id='ajouter'>
+						<img id = image_ajouter src='/public/images/bouton_ajouter.png' style='width:1em;'></img>
+					</div>
 					<div id='div_form_ajouter' style='display:none'>
 						<form action='/' method='post' id='form_ajouter' autocomplete='off'>
 							<input style="display:none" type="text" name="fakeusernameremembered"/>
@@ -44,24 +61,17 @@
 						</form>
 					</div>
 					<div id='bloc_recherche'>
-					<input class="static-textbox" type="text" name="recherche" id="rechercher_room" placeholder="Chercher une room" size="50" autocomplete="off"/>
-					<div id='container_recherche'></div>
+						<input class="static-textbox" type="text" name="recherche" id="rechercher_room" placeholder="Chercher une room" size="50" autocomplete="off"/>
+						<div id='container_recherche'></div>
 					</div>
 					<aside id='rooms'>
 						<div id='container-rooms'>
 						</div>
-						<div id='div_form_pass' style='display:none'>
-						<form action='/' method='post' id='form_pass' autocomplete='off'>
-							<input style="display:none" type="password" name="fakepasswordremembered"/>
-							<input type ='password' class="static-textbox" placeholder='Password (optionnel)' size='50' autocomplete='off'id ='entrer_room_pass'>
-						</form>
-					</div>
 					</aside>
 				</div>
 
 			</nav>
 			<section id="hermess_chat">
-
 				<form action="/" method="post" id="formulaire_chat" style='margin-bottom:2em'>
 					<input class="textbox" type="text" name="message" id="message" placeholder="Votre message..." size="50" autofocus autocomplete="off" />
 					<span id="flr">#FLR</span>
@@ -70,7 +80,7 @@
 			</section>
 			<nav id='menu_droite' class='menu_droite'>
 				<header>
-				<a href='#'><h1>HERMÈS<span class='blue'>S</span>AGE <img src="/public/images/hermessage.png" id="photo" /></h1></a>
+				<a href='#'><h1>HERMÈS<span class='blue'>S</span>AGE <img src="/public/images/hermessage02.png" id="photo" /></h1></a>
 				<em class="header">Harder, better, faster, stronger IRC</em>
 				<br>
 				</header>
@@ -108,7 +118,8 @@
 			socket.on('get_name',function(name)
 			{
 				pseudo = name;
-				//store(htmlPrint('<p class="info">Votre nom est: '+pseudo+'</p>'),localStorage);
+				$('#pseudo').val(pseudo);
+				store(htmlPrint('<p class="info">Vous devenez '+pseudo+'</p>'),localStorage);
 			});
             socket.on('message', function(data) 
             {
@@ -237,10 +248,15 @@
             {
             	var j = 1;
            		var a = $($(this).parent()).children();
-           		if($(this).text() == 'Rooms')
+           		switch($(this).text())
            		{
-           			j = 3;
-           			$(a[2]).hide(250);
+           			case 'Rooms':
+	           			j = 3;
+	           			$(a[2]).hide(250);
+	           			break;
+	           		case 'Profil':
+	           			j = 2;
+	           			break;
            		}
 	            for(i = j;i<a.length;i++)
 	            {
@@ -289,6 +305,7 @@
 
             $('#entrer_room_pass').focusout(function()
             {
+            	$('#div_fond_popup').hide(0);
             	$('#div_form_pass').hide(0);
             });
 		</script>
