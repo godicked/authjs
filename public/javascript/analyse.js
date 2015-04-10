@@ -113,8 +113,7 @@ function send(data,socket){
 
 function htmlPrint(message,room){
 	if(message)
-	var temp = room.replace(/ /g,"_")
-		$('#room_'+temp.replace(/'/g,"_")).prepend(message);
+		$('#room_'+stringToId(room)).prepend(message);
 	return message;
 }
 
@@ -156,7 +155,7 @@ function htmlMakeS(data,pseudo){
 	else if(data.type == 'wrong')
 		res = '<span style="color: red;">'+data.message+'</span></p>';
 	else
-		res = '';
+		return ' ';
 	return '<p><span class="time">['+time()+']</span> '+res;
 	
 }

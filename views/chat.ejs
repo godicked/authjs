@@ -170,10 +170,12 @@
 				if(val == data.text)
 				{
 					var content = make_room(data.list);
+					
 					if(!($('#container_recherche').is(':visible')))
 					{
 						$('#container_recherche').show(0);
 					}
+					
 					$('#container_recherche').empty().append(content.res);
 					actualise_liste_recherche(content.tab);
 				}
@@ -197,10 +199,9 @@
 			});
 			socket.on('ask_history',function(data)
 			{
-				data.room = data.room.replace(/ /g,"_");
 				data.storage.forEach(function(line)
 				{
-					$('#room_'+data.room).append(htmlMakeR(line));
+					$('#room_'+stringToId(data.room)).append(htmlMakeR(line));
 				});
 			});
 

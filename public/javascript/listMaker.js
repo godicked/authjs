@@ -56,14 +56,21 @@ function newInList(old,actual){
 
 function addRooms(array){
 	array.forEach(function(data){
-		var temp = data.replace(/'/g,'_');
-		$('#hermess_chat').append('<article id="room_'+temp.replace(/ /g,"_")+'" class="zone_chat"></article>');
+		$('#hermess_chat').append('<article id="room_'+ stringToId(data)+'" class="zone_chat"></article>');
 		socket.emit('ask_history',data);
 	});
 }
 
 function remRooms(array){
 	array.forEach(function(data){
-		$('#room_'+data).remove();
+		$('#room_'+stringToId(data)).remove();
 	});
+}
+
+function stringToId(text){
+	return text.split('').map(function(c){return c.charCodeAt(0)}).join('_');
+}
+	
+function idToString(text){
+	return text.split('_').map(function(c){return String.fromCharCode(c);}).join('');
 }

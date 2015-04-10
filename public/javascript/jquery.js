@@ -69,15 +69,12 @@
                 	var rooms = $('.room');
                 	if($('.room-active').length != 0){
     	            	var room_active = $('.room-active')[0];
-                        var temp = $('.room-active')[0].innerHTML.replace(/ /g,'_');
-    	            	var room_active_hide = temp.replace(/'/g,'_');
+    	            	var room_active_hide = stringToId($('.room-active')[0].innerHTML);
     	            }
-                	var temp = this.textContent.replace(/ /g,'_');
-                    var div = temp.replace(/'/g,'_');
+                    var div = stringToId(this.textContent);
                 	for(i= 0;i<rooms.length;i++)
                     {
-                		var temp = rooms[i].innerHTML.replace(/ /g,'_');
-                        var hide = temp.replace(/'/g,'_');
+                        var hide = stringToId(rooms[i].innerHTML);
                 		if(hide != div)
                         {
                 			$("#room_"+hide).hide(0);
@@ -90,7 +87,7 @@
     	            }
                 	$(this).attr('class','room-active');
                 	$(room_active).attr('class','room');
-                	active = div;
+                	active = idToString(div);
                 });
 			}
             function actualise_liste_recherche(tab)

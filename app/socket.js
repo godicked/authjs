@@ -158,7 +158,7 @@ module.exports = function(io){
 					}
 				});
 			}
-			if(data.command == '/create')
+			if(data.command == '/create' && data.message)
 			{
 				Room.findOne({'name':data.message},function(err,room)
 				{
@@ -205,27 +205,23 @@ module.exports = function(io){
 		});
 		socket.on('room_list',function(text)
 		{
-			if(text.indexOf('*') < 0)
+			Room.find({'name':(new RegExp(cleanString(text), "i"))},{'name':1, 'password':1, '_id':0},function(err,room)
 			{
-				Room.find({'name':(new RegExp(text, "i"))},{'name':1, 'password':1, '_id':0},function(err,room)
+				if(err)
+					console.log(err);
+				else
 				{
-					if(err)
-						console.log(err);
-					else
-					{
-						console.log(room);
-						var data = {};
-						data.list = room;
-						data.text = text;
-						socket.emit('room_list',data);
-					}
-				});
-			}
+					console.log(room);
+					var data = {};
+					data.list = room;
+					data.text = text;
+					socket.emit('room_list',data);
+				}
+			});
+			
 		});
 		socket.on('ask_history',function(room_name)
 		{
-			var d = new Date();
-			var start = d.getTime();
 			var res=[];
 			Room.findOne({'name':room_name},function(err,room)
 			{
@@ -235,11 +231,8 @@ module.exports = function(io){
 					{
 						res.push(room.storage[i]);
 					}
+					socket.emit('ask_history',{'storage':res,'room':room.name});
 				}
-				socket.emit('ask_history',{'storage':res,'room':room.name});
-				console.log(d.getTime());
-				d = new Date();
-				console.log(d.getTime()-start);
 			});
 		});
 
@@ -375,6 +368,16 @@ module.exports = function(io){
 			});
 		});
 	});
+	
+	function cleanString(text){
+		return text.split('').map(function(c){
+			if("*?|".indexOf(c) >= 0)
+				return '\\'+c;
+			else
+				return c;
+		}).join('');
+	}
+	
 	
 	function time()
 	{
