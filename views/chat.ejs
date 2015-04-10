@@ -21,11 +21,13 @@
 		
 		<div id="page_block">
 		<div id = 'div_fond_popup' style =  'display:none'>
+			<div id='div_form_pass' style='display:none'>
 				<form action='/' method='post' id='form_pass' autocomplete='off'>
 					<input style="display:none" type="password" name="fakepasswordremembered"/>
-					<input type ='password' class="static-textbox" placeholder='Entrez mot de passe' size='50' autocomplete='off'id ='entrer_room_pass' style='opacity:1;background:white'>
-					<input type='submit' display='none'>
+					<input type ='password' class="static-textbox" placeholder='Entrez mot de passe' size='50' autocomplete='off'id ='entrer_room_pass' style='opacity:1;background:white;'>
+					<input type='submit' style='display:none'>
 				</form>
+			</div>
 		</div>
 			<nav id='menu_gauche' class='menu_gauche'>
 				<div id='profil'>
@@ -114,6 +116,7 @@
 			socket.on('get_name',function(name)
 			{
 				pseudo = name;
+				$('#pseudo') = pseudo;
 				//store(htmlPrint('<p class="info">Votre nom est: '+pseudo+'</p>'),localStorage);
 			});
             socket.on('message', function(data) 
