@@ -406,7 +406,7 @@ footer em{
 	width:15%;
 	top:40%;
 	left:40%;
-	background:rgb(38,38,38);
+	/*background:rgb(38,38,38);*/
 	-moz-box-shadow: 10px 10px 100px 0px #000000;
 	-webkit-box-shadow: 10px 10px 100px 0px #000000;
 	-o-box-shadow: 10px 10px 100px 0px #000000;
