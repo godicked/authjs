@@ -407,11 +407,11 @@ footer em{
 	left:40%;
 	width:20%;
 	background: transparent;
-	-moz-box-shadow: 10px 10px 100px 0px #000000;
-	-webkit-box-shadow: 10px 10px 100px 0px #000000;
-	-o-box-shadow: 10px 10px 100px 0px #000000;
-	box-shadow: 10px 10px 100px 0px #000000;
-	filter:progid:DXImageTransform.Microsoft.Shadow(color=#000000, Direction=134, Strength=100);
+	-moz-box-shadow: 10px 10px 200px 30px #000000;
+	-webkit-box-shadow: 10px 10px 200px 30px #000000;
+	-o-box-shadow: 10px 10px 200px 30px #000000;
+	box-shadow: 10px 10px 200px 30px #000000;
+	filter:progid:DXImageTransform.Microsoft.Shadow(color=#000000, Direction=134, Strength=200);
 }
 #div_fond_popup{
 	z-index:9001;
