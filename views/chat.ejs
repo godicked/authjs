@@ -20,7 +20,7 @@
 	<body>
 		
 		<div id="page_block">
-		<div id = 'div_fond_popup style='display:none'>
+		<div id = 'div_fond_popup' style =  'display:none'>
 			<div id='div_form_pass' style='display:none'>
 				<form action='/' method='post' id='form_pass' autocomplete='off'>
 					<input style="display:none" type="password" name="fakepasswordremembered"/>
@@ -243,10 +243,15 @@
             {
             	var j = 1;
            		var a = $($(this).parent()).children();
-           		if($(this).text() == 'Rooms')
+           		switch($(this).text())
            		{
-           			j = 3;
-           			$(a[2]).hide(250);
+           			case 'Rooms':
+	           			j = 3;
+	           			$(a[2]).hide(250);
+	           			break;
+	           		case 'Profil':
+	           			j = 2;
+	           			break;
            		}
 	            for(i = j;i<a.length;i++)
 	            {
