@@ -261,7 +261,6 @@ a{
 	position: fixed;
 	top: 13.6em;
 	list-style: none;
-	height: 20em;
 	overflow:auto;
 }
 #form_ajouter{
@@ -273,7 +272,7 @@ a{
 	top: 10.5em;
 }
 .liste_recherche{
-	background: rgb(32,32,32);
+	background: rgb(51,51,51);
 	border-bottom:solid;
 	border-bottom-width:0.1em;
 	border-bottom-color:rgb(38,38,38);
@@ -435,6 +434,17 @@ p{
 	border-radius: 50%;
 	width: 0.5em;
 	height: 0.5em;
+	margin-right: 0.5em;
+}
+.notif{
+	float: right;
+	display: block;
+	background:color:rgb(47, 116, 184);;
+	border-radius: 50%;
+	width: 0.5em;
+	height: 0.5em;
+	margin-right: 0.5em;
+	padding:0.5em;
 }
 ::-webkit-scrollbar {
 	width: .875em;
