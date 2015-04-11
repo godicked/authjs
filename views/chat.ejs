@@ -224,6 +224,19 @@
 					remRooms(toRem);
 				roomList = data;
 				actualise_liste_room();
+				if($('.room-active').length==0)
+				{
+					$('.room').each(function(index)
+					{
+						if($(this).text() == active)
+						{
+							$(this).click();
+							return false;
+						}
+
+					});
+				}
+
 			});
 			socket.on('ask_history',function(data)
 			{
