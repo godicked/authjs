@@ -367,6 +367,7 @@ footer em{
 	box-shadow: inset 0px 5px 5px 0px #1A1A1A;
 	filter:progid:DXImageTransform.Microsoft.Shadow(color=#1A1A1A, Direction=180, Strength=5);
 	background:rgb(42,42,42);
+	position: relative;
 }
 #container-rooms{
 	height:20em;
