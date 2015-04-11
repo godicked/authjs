@@ -54,6 +54,7 @@ iframe {
 	transition: 250ms ease-out;
 	font-family: 'Roboto';
 	overflow:hidden;
+	position: relative;
 }
 .user:hover{
 	background-color: rgb(47, 116, 184);
@@ -89,6 +90,7 @@ iframe {
 }
 #profil{
 	display: block;
+	position:relative;
 	/*margin: 10px;*/
 	/*margin-top: 20px;*/
 	/*margin-left: 1em;*/
@@ -440,6 +442,9 @@ p{
 	width: 0.5em;
 	height: 0.5em;
 	margin-right: 0.5em;
+	position: absolute;
+	top:0.5em;
+	right:0em;
 }
 .notif{
 	float: right;
@@ -455,6 +460,10 @@ p{
 .time{
 	font-size: 0.8em;
 	color:rgb(156, 156, 161);;
+}
+.bloc{
+	position: absolute;
+	top:4.9em;
 }
 ::-webkit-scrollbar {
 	width: .875em;

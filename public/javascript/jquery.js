@@ -22,7 +22,7 @@ function actualise_liste(){
 		var pseudo = this.textContent;
 		var val = $('#message').val();
 		if(val == ''){
-			$('#message').val('/w "' + pseudo+'"').focus();
+			$('#message').val('/w "' + pseudo+'" ').focus();
 		}else {
 			$('#message').val(val + ' '+pseudo).focus();
 		}
