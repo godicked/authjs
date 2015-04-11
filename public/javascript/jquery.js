@@ -8,8 +8,6 @@ document.onblur = window.onblur;
 document.focus = window.focus;
 
 
-
-<<<<<<< HEAD
 function actualise_titre(content){
 nouveau = true;
 	timer = setInterval(function(){
