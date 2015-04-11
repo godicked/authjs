@@ -4,6 +4,7 @@ var ent = require('ent');
 var encode = require('ent/encode');
 var sessions = {};
 var active = {};
+
 module.exports = function(io){
 // Namespace /chat ======================================================================
 	io.of('/chat').on('connection',function(socket)
@@ -367,6 +368,38 @@ module.exports = function(io){
 					socket.emit('name_free',data = {'free':false,'name':name});
 			});
 		});
+	});
+	
+	io.of('/room').on('connection', function(socket){
+		
+		socket.on('give_id',function(id)
+		{
+			User.findById(id,function(err,user)
+			{
+				if(err)
+					console.log(err);
+				if(!user)
+				{
+					console.log('socket.io : id not found in db');
+					socket.disconnect();
+				}
+				else
+				{
+					socket.oid = id;
+					socket.name = user.local.name;
+					socket.emit('give_id',true);
+					Room.find({'owner':id},{'name':1,'whitelist':1,'blacklist':1,'moderator':1,'volume':1},function(err,room){
+						if(!err && room){
+							console.log(room);
+							socket.emit('get_list',room);
+						}
+					});
+				}
+			});
+		});
+		
+		
+			
 	});
 	
 	function cleanString(text){

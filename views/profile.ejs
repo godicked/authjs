@@ -1,0 +1,70 @@
+<!doctype html>
+<html>
+	<head>
+		<link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type="text/css">
+		<link href='http://fonts.googleapis.com/css?family=Roboto:100,300' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" href="/public/style2.css" type="text/css">
+		<link rel="icon" href="/public/images/favicon.ico" />
+		<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+		<script src="/public/javascript/analyse.js"></script>
+		<script src="/public/javascript/jquery.js"></script>
+		<script src="/public/javascript/url.js"></script>
+		<script src="/public/javascript/store.js"></script>
+		<script src="/public/javascript/listMaker.js"></script>
+		<script src="/public/javascript/svg_library.js"></script>
+	</head>
+	
+	<body>
+	<div class="menu_gauche">
+		<h2>Mes rooms</h2>
+		<ul id="own_room_list">
+		</ul>
+	</div>
+	<section id="hermess_chat">
+		<div id="wait">
+		<p><strong>Acces aux données en cours..</strong></p>
+		</div>
+		<header>
+		<a href='#'><h1>HERMÈS<span class='blue'>S</span>AGE <img src="/public/images/hermessage02.png" id="photo" /></h1></a>
+				<em class="header">Harder, better, faster, stronger IRC</em>
+				<br>
+		</header>
+		
+		<article id="information">
+			<h3>Nom</h3>
+			<p id="name"></p>
+			<h3>Volume</h3>
+			<p id="volume"></p>
+			<h3>Moderateurs</h3>
+			<ul id ="moderator"></ul>
+			<h3>Whitelist</h3>
+			<ul id="whitelist"></ul>
+			<h3>Blacklist</h3>
+			<ul id="blacklist"></ul>
+		</article>
+		
+	</section>
+		
+		<script src="/socket.io/socket.io.js"></script>
+		<script>
+			var room_information;
+			var socket = io.connect(getURL() + '/room');
+			socket.emit('give_id','<%= user._id %>');
+			socket.on('give_id',function(connected){
+				if(connected){
+					$('#wait').hide();
+				}
+			});
+			socket.on('get_list',function(data){
+				$('#own_room_list').empty();
+				make_myroom_list(data);
+				room_information = data;
+				actualise_own_list(printInfo);
+			});
+				
+		</script>
+		
+	
+	</body>
+</html>

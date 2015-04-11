@@ -7,6 +7,7 @@ function make_list(array){
 		return res;
 	}
 
+	
 function make_room(array){
 	var res = "<ul style='list-style-type:none'>";
 	var tab = [];
