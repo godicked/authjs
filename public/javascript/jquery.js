@@ -89,6 +89,7 @@
                 	$(room_active).attr('class','room');
                 	active = idToString(div);
                     notifs[active] = 0;
+                    $($(this).children()[0]).empty();
                 });
 			}
             function actualise_liste_recherche(tab)
