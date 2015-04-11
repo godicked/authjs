@@ -54,6 +54,7 @@ iframe {
 	transition: 250ms ease-out;
 	font-family: 'Roboto';
 	overflow:hidden;
+	position: relative;
 }
 .user:hover{
 	background-color: rgb(47, 116, 184);
@@ -440,6 +441,9 @@ p{
 	width: 0.5em;
 	height: 0.5em;
 	margin-right: 0.5em;
+	position: absolute;
+	top:0.5em;
+	right:0em;
 }
 .notif{
 	float: right;

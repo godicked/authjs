@@ -54,6 +54,7 @@ iframe {
 	transition: 250ms ease-out;
 	font-family: 'Roboto';
 	overflow:hidden;
+	position: relative;
 }
 .user:hover{
 	background-color: rgb(83,170,255);
