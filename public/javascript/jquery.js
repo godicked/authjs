@@ -9,6 +9,7 @@ document.focus = window.focus;
 
 
 
+<<<<<<< HEAD
 function actualise_titre(content){
 nouveau = true;
 	timer = setInterval(function(){
@@ -17,6 +18,17 @@ nouveau = true;
 			  $('title').html('Hermessage');
 		  },1000);
 		},2000);
+}
+function actualise_liste(){
+	$('.user').click(function(){
+		var pseudo = this.textContent;
+		var val = $('#message').val();
+		if(val == ''){
+			$('#message').val('/w "' + pseudo+'"').focus();
+		}else {
+			$('#message').val(val + ' '+pseudo).focus();
+		}
+	});
 }
 
 window.onblur = function (){
@@ -30,18 +42,6 @@ window.onfocus = function (){
 	blur = false;
 	console.log("blur:"+ blur);
 	console.log("nouveau" + nouveau);
-}
-
-function actualise_liste(){
-	$('.user').click(function(){
-		var pseudo = this.textContent;
-		var val = $('#message').val();
-		if(val == ''){
-			$('#message').val('/w "' + pseudo+'" ').focus();
-		}else {
-			$('#message').val(val + ' '+pseudo).focus();
-		}
-	});
 }
 
 function insere_flr(){
