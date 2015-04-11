@@ -453,7 +453,8 @@ p{
 	padding: 0.4em;
 }
 .time{
-	font-size: 
+	font-size: 0.8em;
+	color:rgb(156, 156, 161);;
 }
 ::-webkit-scrollbar {
 	width: .875em;
