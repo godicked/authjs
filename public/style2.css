@@ -453,7 +453,7 @@ p{
 .time{
 	font-size: 
 }
-webkit-scrollbar {
+::-webkit-scrollbar {
 	width: .875em;
 	height: .875em;
 	background: rgb(38, 38, 38);
