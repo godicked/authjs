@@ -474,6 +474,7 @@ p{
 .bloc{
 	position: absolute;
 	top:4.9em;
+	width: 100%;
 }
 #descriptif{
 	padding:1em;
