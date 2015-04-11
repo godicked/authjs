@@ -89,6 +89,13 @@ function actualise_liste_room()
 		notifs[active] = 0;
 		$($(this).children()[0]).empty();
 	});
+    $('.close').click(function()
+        {
+            var data = {};
+            data.message = nomsRooms[$($(this).parent).attr('id')];
+            data.command = '/leave';
+            socket.emit('room',data);
+        });
 }
 
 function actualise_own_list(func){

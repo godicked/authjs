@@ -469,9 +469,16 @@ p{
 #descriptif{
 	padding:1em;
 }
+.close {
+	width: 0.5em;
+	position: absolute;
+	top: 0.5em;
+	right: 0.5em;
+	padding: 0.3em;
+	border-radius: 50%;
+}
 .close{
-	width:1em;
-	position:absolute;
+	background: rgb(51,51,51);
 }
 ::-webkit-scrollbar {
 	width: .875em;
