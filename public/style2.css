@@ -8,7 +8,7 @@ body{
 	color: white;
 
 }
-body::-webkit-scrollbar { 
+::-webkit-scrollbar { 
     display: none; 
 }
 iframe {
