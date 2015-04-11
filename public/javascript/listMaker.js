@@ -33,7 +33,8 @@ function make_myroom(array){
 	var i = 0;
 	array.forEach(function(room){
 		res+="<span class='room' id='room"+i+"'>"+room+"<span class='container_notif'></span></span>";
-		nomsRooms["'room"+i"'"] = room;
+		var str = 'room' + i;
+		nomsRooms[str] = room;
 		i ++;
 	});
 	return res;

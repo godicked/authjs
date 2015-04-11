@@ -69,7 +69,7 @@
                 	var rooms = $('.room');
                 	if($('.room-active').length != 0){
     	            	var room_active = $('.room-active')[0];
-    	            	var room_active_hide = stringToId(nomsRooms[$(room_active).attr('id')];
+    	            	var room_active_hide = stringToId(nomsRooms[$(room_active).attr('id')]);
     	            }
                     var div = stringToId(nomsRooms[$(this).attr('id')]);
                 	for(i= 0;i<rooms.length;i++)
