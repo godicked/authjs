@@ -465,6 +465,9 @@ p{
 	position: absolute;
 	top:4.9em;
 }
+#descriptif{
+	padding:1em;
+}
 ::-webkit-scrollbar {
 	width: .875em;
 	height: .875em;
