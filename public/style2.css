@@ -149,6 +149,7 @@ iframe {
 	position: fixed;
 	bottom: 1.5em;
 }
+
 header{
 	text-align: center;
 	padding-bottom: 3em;
@@ -206,7 +207,9 @@ a{
 .bouton:hover{
 	background:rgb(182, 172, 172);
 }
-
+.bouton .relative{
+	position:absolute;
+}
 #flr:hover{
     cursor:pointer;
 }
