@@ -110,15 +110,15 @@ function printInfo(index){
 	$('#volume').empty().append(room_information[index].volume);
 	$('#moderator').empty();
 	room_information[index].moderator.forEach(function(p){
-		$('#moderator').append('<li>'p'</li>');
+		$('#moderator').append('<li>'+p+'</li>');
 	});
 	$('#whitelist').empty();
 	room_information[index].whitelist.forEach(function(p){
-		$('#whitelist').append('<li>'p'</li>');
+		$('#whitelist').append('<li>'+p+'</li>');
 	});
 	$('#blacklist').empty();
 	room_information[index].blacklist.forEach(function(p){
-		$('#blacklist').append('<li>'p'</li>');
+		$('#blacklist').append('<li>'+p+'</li>');
 	});
 	
 }
