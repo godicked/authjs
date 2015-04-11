@@ -252,7 +252,7 @@ module.exports = function(io){
 						sessions[socket.name].connected = false;
 						setTimeout(function () 
 						{	if(!sessions[socket.name])
-								break;
+								return;
 							if (sessions[socket.name].connected == false)
 							{
 								delete sessions[socket.name];
