@@ -325,8 +325,10 @@ module.exports = function(io){
 
 								if(room.password)
 								{
-									room.whitelist.push(socket.name);
-									room.save(function(err){});
+									if(room.whitelist.indexOf(socket.name) < 0){
+										room.whitelist.push(socket.name);
+										room.save(function(err){});
+									}
 								}
 								user.save(function (err) 
 								{
