@@ -114,7 +114,7 @@ function printInfo(index){
 	});
 	$('#whitelist').empty();
 	room_information[index].whitelist.forEach(function(p){
-		$('#whitelist').append(p);
+		$('#whitelist').append('<li>'p'</li>');
 	});
 	$('#blacklist').empty();
 	room_information[index].blacklist.forEach(function(p){
