@@ -142,7 +142,7 @@
                 	var tab_rooms = $('.room');
                 	tab_rooms.each(function(index)
                 	{
-                		if($(this).text() == data.room)
+                		if(nomsRooms[$(this).attr('id')] == data.room)
                 		{
                 			$($(this).children()[0]).empty().append(content);
                 		}

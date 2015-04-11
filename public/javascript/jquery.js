@@ -3,6 +3,7 @@
             var rage = 0; 
             var blur;
             var nouveau=false;
+            var nomsRooms={};
             document.onblur = window.onblur;
             document.focus = window.focus;
             
@@ -68,12 +69,12 @@
                 	var rooms = $('.room');
                 	if($('.room-active').length != 0){
     	            	var room_active = $('.room-active')[0];
-    	            	var room_active_hide = stringToId($('.room-active')[0].innerHTML);
+    	            	var room_active_hide = stringToId(nomsRooms[$(room_active).attr('id')];
     	            }
-                    var div = stringToId(this.textContent);
+                    var div = stringToId(nomsRooms[$(this).attr('id')]);
                 	for(i= 0;i<rooms.length;i++)
                     {
-                        var hide = stringToId(rooms[i].innerHTML);
+                        var hide = stringToId(nomsRooms[$(rooms[i]).attr('id')]);
                 		if(hide != div)
                         {
                 			$("#room_"+hide).hide(0);
