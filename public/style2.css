@@ -347,6 +347,7 @@ footer em{
 	border-bottom-width: 0.1em;
 	border-bottom-color: rgb(38, 38, 38);
 	transition: 250ms all ease;
+	position: relative;
 }
 .room:hover{
 	background: rgb(47, 116, 184);
@@ -467,6 +468,10 @@ p{
 }
 #descriptif{
 	padding:1em;
+}
+.close{
+	width:1em;
+	position:absolute;
 }
 ::-webkit-scrollbar {
 	width: .875em;
