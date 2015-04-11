@@ -328,6 +328,8 @@ footer em{
 .zone_chat{
 	/*margin-top: 2em;*/
 	word-wrap: break-word;
+	height:90vh;
+	overflow:auto;
 }
 .chat_link{
 	color: rgb(112, 112, 176);

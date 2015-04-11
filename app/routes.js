@@ -45,7 +45,7 @@ module.exports = function(app, passport) {
         failureFlash : true // allow flash messages
     }));
     // =====================================
-    // PROFILE SECTION =====================
+    // CHAT SECTION ========================
     // =====================================
     // we will want this protected so you have to be logged in to visit
     // we will use route middleware to verify this (the isLoggedIn function)
@@ -92,6 +92,14 @@ module.exports = function(app, passport) {
         failureRedirect : '/visit', // redirect back to the signup page if there is an error
         failureFlash : true // allow flash messages
     }));
+	
+	
+	// =====================================
+    // Profile =============================
+    // =====================================
+	app.get('/profile', isLoggedIn, function(req,res) {
+		res.render('profile.ejs',{user:req.user});
+	});
 	
 	
     // =====================================
