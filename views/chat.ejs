@@ -40,10 +40,8 @@
 						<p>
 						<div style="position: absolute;left: 6.5em;top: 1em;">
 							<span class='pseudo' style='float:left'>Pseudo:  </span>
-							<form id='form_changer_pseudo'>
 								<input type="text" id="pseudo" value="<%=user.local.name%>" size="5" autocomplete="off"/>
 								<input type="submit" style='display:none'></input>
-							</form>
 						</div>
 						<span class="bouton relative" id="changer_pseudo" style="position: absolute;top: 3.3em;">Changer Pseudo</span>
 					</div>
@@ -354,13 +352,17 @@
             {
             	$('#pseudo').focus().empty().attr('class','modifier');
             });
-            $('#form_changer_pseudo').submit(function()
+            $('#pseudo').keyup(function(e)
             {
-            	var data = {};
-            	data.message = $('#pseudo').val();
-            	data.command = '/nick';
-            	socket.emit('message',data);
-            	$('#pseudo').blur().attr('class','');
+            	var code = e.keyCode || e.which;
+ 				if(code == 13) 
+ 				{
+	            	var data = {};
+	            	data.message = $('#pseudo').val();
+	            	data.command = '/nick';
+	            	socket.emit('message',data);
+	            	$('#pseudo').blur().attr('class','');
+            	}
             });
 
 		</script>
