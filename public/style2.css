@@ -206,9 +206,14 @@ a{
 }
 .bouton:hover{
 	background:rgb(182, 172, 172);
+	cursor: pointer
 }
 .bouton .relative{
-	position:absolute;
+	position: absolute;
+	bottom: 0.15em;
+	left: 7.5em;
+	float: none;
+	margin: 0;
 }
 #flr:hover{
     cursor:pointer;
