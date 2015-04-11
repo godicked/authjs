@@ -97,6 +97,13 @@ function actualise_own_list(func){
 		func(index);
 	});
 }
+function make_myroom_list(data){
+	$('#own_room_list').empty();
+	data.forEach(function(room){
+		$('#own_room_list').append('<li class="own_room">'+room.name+'</li>');
+	});
+}
+
 
 function printInfo(index){
 	$('#name').empty().append(room_information[index].name);
