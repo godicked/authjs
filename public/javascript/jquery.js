@@ -110,7 +110,7 @@ function printInfo(index){
 	$('#volume').empty().append(room_information[index].volume);
 	$('#moderator').empty();
 	room_information[index].moderator.forEach(function(p){
-		$('#moderator').append(p);
+		$('#moderator').append('<li>'p'</li>');
 	});
 	$('#whitelist').empty();
 	room_information[index].whitelist.forEach(function(p){
@@ -118,7 +118,7 @@ function printInfo(index){
 	});
 	$('#blacklist').empty();
 	room_information[index].blacklist.forEach(function(p){
-		$('#blacklist').append(p);
+		$('#blacklist').append('<li>'p'</li>');
 	});
 	
 }
