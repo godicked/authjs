@@ -92,7 +92,7 @@ function actualise_liste_room()
     $('.close').click(function()
         {
             var data = {};
-            data.message = nomsRooms[$($(this).parent).attr('id')];
+            data.message = nomsRooms[$($(this).parent()).attr('id')];
             data.command = '/leave';
             socket.emit('room',data);
         });
