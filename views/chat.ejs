@@ -167,14 +167,14 @@
 			});
             socket.on('nouveau_client', function(pseudo) 
             {
-                $('#room_Accueil').prepend('<p><em>' + pseudo + ' a rejoint le Chat !</em></p>');
+                $('#room_'+stringToId('Accueil')).prepend('<p><em>' + pseudo + ' a rejoint le Chat !</em></p>');
 				store('<p><em>' + pseudo + ' a rejoint le Chat !</em></p>',localStorage);
 				actualise_liste();
 				playSound('connexion');
             });
 			socket.on('deco', function(message) 
 			{
-                $('#room_Accueil').prepend(message);
+                $('#room_'+stringToId('Accueil')).prepend(message);
 				store(message,localStorage);
             });
 			socket.on('list', function(message)
