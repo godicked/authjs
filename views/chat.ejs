@@ -355,7 +355,7 @@
             });
             $('#changer_pseudo').click(function()
             {
-            	$('#pseudo').focus().val('').css('background','white');
+            	$('#pseudo').focus().val('').css('background','white !important');
             });
             $('#pseudo').bind('keypress',function(e)
             {
@@ -374,7 +374,7 @@
             }).blur(function(){
             	setTimeout(function()
             	{
-            		$(this).val(pseudo);
+            		$('#pseudo').val(pseudo);
            		},100);
             });
             $('iframe').click(function()
