@@ -43,7 +43,7 @@
 								<input type="text" id="pseudo" value="<%=user.local.name%>" size="5" autocomplete="off"/>
 								<input type="submit" style='display:none'></input>
 						</p>
-						<span class="bouton relative" id="changer_pseudo" style="position: absolute;top: 3.3em;">Changer Pseudo</span>
+						<span class="bouton relative" id="changer_pseudo" style="position: absolute;top: 3.3em;float:none">Changer Pseudo</span>
 					</div>
 				</div>
 				<div id='gestion_room'>
@@ -64,14 +64,14 @@
 						<input class="static-textbox" type="text" name="recherche" id="rechercher_room" placeholder="Chercher une room" size="50" autocomplete="off"/>
 						<div id='container_recherche'></div>
 					</div>
-					<aside id='rooms'>
+					<aside id='rooms' style='overflow:hidden'>
 						<div id='container-rooms'>
 						</div>
 					</aside>
 				</div>
 
 			</nav>
-			<section id="hermess_chat">
+			<section id="hermess_chat" style='overflow:hidden'>
 				<form action="/" method="post" id="formulaire_chat" style='margin-bottom:2em'>
 					<input class="textbox" type="text" name="message" id="message" placeholder="Votre message..." size="50" autofocus autocomplete="off" />
 					<span id="flr">#FLR</span>

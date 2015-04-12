@@ -11,6 +11,9 @@ body{
 ::-webkit-scrollbar { 
     display: none; 
 }
+html {
+     -ms-overflow-style: none;
+}
 iframe {
   vertical-align: middle;
   width:250px;
