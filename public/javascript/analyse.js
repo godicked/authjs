@@ -87,7 +87,7 @@ function parse(message,room){
 	{
 		data.type='video';
 		var split = message.split(' ')[0];
-		data.message = split.substring('https://www.youtube.com/watch?v='.length)
+		data.message = split.substring('https://www.youtube.com/watch?v='.length);
 	}
 	else
 	{

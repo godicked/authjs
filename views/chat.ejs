@@ -161,6 +161,10 @@
 			{
 				store(htmlPrint(htmlMakeR(data),data.room),localStorage);
 			});
+			socket.on('video',function(data)
+			{
+				htmlPrint(htmlMakeR(data),data.room);
+			});
 			socket.on('whisper',function(data)
 			{
 				store(htmlPrint(htmlMakeR(data),data.room),localStorage);
