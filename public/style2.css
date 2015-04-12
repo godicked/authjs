@@ -1,6 +1,13 @@
 .blue{
 	color:rgb(47, 116, 184);
 }
+
+@media screen and (max-width:1130px) {
+	.menu_droite{
+		display: none;
+	}
+}
+
 body{
 	font-family: 'Raleway', sans-serif;
 	/*background-color: #222222;*/
@@ -18,6 +25,10 @@ iframe {
   vertical-align: middle;
   width:250px;
   height:180px;
+}
+.grande_video{
+	width:600px;
+	height:300px;
 }
 .menu_gauche{
 	position: fixed;

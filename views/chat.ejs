@@ -338,12 +338,14 @@
             	$(this).hide(250);
             	$('#ajouter-room-input').val('');
             	$('#ajouter-room-pass').val('');
+            	$('iframe').
             	return false;
             });
             $('#page_block').click(function()
             {
             	$('#container_recherche').hide(0);
             	$('#rechercher_room').val('');
+            	$('.grande_video').attr('class','');
             });
 
             $('#entrer_room_pass').focusout(function()
@@ -368,7 +370,11 @@
 	            	data.command = '/nick';
 	            	socket.emit('command',data);
             	}
-            	$('#pseudo').focusout();
+            	$('#pseudo').blur();
+            });
+            $('iframe').click(function()
+            {
+            	$(this).attr('class','grande_video');
             });
 
 		</script>
