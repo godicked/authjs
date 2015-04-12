@@ -350,7 +350,7 @@
             });
             $('#changer_pseudo').click(function()
             {
-            	$('#pseudo').focus().val('').attr('class','modifier');
+            	$('#pseudo').focus().val('');
             });
             $('#pseudo').bind('keypress',function(e)
             {
@@ -363,7 +363,6 @@
 	            	data.message = $('#pseudo').val();
 	            	data.command = '/nick';
 	            	socket.emit('command',data);
-	            	$('#pseudo').blur().attr('class','');
             	}
             });
 
