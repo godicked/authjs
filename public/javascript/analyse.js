@@ -115,7 +115,7 @@ function send(data,socket){
 			socket.emit('room_list',data.message);
 			break;
 		case 'video':
-			socket.emit('video',data.message);
+			socket.emit('video',data);
 			break;
 			
 	}
