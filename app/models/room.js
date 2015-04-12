@@ -11,7 +11,8 @@ var roomSchema = mongoose.Schema({
 	blacklist    : [String],
 	whitelist    : [String],
 	storage      : [],
-	volume       : Number
+	volume       : Number,
+	description  : String
     
 });
 

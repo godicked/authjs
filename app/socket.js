@@ -171,6 +171,7 @@ module.exports = function(io){
 						newRoom.name   = data.message;
 						newRoom.owner  = socket.oid;
 						newRoom.volume = 30;
+						newRoom.description = "";
 						if(data.password)
 							newRoom.password = newRoom.generateHash(data.password);
 						newRoom.save(function(err)
@@ -343,9 +344,11 @@ module.exports = function(io){
 										socket.emit('info','vous avez rejoint la room: '+data.message);
 										socket.join(data.message);
 										socket.emit('my_room',user.local.rooms);
+										console.log(io.nsps['/chat'].connected[socket.id].name);
 									}
 								});
 							}
+							
 						}
 						else
 							socket.emit('wrong','mauvais mot de passe');
