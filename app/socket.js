@@ -141,7 +141,16 @@ module.exports = function(io){
 					data.from = socket.name;				
 				}
 				socket.to(data.room).emit('video',data);
-				console.log('on envoie la video avec id:'+data.message+'a la room'+data.room);
+				Room.findOne({'name':data.room},function(err,room)
+				{
+					if(room)
+					{
+						room.storage.push(data);
+						if(room.storage.length > room.volume)
+							room.storage.shift();
+						room.save(function(err){});
+					}
+				});
 			}
 		});
 		socket.on('room',function(data)

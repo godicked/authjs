@@ -335,7 +335,8 @@ footer em{
 	margin-top: 5px;
 	margin-left: 300px;
 	margin-right: auto;
-	max-width: 650px;
+	overflow:auto;
+
 }
 #hermess_chat p{
 	margin-top: 0.5em;
@@ -353,6 +354,7 @@ footer em{
 	word-wrap: break-word;
 	height:90vh;
 	overflow:auto;
+	max-width: 650px;
 }
 .chat_link{
 	color: rgb(112, 112, 176);
