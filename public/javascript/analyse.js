@@ -83,10 +83,10 @@ function parse(message,room){
 				break;
 		}
 	}
-	else if(message.indexOf('https://www.youtube.com/watch?v=') != -1)
+	else if(message.indexOf('https://www.youtube.com/watch?v=') == 0)
 	{
 		data.type='video';
-		data.message = message.substring('https://www.youtube.com/watch?v='.length);
+		data.message = message.split(' ')[0];
 	}
 	else
 	{
