@@ -126,6 +126,19 @@ module.exports = function(io){
 			else
 				socket.emit('wrong','votre session a expiré, veuillez recharger la page');
 		});
+		socket.on('video',function(data)
+		{
+			data.time = time();
+			if(socket.name)
+			{
+				if(socket.pseudo)
+					data.from = socket.pseudo;
+				else
+					data.from = socket.name;
+				data.message = encode(data.message);
+				socket.to(data.room).emit('videso',data);
+			}
+		});
 		socket.on('room',function(data)
 		{
 			if(data.command == '/join')
