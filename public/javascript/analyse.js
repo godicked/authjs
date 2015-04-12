@@ -83,7 +83,13 @@ function parse(message,room){
 				break;
 		}
 	}
-	else{
+	else if(message.indexOf('https://www.youtube.com/watch?v=') != -1)
+	{
+		data.type='video';
+		data.message = message.substring('https://www.youtube.com/watch?v='.length);
+	}
+	else
+	{
 		data.type = 'message';
 		data.message = message;
 	}
@@ -106,6 +112,9 @@ function send(data,socket){
 			break;
 		case 'room_list':
 			socket.emit('room_list',data.message);
+			break;
+		case 'video':
+			socket.emit('video',data.message);
 			break;
 			
 	}
@@ -150,6 +159,8 @@ function htmlMakeS(data,pseudo){
 				break;
 		}
 	}
+	else if(data.type == 'video')
+		res = '<span class="pseudo">' + pseudo +" envoie:<iframe width='560' height='315' src='https://www.youtube.com/embed/"+data.message+"'frameborder='0' allowfullscreen></iframe>";
 	else if(data.type == 'whisper')
 		res = '<em class="whisp">[to: ' +data.to+'] : ' + data.message + '</em></p>';
 	else if(data.type == 'wrong')
@@ -208,6 +219,8 @@ function htmlMakeR(data){
 				break;
 		}
 	}
+	else if(data.type == 'video')
+		res = '<span class="pseudo">' + pseudo +" envoie:<iframe width='560' height='315' src='https://www.youtube.com/embed/"+data.message+"'frameborder='0' allowfullscreen></iframe>";
 	else if(data.type == 'whisper'){
 		res = '<em class="whisp">[from: ' +data.from+'] : ' + data.message + '</em></p>';
 	}

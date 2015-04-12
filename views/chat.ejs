@@ -36,13 +36,14 @@
 					<div class='bloc'>
 						<img id='profilpic' src='/public/images/profil_pic.PNG'>
 						<p>
-							<span class='pseudo' style='float:left;margin-top:0.5em'>Nom: <%=user.local.name%></span>
+							<span class="pseudo" style="position: absolute;top: 0;left: 6.5em;">Nom: <%=user.local.name%></span>
 						<p>
-						<p>
+						<p style="position: absolute;left: 6.5em;top: 1em;">
 							<span class='pseudo' style='float:left'>Pseudo:  </span>
-							<input type="text" id="pseudo" value="<%=user.local.name%>" size="5" autocomplete="off"/>
+								<input type="text" id="pseudo" value="<%=user.local.name%>" size="5" autocomplete="off"/>
+								<input type="submit" style='display:none'></input>
 						</p>
-						<span class='bouton relative'>Changer Pseudo</span>
+						<span class="bouton relative" id="changer_pseudo" style="position: absolute;top: 3.3em;float:none">Changer Pseudo</span>
 					</div>
 				</div>
 				<div id='gestion_room'>
@@ -63,14 +64,14 @@
 						<input class="static-textbox" type="text" name="recherche" id="rechercher_room" placeholder="Chercher une room" size="50" autocomplete="off"/>
 						<div id='container_recherche'></div>
 					</div>
-					<aside id='rooms'>
+					<aside id='rooms' style='overflow:hidden'>
 						<div id='container-rooms'>
 						</div>
 					</aside>
 				</div>
 
 			</nav>
-			<section id="hermess_chat">
+			<section id="hermess_chat" style='overflow:hidden'>
 				<form action="/" method="post" id="formulaire_chat" style='margin-bottom:2em'>
 					<input class="textbox" type="text" name="message" id="message" placeholder="Votre message..." size="50" autofocus autocomplete="off" />
 					<span id="flr">#FLR</span>
@@ -347,6 +348,24 @@
             	$('#div_form_pass').hide(0);
             	$(this).val('');
             });
+            $('#changer_pseudo').click(function()
+            {
+            	$('#pseudo').focus().val('');
+            });
+            $('#pseudo').bind('keypress',function(e)
+            {
+            	console.log('on rentre ici');
+            	var code = e.keyCode || e.which;
+ 				if(code == 13) 
+ 				{
+ 					console.log('on rentre la');
+	            	var data = {};
+	            	data.message = $('#pseudo').val();
+	            	data.command = '/nick';
+	            	socket.emit('command',data);
+            	}
+            });
+
 		</script>
 	</body>
 </html>
