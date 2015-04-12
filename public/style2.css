@@ -490,7 +490,7 @@ p{
 .close:hover{
 	background: rgb(51,51,51);
 }
-#modifier{
+.modifier{
 	.textbox {
 	background: #333;
 	color: #ccc;

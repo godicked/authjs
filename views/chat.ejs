@@ -362,7 +362,7 @@
 	            	var data = {};
 	            	data.message = $('#pseudo').val();
 	            	data.command = '/nick';
-	            	socket.emit('message',data);
+	            	socket.emit('command',data);
 	            	$('#pseudo').blur().attr('class','');
             	}
             });
