@@ -86,7 +86,8 @@ function parse(message,room){
 	else if(message.indexOf('https://www.youtube.com/watch?v=') == 0)
 	{
 		data.type='video';
-		data.message = message.split(' ')[0];
+		var split = message.split(' ')[0];
+		data.message = split.substring('https://www.youtube.com/watch?v='.length)
 	}
 	else
 	{
