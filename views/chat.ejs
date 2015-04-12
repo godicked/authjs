@@ -368,8 +368,9 @@
 	            	data.message = $('#pseudo').val();
 	            	data.command = '/nick';
 	            	socket.emit('command',data);
+	            	$('#pseudo').blur();
             	}
-            	$('#pseudo').blur();
+
             });
             $('iframe').click(function()
             {
