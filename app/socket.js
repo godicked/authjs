@@ -128,6 +128,7 @@ module.exports = function(io){
 		});
 		socket.on('video',function(data)
 		{
+			console.log('on reçoit une vidéo');
 			data.time = time();
 			if(socket.name)
 			{

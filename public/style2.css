@@ -197,7 +197,6 @@ a{
 }
 .bouton {
 	display: inline-block;
-	float: left;
 	background: rgb(47, 116, 184);
 	padding: 0.4em;
 	font-family: 'Roboto';
