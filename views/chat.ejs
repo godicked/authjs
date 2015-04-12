@@ -371,12 +371,13 @@
 	            	$('#pseudo').blur();
             	}
 
+            }).blur(function(){
+            	$(this).val(pseudo);
             });
             $('iframe').click(function()
             {
             	$(this).attr('class','grande_video');
             });
-
 		</script>
 	</body>
 </html>
