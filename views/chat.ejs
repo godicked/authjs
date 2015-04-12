@@ -20,7 +20,7 @@
 	<body>
 		
 		<div id="page_block">
-		<div id = 'div_fond_popup' style =  'display:none'></div>
+			<div id = 'div_fond_popup' style =  'display:none'></div>
 			<div id='div_form_pass' style='display:none'>
 				<form action='/' method='post' id='form_pass' autocomplete='off' style='width:130%'>
 					<input style="display:none" type="password" name="fakepasswordremembered"/>
@@ -43,7 +43,7 @@
 								<input type="text" id="pseudo" value="<%=user.local.name%>" size="5" autocomplete="off"/>
 								<input type="submit" style='display:none'></input>
 						</p>
-						<span class="bouton relative" id="changer_pseudo" style="position: absolute;top: 3.3em;float:none">Changer Pseudo</span>
+						<span class="bouton relative" id="changer_pseudo" style="position: absolute;top: 3.3em;left:7em">Changer Pseudo</span>
 					</div>
 				</div>
 				<div id='gestion_room'>
@@ -160,6 +160,10 @@
 			socket.on('command',function(data)
 			{
 				store(htmlPrint(htmlMakeR(data),data.room),localStorage);
+			});
+			socket.on('video',function(data)
+			{
+				htmlPrint(htmlMakeR(data),data.room);
 			});
 			socket.on('whisper',function(data)
 			{
@@ -340,6 +344,7 @@
             {
             	$('#container_recherche').hide(0);
             	$('#rechercher_room').val('');
+            	//$('.grande_video').attr('class','');
             });
 
             $('#entrer_room_pass').focusout(function()
@@ -350,7 +355,7 @@
             });
             $('#changer_pseudo').click(function()
             {
-            	$('#pseudo').focus().val('');
+            	$('#pseudo').focus().val('').css('background','white !important');
             });
             $('#pseudo').bind('keypress',function(e)
             {
@@ -363,9 +368,19 @@
 	            	data.message = $('#pseudo').val();
 	            	data.command = '/nick';
 	            	socket.emit('command',data);
+	            	$('#pseudo').blur();
             	}
-            });
 
+            }).blur(function(){
+            	setTimeout(function()
+            	{
+            		$('#pseudo').val(pseudo);
+           		},100);
+            });
+            $('iframe').click(function()
+            {
+            	$(this).attr('class','grande_video');
+            });
 		</script>
 	</body>
 </html>

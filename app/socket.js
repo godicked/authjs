@@ -128,15 +128,29 @@ module.exports = function(io){
 		});
 		socket.on('video',function(data)
 		{
+			console.log('on reçoit une vidéo');
 			data.time = time();
 			if(socket.name)
 			{
 				if(socket.pseudo)
+				{
 					data.from = socket.pseudo;
+				}
 				else
-					data.from = socket.name;
-				data.message = encode(data.message);
+				{
+					data.from = socket.name;				
+				}
 				socket.to(data.room).emit('video',data);
+				Room.findOne({'name':data.room},function(err,room)
+				{
+					if(room)
+					{
+						room.storage.push(data);
+						if(room.storage.length > room.volume)
+							room.storage.shift();
+						room.save(function(err){});
+					}
+				});
 			}
 		});
 		socket.on('room',function(data)
