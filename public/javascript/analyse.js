@@ -160,7 +160,7 @@ function htmlMakeS(data,pseudo){
 		}
 	}
 	else if(data.type == 'video')
-		res = "<iframe src='"+data.message+"'frameborder="0" allowfullscreen></iframe>";
+		res = "<iframe src='"+data.message+"'frameborder='0' allowfullscreen></iframe>";
 	else if(data.type == 'whisper')
 		res = '<em class="whisp">[to: ' +data.to+'] : ' + data.message + '</em></p>';
 	else if(data.type == 'wrong')
