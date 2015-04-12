@@ -136,7 +136,7 @@ module.exports = function(io){
 				else
 					data.from = socket.name;
 				data.message = encode(data.message);
-				socket.to(data.room).emit('videso',data);
+				socket.to(data.room).emit('video',data);
 			}
 		});
 		socket.on('room',function(data)

@@ -220,7 +220,7 @@ function htmlMakeR(data){
 		}
 	}
 	else if(data.type == 'video')
-		res = "<iframe src='"+data.message+"'frameborder="0" allowfullscreen></iframe>";
+		res = "<iframe src='"+data.message+"'frameborder='0' allowfullscreen></iframe>";
 	else if(data.type == 'whisper'){
 		res = '<em class="whisp">[from: ' +data.from+'] : ' + data.message + '</em></p>';
 	}
