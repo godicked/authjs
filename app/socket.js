@@ -132,10 +132,14 @@ module.exports = function(io){
 			if(socket.name)
 			{
 				if(socket.pseudo)
+				{
 					data.from = socket.pseudo;
+				}
 				else
+				{
 					data.from = socket.name;				
-					socket.to(data.room).emit('video',data);
+				}
+				socket.to(data.room).emit('video',data);
 			}
 		});
 		socket.on('room',function(data)
