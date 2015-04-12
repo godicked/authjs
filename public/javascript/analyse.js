@@ -86,7 +86,7 @@ function parse(message,room){
 	else if(message.indexOf('https://www.youtube.com/watch?') != -1)
 	{
 		data.type='video';
-		data.message = message;
+		data.message = message.substring('https://www.youtube.com/watch?'.length);
 	}
 	else
 	{
@@ -160,7 +160,7 @@ function htmlMakeS(data,pseudo){
 		}
 	}
 	else if(data.type == 'video')
-		res = "<iframe width='560' height='315' src='"+data.message+"'frameborder='0' allowfullscreen></iframe>";
+		res = "<iframe width='560' height='315' src='https://www.youtube.com/embed/"+data.message+"'frameborder='0' allowfullscreen></iframe>";
 	else if(data.type == 'whisper')
 		res = '<em class="whisp">[to: ' +data.to+'] : ' + data.message + '</em></p>';
 	else if(data.type == 'wrong')
@@ -220,7 +220,7 @@ function htmlMakeR(data){
 		}
 	}
 	else if(data.type == 'video')
-		res = "<iframe width='560' height='315' src='"+data.message+"'frameborder='0' allowfullscreen></iframe>";
+		res = "<iframe width='560' height='315' src='https://www.youtube.com/embed/"+data.message+"'frameborder='0' allowfullscreen></iframe>";
 	else if(data.type == 'whisper'){
 		res = '<em class="whisp">[from: ' +data.from+'] : ' + data.message + '</em></p>';
 	}
