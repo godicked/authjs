@@ -23,8 +23,9 @@ function actualise_liste(){
 		var val = $('#message').val();
 		if(val == ''){
 			$('#message').val('/w "' + pseudo+'" ').focus();
-		}else {
-			$('#message').val(val + ' '+pseudo).focus();
+		}else if($('#message').val().indexOf('/w "' + pseudo+'" ') != -1)
+        {
+            $('#message').val(val + ' '+pseudo).focus();
 		}
 	});
 }
