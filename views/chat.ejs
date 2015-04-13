@@ -258,7 +258,7 @@
 			socket.on('room_user_list',function(data)
 			{
 				content = make_list(data);
-				$('#list_'+stringToId(data.room)).append(content);
+				$('#list_'+stringToId(data.room)).empty().append(content);
 				actualise_liste();
 			});
 

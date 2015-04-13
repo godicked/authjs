@@ -1,5 +1,5 @@
 function make_list(data){
-		var res;;
+		var res="";
 		data.list.forEach(function(user){
 			res+="<span class='user'>"+user+"<span class='petit_statut'></span></span>";
 		});
