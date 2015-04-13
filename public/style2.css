@@ -35,7 +35,11 @@ iframe {
   	left: 0;
 	top: 0;
 	display: block;
-	box-shadow: rgb(29, 28, 28) 5px 0px 10px 2px;
+	-moz-box-shadow: 2px 0px 3px 1px rgb(34, 33, 33);
+	-webkit-box-shadow: 2px 0px 3px 1px rgb(34, 33, 33);
+	-o-box-shadow: 2px 0px 3px 1px rgb(34, 33, 33);
+	box-shadow: 2px 0px 3px 1px rgb(34, 33, 33);
+	filter:progid:DXImageTransform.Microsoft.Shadow(color=rgb(34, 33, 33), Direction=90, Strength=2);
 	width: 270px;
 	height: 100%;
 	background: rgb(38, 38, 38);
@@ -46,7 +50,11 @@ iframe {
   	right: 0;
 	top: 0;
 	display: block;
-	box-shadow: rgb(29, 28, 28) -5px 0px 10px 2px;
+	-moz-box-shadow: -2px 0px 3px 1px rgb(34, 33, 33);
+	-webkit-box-shadow: -2px 0px 3px 1px rgb(34, 33, 33);
+	-o-box-shadow: -2px 0px 3px 1px rgb(34, 33, 33);
+	box-shadow: -2px 0px 3px 1px rgb(34, 33, 33);
+	filter:progid:DXImageTransform.Microsoft.Shadow(color=rgb(34, 33, 33), Direction=90, Strength=-2);
 	width: 23%;
 	height: 100%;
 	background: rgb(38, 38, 38);
