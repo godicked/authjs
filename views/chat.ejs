@@ -383,17 +383,18 @@
             	$(this).attr('class','grande_video');
             });
             $("#furtif").click(function() {
-            if(!furtif)
-            {
-			    $("head link#css").attr("href","/public/furtif.css");
-			    $('body').prepend("<img class='fake_menu' src='/public/images/head.png'>");
-			    furtif = true;
-			}
-			else
-			{
-				$("head link#css").attr("href","/public/style2.css");
-				$("#fake_menu").hide(0);
-			}
+	            if(!furtif)
+	            {
+				    $("head link#css").attr("href","/public/furtif.css");
+				    $('body').prepend("<img class='fake_menu' src='/public/images/head.png'>");
+				    furtif = true;
+				}
+				else
+				{
+					$("head link#css").attr("href","/public/style2.css");
+					$("#fake_menu").hide(0);
+					furtif = false;
+				}
 			});
 			$('#fake_menu').click(function()
 			{
