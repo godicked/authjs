@@ -6,7 +6,7 @@
 		<link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
 		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type="text/css">
 		<link href='http://fonts.googleapis.com/css?family=Roboto:100,300' rel='stylesheet' type='text/css'>
-		<link rel="stylesheet" href="/public/style2.css" type="text/css">
+		<link id='css' rel="stylesheet" href="/public/style2.css" type="text/css">
 		<link rel="icon" href="/public/images/favicon.ico" />
 		<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
 		<script src="/public/javascript/analyse.js"></script>
@@ -43,7 +43,7 @@
 								<input type="text" id="pseudo" value="<%=user.local.name%>" size="5" autocomplete="off"/>
 								<input type="submit" style='display:none'></input>
 						</p>
-						<span class="bouton relative" id="changer_pseudo" style="position: absolute;top: 3.3em;left:7em">Changer Pseudo</span>
+						<span class="bouton relative" id="furtif" style="position: absolute;top: 3.3em;left:7em">Passer furtif</span>
 					</div>
 				</div>
 				<div id='gestion_room'>
@@ -118,6 +118,7 @@
 			var active = 'Accueil';
 			var notifs = {};
 			initStore(localStorage);
+			var furtif = false;
 // Initialisation de session ===================================================
 			var pseudo = '<%=user.local.name%>';
 			var name = '<%=user.local.name%>';
@@ -389,6 +390,24 @@
             {
             	$(this).attr('class','grande_video');
             });
+            $("#furtif").click(function() {
+	            if(!furtif)
+	            {
+				    $("head link#css").attr("href","/public/furtif.css");
+				    $('body').prepend("<img class='fake_menu' src='/public/images/head.png'>");
+				    furtif = true;
+				}
+				else
+				{
+					$("head link#css").attr("href","/public/style2.css");
+					$("#fake_menu").hide(0);
+					furtif = false;
+				}
+			});
+			$('#fake_menu').click(function()
+			{
+				('.menu_gauche').toggle(250);
+			});
 		</script>
 	</body>
 </html>
