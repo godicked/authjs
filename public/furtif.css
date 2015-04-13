@@ -515,6 +515,9 @@ p{
 	left: 0;
 	width:100%;
 }
+.fake_menu:hover{
+	cursor:pointer;
+}
 #formulaire_chat{
 	margin-top: 3em;
 	margin-left: 5em;
