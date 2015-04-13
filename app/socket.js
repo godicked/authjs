@@ -9,47 +9,10 @@ module.exports = function(io){
 // Namespace /chat ======================================================================
 	io.of('/chat').on('connection',function(socket)
 	{
-		console.log('new user');
+		console.log('new user: '+ socket.id);
 		socket.on('give_id',function(id)
 		{
-			User.findById(id,function(err,user)
-			{
-				if(err)
-					console.log(err);
-				if(!user)
-				{
-					console.log('socket.io : id not found in db');
-					socket.disconnect();
-				}
-				else
-				{
-					console.log("user connected: " + user.local.name);
-					if(!sessions[user.local.name])
-					{
-						socket.broadcast.emit('nouveau_client',user.local.name);
-					}
-					if(!user.local.email)
-						socket.visit = true;
-					socket.name = user.local.name;
-					socket.oid = id;
-					if(active[id])
-						active[id].push(socket.id);
-					else
-						active[id] = [socket.id];
-					console.log(active[id]);
-					sessions[user.local.name] = {};
-					sessions[user.local.name].id = socket.id;
-					sessions[user.local.name].connected = true;
-					var list = Object.keys(sessions);
-					console.log(list);
-					socket.broadcast.emit('list',list);
-					socket.emit('list',list);
-					user.local.rooms.forEach(function(room){
-						joinRoom({'message':room},socket);
-					});
-					socket.emit('my_room',user.local.rooms);
-				}
-			});
+			identification(id,socket);
 		});
 		socket.on('message',function(data)
 		{
@@ -86,15 +49,16 @@ module.exports = function(io){
 				data.from = socket.name;
 				data.message = encode(data.message);
 				console.log('message privé envoyer de: '+ socket.name + ' pour: ' + data.to);
-				if(sessions[data.to])
-				{
-					socket.broadcast.to(sessions[data.to].id).emit('whisper', data);
-				}
-				else
-				{
-					socket.emit('wrong','Cet utilisateur n\'est pas connecté');
-					console.log(data.to + ' n\'est pas connecté');
-				}
+				User.findOne({'local.name':data.to}, function(err,user){
+					if(!user){
+						socket.emit('wrong','Cet utilisateur n\'est pas connecté');
+						console.log(data.to + ' n\'est pas connecté');
+					}
+					if(user)
+					{
+						socket.to(user._id).emit('whisper', data);
+					}
+				});
 			}
 			else
 				socket.emit('wrong','votre session a expiré, veuillez recharger la page');
@@ -270,41 +234,23 @@ module.exports = function(io){
 					
 		socket.on('disconnect',function()
 		{
-			if(socket.name)
-			{
-				var index = active[socket.oid].indexOf(socket.id);
-				active[socket.oid].splice(index,1);
-				if(active[socket.oid].length == 0){
-					try
-					{
-						sessions[socket.name].connected = false;
-						setTimeout(function () 
-						{	if(!sessions[socket.name])
-								return;
-							if (sessions[socket.name].connected == false)
-							{
-								delete sessions[socket.name];
-								console.log('session closed');
-								socket.broadcast.emit('deco','<p><em>'+socket.name+' est deconnecté</em></p>');
-								var list = Object.keys(sessions);
-								console.log(list);
-								socket.broadcast.emit('list',list);
-								if(socket.visit){
-									User.remove({'_id':socket.oid}, function(err)
-									{
-										if(err)
-											console.log(err)
-										else
-											console.log('visitor removed from DB');
-									});
-								}
-							};
-						}, 5000);
+			if(socket.name){
+				setTimeout(function(){
+					if(!io.nsps['/chat'].adapter.rooms[socket.oid]){
+						console.log(socket.name+' disconnected');
+						if(socket.visiteur){
+							User.findById(socket.oid).remove().exec();
+							console.log(socket.name + ' removed from database (visiteur)');
+						}
+						if(socket.roomList){
+							socket.roomList.forEach(function(room){
+								socket.to(room).emit('room_user_list',{'room':room,'list':getRoomUserList(room)});
+								console.log('update user list');
+							});
+						}
 					}
-					catch(err){}
-				}
+				},5000);
 			}
-
 		});
 	});
 
@@ -323,7 +269,6 @@ module.exports = function(io){
 				else{
 					User.findOne({'_id': socket.oid}, function (err, user)
 					 {
-						 console.log(data);
 						if(room.password)
 						{
 							if(data.password)
@@ -342,40 +287,32 @@ module.exports = function(io){
 							ok = true;
 						if(ok)
 						{
-							if(user.local.rooms.indexOf(data.message) >= 0)
-							{
-								console.log(socket.name+' a rejoint la room: '+data.message);
-								socket.emit('info','vous avez rejoint la room: '+data.message);
-								socket.join(data.message);
-							}
-							else
-							{
+							if(user.local.rooms.indexOf(data.message) < 0)
 								user.local.rooms.push(data.message);
 
-								if(room.password)
-								{
-									if(room.whitelist.indexOf(socket.name) < 0){
-										room.whitelist.push(socket.name);
-										room.save(function(err){});
-									}
+							if(room.password)
+							{
+								if(room.whitelist.indexOf(socket.name) < 0){
+									room.whitelist.push(socket.name);
 								}
-								user.save(function (err) 
-								{
-									if(err) 
-									{
-										console.error('ERROR!');
-									}
-									else
-									{
-										console.log(socket.name+' a rejoint la room: '+data.message);
-										socket.emit('info','vous avez rejoint la room: '+data.message);
-										socket.join(data.message);
-										socket.emit('my_room',user.local.rooms);
-										console.log(io.nsps['/chat'].connected[socket.id].name);
-									}
-								});
 							}
-							
+							user.save(function (err) 
+							{
+								if(err) 
+								{
+									console.error('ERROR!');
+								}
+								else
+								{
+									socket.join(room.name,function(){
+										console.log('Room '+room.name+' : '+getRoomUserList(room.name));
+										socket.emit('my_room',user.local.rooms);
+										socket.emit('room_user_list',{'room':room.name, 'list':getRoomUserList(room.name)});
+										socket.to(room.name).emit('room_user_list',{'room':room.name, 'list':getRoomUserList(room.name)});
+										socket.roomList = user.local.rooms;
+									});
+								}
+							});
 						}
 						else
 							socket.emit('wrong','mauvais mot de passe');
@@ -384,6 +321,54 @@ module.exports = function(io){
 				}
 			}
 		});
+	}
+	
+	function identification(id,socket){
+		User.findById(id, function(err,user){
+			if(err)
+				console.log('Database error');
+			else if(!user){
+				console.log('user not found');
+				socket.disconnect();
+			}
+			else if(user){
+				socket.join(user._id);
+				if(io.nsps['/chat'].adapter.rooms[user._id].length == 1){
+					socket.broadcast.emit('nouveau_client',user.local.name);
+				}
+				socket.name = user.local.name;
+				socket.oid = user._id;
+				if(!user.local.email)
+					socket.visiteur = true;
+				user.local.rooms.forEach(function(room){
+					joinRoom({'message':room}, socket);
+				});
+			}
+		});
+	}
+	
+	function getRoomUserList(room){
+		if(!io.nsps['/chat'].adapter.rooms[room])
+			return [];
+		var list = Object.keys(io.nsps['/chat'].adapter.rooms[room]).map(function(id){
+			return io.nsps['/chat'].connected[id].name;
+		});
+		return uniq_fast(list);
+	}
+	
+	function uniq_fast(a) {
+		var seen = {};
+		var out = [];
+		var len = a.length;
+		var j = 0;
+		for(var i = 0; i < len; i++) {
+			 var item = a[i];
+			 if(seen[item] !== 1) {
+				   seen[item] = 1;
+				   out[j++] = item;
+			 }
+		}
+		return out;
 	}
 
 

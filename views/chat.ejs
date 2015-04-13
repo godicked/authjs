@@ -71,7 +71,7 @@
 				</div>
 
 			</nav>
-			<section id="hermess_chat" style='overflow:hidden'>
+			<section id="hermess_chat">
 				<form action="/" method="post" id="formulaire_chat" style='margin-bottom:2em'>
 					<input class="textbox" type="text" name="message" id="message" placeholder="Votre message..." size="50" autofocus autocomplete="off" />
 					<span id="flr">#FLR</span>
@@ -98,6 +98,8 @@
 					<h1 class="titre-section">Descriptif de la room</h1>
 					<article id='descriptif'>
 						<em>Bienvenue sur Hermessage, un service de discussion massive plus rapide que jamais! Rejoignez des rooms publiques pour rencontrer du monde ou créez des rooms privées pour vos amis et vous!</em>
+					</article>
+					<article id="test_list">
 					</article>
 				</article>
 			</nav>
@@ -255,6 +257,12 @@
 				data.storage.forEach(function(line)
 				{
 					$('#room_'+stringToId(data.room)).append(htmlMakeR(line));
+				});
+			});
+			socket.on('room_user_list',function(data){
+				$('#list_'+stringToId(data.room)).empty();
+				data.list.forEach(function(name){
+					$('#list_'+stringToId(data.room)).append('<li>'+name+'</li>');
 				});
 			});
 
