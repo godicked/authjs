@@ -192,11 +192,6 @@
                 $('#room_'+stringToId('Accueil')).prepend(message);
 				store(message,localStorage);
             });
-			socket.on('list', function(message)
-			{
-				$('#liste-users').empty().append(make_list(message));
-				actualise_liste();
-			});
 			socket.on('wrong',function(message)
 			{
 				$('#room_'+stringToId('Accueil')).prepend('<p style="color: red;">'+message+'</p>');
@@ -261,9 +256,9 @@
 				});
 			});
 			socket.on('room_user_list',function(data){
-				$('#list_'+stringToId(data.room)).empty();
-				data.list.forEach(function(name){
-					$('#list_'+stringToId(data.room)).append('<li>'+name+'</li>');
+					content = make_list(data);
+					$('#list_'+stringToId(data.room)).append(content);
+					actualise_liste();
 				});
 			});
 

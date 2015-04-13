@@ -358,6 +358,7 @@ footer em{
 	max-width: 650px;
 	margin: 5em;
 	margin-top:0em;
+	min-height: 100vh;
 }
 .chat_link{
 	color: rgb(112, 112, 176);

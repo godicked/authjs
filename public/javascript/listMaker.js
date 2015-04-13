@@ -1,9 +1,8 @@
-function make_list(array){
-		var res ="<div id='container-users'>";
-		array.forEach(function(user){
+function make_list(data){
+		var res;;
+		data.list.forEach(function(user){
 			res+="<span class='user'>"+user+"<span class='petit_statut'></span></span>";
 		});
-		res += '</div>';
 		return res;
 	}
 
@@ -62,7 +61,7 @@ function newInList(old,actual){
 function addRooms(array){
 	array.forEach(function(data){
 		$('#hermess_chat').append('<article id="room_'+ stringToId(data)+'" class="zone_chat" style="overflow:auto"></article>');
-		$('#test_list').append('<h3 style="padding-left:10px;">'+data+'</h3><ul id="list_'+stringToId(data)+'"></ul>');
+		$('#liste-users').append('<div id="list_'+stringToId(data)+'"class="container-users"></div>');
 		socket.emit('ask_history',data);
 	});
 }

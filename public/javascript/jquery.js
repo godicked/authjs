@@ -68,6 +68,7 @@ function actualise_liste_room()
 		if($('.room-active').length != 0){
 			var room_active = $('.room-active')[0];
 			var room_active_hide = stringToId(nomsRooms[$(room_active).attr('id')]);
+            var user_actifs = $('#list_'+stringToId(nomsRooms[$(room_active).attr('id')]));
 		}
 		var div = stringToId(nomsRooms[$(this).attr('id')]);
 		for(i= 0;i<rooms.length;i++)
@@ -76,12 +77,16 @@ function actualise_liste_room()
 			if(hide != div)
 			{
 				$("#room_"+hide).hide(0);
+                $('#list_'+hide).hide(0);
 			}
 		}
 		$('#room_'+div).show(0);
+        $('#list_'+div).show(0);
 		if($('.room-active').length != 0)
 		{
 			$('#room_'+room_active_hide).hide(0);
+            user_actifs.hide(0);
+
 		}
 		$(this).attr('class','room-active');
 		$(room_active).attr('class','room');
