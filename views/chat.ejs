@@ -397,6 +397,7 @@
 				    $('body').prepend("<img class='fake_menu' src='/public/images/head.png'>");
 				    $('#furtif').text('Mode Normal');
 				    furtif = true;
+				    disp_menu();
 				}
 				else
 				{
@@ -406,10 +407,12 @@
 					furtif = false;
 				}
 			});
-			$('.fake_menu').click(function()
-			{
-				$('.menu_gauche').toggle(250);
-			});
+			function disp_menu(){
+				$('.fake_menu').click(function()
+				{
+					$('.menu_gauche').toggle(250);
+				});
+			}
 		</script>
 	</body>
 </html>
