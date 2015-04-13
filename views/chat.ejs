@@ -387,6 +387,7 @@
 	            {
 				    $("head link#css").attr("href","/public/furtif.css");
 				    $('body').prepend("<img class='fake_menu' src='/public/images/head.png'>");
+				    $('#furtif').text('Mode Normal');
 				    furtif = true;
 				}
 				else
@@ -396,7 +397,7 @@
 					furtif = false;
 				}
 			});
-			$('#fake_menu').click(function()
+			$('.fake_menu').click(function()
 			{
 				('.menu_gauche').toggle(250);
 			});
