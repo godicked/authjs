@@ -119,6 +119,7 @@
 			var notifs = {};
 			initStore(localStorage);
 			var furtif = false;
+			var respond = '';
 // Initialisation de session ===================================================
 			var pseudo = '<%=user.local.name%>';
 			var name = '<%=user.local.name%>';
@@ -170,7 +171,13 @@
 			});
 			socket.on('whisper',function(data)
 			{
-				store(htmlPrint(htmlMakeR(data),data.room),localStorage);
+				respond = data.from;
+				var rooms = $('.zone_chat');
+				rooms.forEach(function(room)
+				{
+					htmlPrint(htmlMakeR(data),data.room),localStorage)
+				});
+				
 				if(blur==true && nouveau==false)
 				{
                 	actualise_titre('whisper');
@@ -381,6 +388,14 @@
             		$('#pseudo').val(pseudo);
            		},100);
             });
+            $('#message').bind('keypress',function(e)
+            	{
+            		var code = e.keyCode || e.which;
+            		if(code == 9)
+            		{
+            			$('#message').val('/w "' + respond+'" ').focus();
+            		}
+            	});
             $('iframe').click(function()
             {
             	$(this).attr('class','grande_video');
