@@ -122,7 +122,6 @@
 			var roomList = [];
 			var active = 'Accueil';
 			var notifs = {};
-			initStore(localStorage);
 			var furtif = false;
 			var respond = '';
 			var time_hide = true;
@@ -142,7 +141,7 @@
 			});
             socket.on('message', function(data)
             {
-                store(htmlPrint(htmlMakeR(data),data.room),localStorage);
+                htmlPrint(htmlMakeR(data),data.room);
                 if(blur==true && nouveau==false)
                 {
                 	actualise_titre('message');
