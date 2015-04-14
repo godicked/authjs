@@ -21,8 +21,10 @@ module.exports = function(io){
 			{
 				console.log('message envoyé de: ' + socket.name);
 				if(socket.pseudo)
+				{
 					data.from = socket.pseudo;
 					data.who = socket.name;
+				}
 				else
 					data.from = socket.name;
 				data.message = encode(data.message);
