@@ -413,7 +413,8 @@ footer em{
 .pseudo {
 	font-size: 1em;
 	font-family: 'Roboto';
-	font-weight: 100;
+	font-weight: 400;
+	color: white;
 }
 .whisp{
 	color : violet;
