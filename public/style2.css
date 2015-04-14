@@ -40,7 +40,7 @@ iframe {
 	-o-box-shadow: 2px 0px 3px 1px rgb(34, 33, 33);
 	box-shadow: 2px 0px 3px 1px rgb(34, 33, 33);
 	filter:progid:DXImageTransform.Microsoft.Shadow(color=rgb(34, 33, 33), Direction=90, Strength=2);
-	width: 270px;
+	width: 240px;
 	height: 100%;
 	background: rgb(38, 38, 38);
 	resize:horizontal;
@@ -77,6 +77,7 @@ iframe {
 	font-family: 'Roboto';
 	overflow:hidden;
 	position: relative;
+	font-size: 0.85em;
 }
 .user:hover{
 	background-color: rgb(47, 116, 184);
@@ -84,15 +85,15 @@ iframe {
 }
 .titre-section {
 	border-bottom: solid;
-	font-size: 1.3em;
+	font-size: 1.2em;
 	margin-bottom: 1em;
 	font-family: 'Roboto';
 	font-weight: 100;
 	text-shadow: none;
 	text-align: center;
 	margin: 0px;
-	padding-top: 1em;
-	padding-bottom: 1em;
+	padding-top: 0.8em;
+	padding-bottom: 0.8em;
 	transition: 250ms ease-out;
 	background: rgb(38, 38, 38);
 	border-bottom-width: 0.1em;
@@ -150,11 +151,11 @@ iframe {
 }
 .statut{
 	position: fixed;
-	top:1.5em;
-	left:210px;
+	top: 0.5em;
+	left: 210px;
 	display: inline-block;
-	width: 15px;
-	height: 15px;
+	width: 13px;
+	height: 13px;
 	border-radius: 50%;
 	background-color: green;
 	margin-left: 10px;
@@ -382,6 +383,7 @@ footer em{
 	border-bottom-color: rgb(38, 38, 38);
 	transition: 250ms all ease;
 	position: relative;
+	font-size: 0.85em:;
 }
 .room:hover{
 	background: rgb(47, 116, 184);
@@ -402,6 +404,7 @@ footer em{
 	filter:progid:DXImageTransform.Microsoft.Shadow(color=#1A1A1A, Direction=180, Strength=5);
 	background:rgb(42,42,42);
 	position: relative;
+	font-size: 0.85em:;
 }
 #container-rooms{
 	height:20em;
@@ -425,15 +428,16 @@ footer em{
 #image_ajouter{
 	width: 1em;
 	height: 1em;
-	padding: 1.56em;
-	padding-right: 1.8em;
+	padding: 1.15em;
+	padding-right: 1.5em;
 	border-top: solid;
 	border-bottom: solid;
 	border-bottom-color: rgb(31, 31, 31);
 	border-top-color: rgb(31, 31, 31);
-	border-bottom-width: 0.15em;
-	border-top-width: 0.15em;
-	padding-left: 1.8em;
+	/* border-bottom-width: 0.15em; */
+	/* border-top-width: 0.15em; */
+	padding-left: 1.5em;
+	border-width: 0.1em;
 }
 #image_ajouter:hover{
 	cursor: pointer;
@@ -501,7 +505,7 @@ p{
 }
 .bloc{
 	position: absolute;
-	top:4.9em;
+	top:3.8em;
 	width: 100%;
 }
 #descriptif{
