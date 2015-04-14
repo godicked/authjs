@@ -517,6 +517,15 @@ p{
 .close:hover{
 	background: rgb(51,51,51);
 }
+#hidetime{
+	width: 1.2em;
+	position: absolute;
+	top: 1.2em;
+	left: 0.5em;
+}
+#hidetime:hover{
+	cursor:pointer;
+}
 ::-webkit-scrollbar {
 	width: .875em;
 	height: .875em;
