@@ -22,7 +22,7 @@ nouveau = true;
 }
 function actualise_liste(){
 	$('.user').click(function(){
-        if($(this).is(":visible"); )
+        if($(this).is(":visible"))
         {
     		var pseudo = this.textContent;
     		var val = $('#message').val();
