@@ -127,6 +127,7 @@ function htmlPrint(message,room){
 }
 
 function htmlMakeS(data,pseudo){
+	/*
 	var res = "";
 	if(data.type == 'message')
 		res = '<span class="pseudo">' + pseudo + ' dit: </span><span>' + data.message + '</span></p>';
@@ -168,7 +169,7 @@ function htmlMakeS(data,pseudo){
 	else
 		return ' ';
 	return '<p><span class="time">['+time()+']</span> '+res;
-	
+	*/
 }
 
 function htmlMakeR(data){
