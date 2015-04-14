@@ -24,7 +24,7 @@ function actualise_liste(){
 	$('.user').click(function(){
     		var to = this.textContent;
     		var val = $('#message').val();
-            if(!val.indexOf(to)){
+            if(val.indexOf(to)==-1){
                 if(val == '')
                 {
         			$('#message').val('/w "' + to+'" ').focus();
