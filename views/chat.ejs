@@ -187,11 +187,7 @@
 					var nom = idToString($($('.zone_chat')[i]).attr('id'));
 					htmlPrint(htmlMakeR(data),nom);
 				}
-				rooms.forEach(function(room)
-				{
-					htmlPrint(htmlMakeR(data),data.room);
-				});
-
+			
 				if(blur==true && nouveau==false)
 				{
                 	actualise_titre('whisper');
