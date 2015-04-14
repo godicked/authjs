@@ -182,7 +182,7 @@ function htmlMakeR(data){
 			var ante = data.message.substring(0,index);
 			var center = data.message.substring(ante.length,ante.length+name.length);
 			var post = data.message.substring(ante.length+name.length);
-			res = '<span class="pseudo" title="'+data.who+'">' + data.from + ' dit: </span><span>' + ante + "<span style='color:red'> "+center+"</span> " +post+'</span></span></p>';
+			res = '<span class="pseudo" title="'+data.who+'">' + data.from + ' dit: </span><span>' + ante + '<span style="color:red">'+center+'</span>' +post+ '</span></p>';
 		}
 	}
 	else if(data.type == 'command'){
