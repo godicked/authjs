@@ -22,16 +22,19 @@ nouveau = true;
 }
 function actualise_liste(){
 	$('.user').click(function(){
-		var pseudo = this.textContent;
-		var val = $('#message').val();
-		if(val == '')
+        if($(this).is(":visible"); )
         {
-			$('#message').val('/w "' + pseudo+'" ').focus();
-		}
-        else if($('#message').val().indexOf('/w "' + pseudo+'" ') != -1)
-        {
-            $('#message').val(val + ' '+pseudo).focus();
-		}
+    		var pseudo = this.textContent;
+    		var val = $('#message').val();
+    		if(val == '')
+            {
+    			$('#message').val('/w "' + pseudo+'" ').focus();
+    		}
+            else if($('#message').val().indexOf('/w "' + pseudo+'" ') != -1)
+            {
+                $('#message').val(val + ' '+pseudo).focus();
+    		}
+        }
 	});
 }
 

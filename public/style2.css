@@ -289,11 +289,12 @@ a{
 /* =================================================================*/
 #container_recherche{
 	display: inline-block;
-	left: 240px;
+	left: 210px;
 	position: fixed;
-	top: 13.6em;
+	top: 13.4em;
 	list-style: none;
-	overflow:auto;
+	overflow: auto;
+	font-size: 0.9em;
 }
 #form_ajouter{
 	display: block;
