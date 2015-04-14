@@ -19,11 +19,11 @@ module.exports = function(io){
 			data.time = time();
 			if(socket.name)
 			{
+				data.who = socket.name;
 				console.log('message envoyé de: ' + socket.name);
 				if(socket.pseudo)
 				{
 					data.from = socket.pseudo;
-					data.who = socket.name;
 				}
 				else
 					data.from = socket.name;
