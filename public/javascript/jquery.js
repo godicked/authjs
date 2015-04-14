@@ -42,7 +42,10 @@ window.onfocus = function (){
 	console.log("on clear l'interval");
 	clearInterval(timer);
 	nouveau = false;
-	document.title='Hermessage';
+    if(furtif == false)
+	    document.title='Hermessage';
+    else
+        document.title='Nouveau Document';
 	blur = false;
 	console.log("blur:"+ blur);
 	console.log("nouveau" + nouveau);
