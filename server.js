@@ -32,7 +32,7 @@ app.use(morgan('dev')); // log every request to the console
 app.use(cookieParser()); // read cookies (needed for auth)
 app.use(bodyParser()); // get information from html forms
 app.use("/public", express.static(__dirname + '/public'));
-app.use(favicon(__dirname + '/public/images/favicon.ico'));
+app.use(favicon(__dirname + '/public/images/favicon02.png'));
 
 app.set('view engine', 'ejs'); // set up ejs for templating
 
