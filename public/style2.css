@@ -383,7 +383,7 @@ footer em{
 	border-bottom-color: rgb(38, 38, 38);
 	transition: 250ms all ease;
 	position: relative;
-	font-size: 0.85em:;
+	font-size: 0.85em;
 }
 .room:hover{
 	background: rgb(47, 116, 184);
@@ -404,7 +404,7 @@ footer em{
 	filter:progid:DXImageTransform.Microsoft.Shadow(color=#1A1A1A, Direction=180, Strength=5);
 	background:rgb(42,42,42);
 	position: relative;
-	font-size: 0.85em:;
+	font-size: 0.85em;
 }
 #container-rooms{
 	height:20em;
