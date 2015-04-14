@@ -139,7 +139,7 @@
             socket.on('message', function(data)
             {
                 store(htmlPrint(htmlMakeR(data),data.room),localStorage);
-                if(blur==true && nouveau==false)
+                if(blur==true && nouveau==false && furtif==false)
                 {
                 	actualise_titre('message');
                 }
@@ -151,16 +151,19 @@
                 {
                 	if(!notifs[data.room])
                 		notifs[data.room]=0;
-                	notifs[data.room] += 1;
-                	var content = ajoute_notif(data.room,notifs);
-                	var tab_rooms = $('.room');
-                	tab_rooms.each(function(index)
+                	if(notifs[data.room] <= 99)
                 	{
-                		if(nomsRooms[$(this).attr('id')] == data.room)
-                		{
-                			$($(this).children()[0]).empty().append(content);
-                		}
-                	});
+	                	notifs[data.room] += 1;
+	                	var content = ajoute_notif(data.room,notifs);
+	                	var tab_rooms = $('.room');
+	                	tab_rooms.each(function(index)
+	                	{
+	                		if(nomsRooms[$(this).attr('id')] == data.room)
+	                		{
+	                			$($(this).children()[0]).empty().append(content);
+	                		}
+	                	});
+	                }
                 }
             })
 			socket.on('command',function(data)
@@ -177,8 +180,9 @@
 				var rooms = $('.zone_chat');
 				rooms.forEach(function(room)
 				{
-					htmlPrint(htmlMakeR(data),data.room);				});
-				
+					htmlPrint(htmlMakeR(data),data.room);
+				});
+
 				if(blur==true && nouveau==false)
 				{
                 	actualise_titre('whisper');
@@ -410,6 +414,7 @@
 				    $('body').prepend("<img class='fake_menu' src='/public/images/head.png'>");
 				    $('#furtif').text('Mode Normal');
 				    $('.menu_gauche').hide(0);
+				    $('title').html('Nouveau Document');
 				    furtif = true;
 				    disp_menu();
 				}
@@ -418,6 +423,7 @@
 					$("head link#css").attr("href","/public/style2.css");
 					$(".fake_menu").hide(0);
 					$('#furtif').text('Passer furtif');
+					$('title').html('Hermessage');
 					furtif = false;
 				}
 			});

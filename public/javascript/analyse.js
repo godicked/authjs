@@ -176,14 +176,14 @@ function htmlMakeR(data){
 	res = "";
 	if(data.type == 'message'){
 		if(data.message.indexOf(name) == -1)
-			res = '<span class="pseudo">' + data.from + ' dit: </span><em>' + data.message + '</em></p>';
+			res = '<span class="pseudo" title='+data.who+'>' + data.from + ' dit: </span><em>' + data.message + '</em></p>';
 		else
 		{
 			var index = data.message.indexOf(name);
 			var ante = data.message.substring(0,index);
 			var center = data.message.substring(ante.length,ante.length+name.length);
 			var post = data.message.substring(ante.length+name.length);
-			res = '<span class="pseudo">' + data.from + ' dit: </span><em>' + ante + "<span style='color:red'> "+center+"</span> " +post+'</span></em></p>';
+			res = '<span class="pseudo " title='+data.who+'>' + data.from + ' dit: </span><em>' + ante + "<span style='color:red'> "+center+"</span> " +post+'</span></em></p>';
 		}
 	}
 	else if(data.type == 'command'){
@@ -192,16 +192,16 @@ function htmlMakeR(data){
 				res = '<em>' + data.from +' '+data.message +'</em></p>';
 				break;
 			case '/img':
-				res = '<span class="pseudo">' + data.from + ' dit: </span><img class="imagechat" src="'+ data.message +'"></img></p>';
+				res = '<span class="pseudo" title='+data.who+' >' + data.from + ' dit: </span><img class="imagechat" src="'+ data.message +'"></img></p>';
 				break;
 			case '/dance':
-				res = '<span class="pseudo">' + data.from + ' dit: </span><img class="imagechat" src="/public/images/dance.gif"></img></p>';
+				res = '<span class="pseudo"title='+data.who+' >' + data.from + ' dit: </span><img class="imagechat" src="/public/images/dance.gif"></img></p>';
 				break;
 			case '/link':
 				if((data.message.indexOf('http://') == 0) || (data.message.indexOf('https://') == 0))
-					res = '<span class="pseudo">' + data.from + ' dit: </span><a href="'+data.message+'" target="_blank" class="chat_link">'+data.message+'</a>';
+					res = '<span class="pseudo" title='+data.who+'>' + data.from + ' dit: </span><a href="'+data.message+'" target="_blank" class="chat_link">'+data.message+'</a>';
 				else
-					res = '<span class="pseudo">' + data.from + ' dit: </span><a href="http://'+data.message+'" class="chat_link" target="_blank" >'+data.message+'</a>';
+					res = '<span class="pseudo" title='+data.who+'>' + data.from + ' dit: </span><a href="http://'+data.message+'" class="chat_link" target="_blank" >'+data.message+'</a>';
 				break;
 			case '/nick':
 				res = '' + data.from + ' devient ' + data.message + '</p>';
@@ -210,20 +210,20 @@ function htmlMakeR(data){
 				res = '' + data.from + ' devient ' + data.message + '</p>';
 				break;
 			case '/saussage':
-				res = '<span class="pseudo">' + data.from + ' dit: </span><img class="imagechat" src="/public/images/saussage.gif"></img></p>';
+				res = '<span class="pseudo" title='+data.who+'>' + data.from + ' dit: </span><img class="imagechat" src="/public/images/saussage.gif"></img></p>';
 				break;
 			case '/fu':
-				res = '<span class="pseudo">' + data.from + ' dit: </span><img class="imagechat" src="/public/images/fu.gif"></img></p>';
+				res = '<span class="pseudo"title='+data.who+'>' + data.from + ' dit: </span><img class="imagechat" src="/public/images/fu.gif"></img></p>';
 				break;
 			case '/glou':
-				res = '<span class="pseudo">' + data.from + ' dit: </span><img class="imagechat" src="/public/images/glou.gif"></img></p>';
+				res = '<span class="pseudo"title='+data.who+'>' + data.from + ' dit: </span><img class="imagechat" src="/public/images/glou.gif"></img></p>';
 				break;
 		}
 	}
 	else if(data.type == 'video')
-		res = '<span class="pseudo">' + data.from +" envoie:<iframe class='grande_video' width='560' height='315' src='https://www.youtube.com/embed/"+data.message+"'frameborder='0' allowfullscreen></iframe>";
+		res = '<span class="pseudo"title='+data.who+'>' + data.from +" envoie:<iframe class='grande_video' width='560' height='315' src='https://www.youtube.com/embed/"+data.message+"'frameborder='0' allowfullscreen></iframe>";
 	else if(data.type == 'whisper'){
-		res = '<em class="whisp">[from: ' +data.from+'] : ' + data.message + '</em></p>';
+		res = '<em class="whisp" title='+data.who+'>[from: ' +data.from+'] : ' + data.message + '</em></p>';
 	}
 	
 	if(data.time)
