@@ -416,7 +416,7 @@ footer em{
 #container-room::-webkit-scrollbar { 
     display: none; 
 }
-#hermess_chat span .pseudo {
+#hermess_chat span.pseudo {
 	font-size: 1em;
 	font-family: 'Roboto';
 	font-weight: 400;
