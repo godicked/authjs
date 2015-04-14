@@ -521,3 +521,10 @@ p{
 	margin-top: 3em;
 	margin-left: 5em;
 }
+#hidetime{
+	width: 1.2em;
+	position: absolute;
+	top: 1.2em;
+	left: 0.5em;
+	display:none;
+}
