@@ -21,9 +21,11 @@ function actualise_liste(){
 	$('.user').click(function(){
 		var pseudo = this.textContent;
 		var val = $('#message').val();
-		if(val == ''){
+		if(val == '')
+        {
 			$('#message').val('/w "' + pseudo+'" ').focus();
-		}else if($('#message').val().indexOf('/w "' + pseudo+'" ') != -1)
+		}
+        else if($('#message').val().indexOf('/w "' + pseudo+'" ') != -1)
         {
             $('#message').val(val + ' '+pseudo).focus();
 		}
@@ -160,6 +162,7 @@ function actualise_liste_recherche(tab)
 		}
 	});
 }
+
 function entrer_room(room)
 {
 	$('#form_pass').submit(function()
