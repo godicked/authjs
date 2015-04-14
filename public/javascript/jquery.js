@@ -13,7 +13,10 @@ nouveau = true;
 	timer = setInterval(function(){
 		$('title').html('Nouveau '+content);
 		 setTimeout(function(){
-			  $('title').html('Hermessage');
+            if(furtif==false)
+                $('title').html('Hermessage');
+            else
+                $('title').html('Nouveau Document');
 		  },1000);
 		},2000);
 }

@@ -139,7 +139,7 @@
             socket.on('message', function(data)
             {
                 store(htmlPrint(htmlMakeR(data),data.room),localStorage);
-                if(blur==true && nouveau==false && furtif==false)
+                if(blur==true && nouveau==false)
                 {
                 	actualise_titre('message');
                 }
