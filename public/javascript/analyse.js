@@ -172,7 +172,7 @@ function htmlMakeS(data,pseudo){
 }
 
 function htmlMakeR(data){
-	var res = "";
+	/*var res = "";
 	if(data.type == 'message'){
 		if(data.message.indexOf(name) == -1)
 			res = '<span class="pseudo" title="'+data.who+'">' + data.from + ' dit: </span><span>' + data.message + '</span></p>';
@@ -229,6 +229,7 @@ function htmlMakeR(data){
 		return '<p><span class="time">['+data.time+']</span> '+res;
 	else
 		return '<p>'+res;
+	*/
 }
 
 function time()
