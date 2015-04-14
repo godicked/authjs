@@ -349,8 +349,11 @@ footer em{
 #hermess_chat p{
 	margin-top: 0.5em;
 	margin-bottom: 0.5em;
+	font-size: 0.85em;
 }
-
+#hermess_chat em{
+	color:rgb(215, 214, 214);
+}
 .marge:before {
     content: "";
     display: inline-block;
@@ -409,8 +412,8 @@ footer em{
 }
 .pseudo {
 	font-size: 1em;
-	font-family: 'Open Sans';
-	font-weight: 700;
+	font-family: 'Roboto';
+	font-weight: 100;
 }
 .whisp{
 	color : violet;
@@ -492,7 +495,8 @@ p{
 }
 .time{
 	font-size: 0.8em;
-	color:rgb(156, 156, 161);;
+	color:rgb(156, 156, 161);
+	display:none;
 }
 .bloc{
 	position: absolute;

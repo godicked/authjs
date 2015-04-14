@@ -73,6 +73,7 @@
 			</nav>
 			<section id="hermess_chat">
 				<form action="/" method="post" id="formulaire_chat" style='margin-bottom:2em'>
+					<img src='/public/images/icones/time.png'>
 					<input class="textbox" type="text" name="message" id="message" placeholder="Votre message..." size="50" autofocus autocomplete="off" />
 					<span id="flr">#FLR</span>
 				</form>
@@ -91,13 +92,13 @@
 				<div id="contacts">
 					<h1 class="titre-section">Contacts</h1>
 					<div id='liste-contacts'></div>
-					
-					
 				</div>
 				<article id='description'>
 					<h1 class="titre-section">Descriptif de la room</h1>
 					<article id='descriptif'>
-						<em>Bienvenue sur Hermessage, un service de discussion massive plus rapide que jamais! Rejoignez des rooms publiques pour rencontrer du monde ou créez des rooms privées pour vos amis et vous!</em>
+						<em>
+							Bienvenue sur Hermessage, un service de discussion massive plus rapide que jamais! Rejoignez des rooms publiques pour rencontrer du monde ou créez des rooms privées pour vos amis et vous!
+						</em>
 					</article>
 					<article id="test_list">
 					</article>
@@ -120,6 +121,7 @@
 			initStore(localStorage);
 			var furtif = false;
 			var respond = '';
+			var time_hide = true;
 // Initialisation de session ===================================================
 			var pseudo = '<%=user.local.name%>';
 			var name = '<%=user.local.name%>';
@@ -394,6 +396,7 @@
             		{
             			console.log('on detecte un tab');
             			$('#message').val('/w "' + respond+'" ').focus();
+            			return false;
             		}
             	});
             $('iframe').click(function()
@@ -424,6 +427,18 @@
 					$('.menu_gauche').toggle(250);
 				});
 			}
+			$('#hidetime').click(function()
+			{
+				if(!time_hide)
+				{
+					$('.time:visible').hide(0);
+					time_hide = true;
+				}
+				else {
+					$('.time:hidden').show(0);
+					time_hide = false;
+				}
+			});
 		</script>
 	</body>
 </html>
