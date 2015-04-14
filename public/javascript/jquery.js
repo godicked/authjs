@@ -29,7 +29,7 @@ function actualise_liste(){
                 {
         			$('#message').val('/w "' + to+'" ').focus();
         		}
-                else if($('#message').val().indexOf('/w "' + to+'" ') != -1)
+                else 
                 {
                     $('#message').val(val + ' '+to).focus();
         		}
