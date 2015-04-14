@@ -187,7 +187,7 @@ header em {
 }
 footer em{
 	font-size: 0.6em;
-	position: fixed;
+	position: absolute;
 	left: 2%;
 	bottom: 1%;
 }
@@ -353,6 +353,9 @@ footer em{
 	font-size: 0.85em;
 }
 #hermess_chat em{
+	color:rgb(215, 214, 214);
+}
+#hermess_chat span{
 	color:rgb(215, 214, 214);
 }
 .marge:before {

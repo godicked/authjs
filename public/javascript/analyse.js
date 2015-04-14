@@ -130,7 +130,7 @@ function htmlPrint(message,room){
 function htmlMakeS(data,pseudo){
 	var res = "";
 	if(data.type == 'message')
-		res = '<span class="pseudo">' + pseudo + ' dit: </span><em>' + data.message + '</em></p>';
+		res = '<span class="pseudo">' + pseudo + ' dit: </span><span>' + data.message + '</span></p>';
 
 	else if(data.type == 'command'){
 		switch(data.command){
@@ -176,14 +176,14 @@ function htmlMakeR(data){
 	res = "";
 	if(data.type == 'message'){
 		if(data.message.indexOf(name) == -1)
-			res = '<span class="pseudo" title='+data.who+'>' + data.from + ' dit: </span><em>' + data.message + '</em></p>';
+			res = '<span class="pseudo" title='+data.who+'>' + data.from + ' dit: </span><span>' + data.message + '</span></p>';
 		else
 		{
 			var index = data.message.indexOf(name);
 			var ante = data.message.substring(0,index);
 			var center = data.message.substring(ante.length,ante.length+name.length);
 			var post = data.message.substring(ante.length+name.length);
-			res = '<span class="pseudo " title='+data.who+'>' + data.from + ' dit: </span><em>' + ante + "<span style='color:red'> "+center+"</span> " +post+'</span></em></p>';
+			res = '<span class="pseudo " title='+data.who+'>' + data.from + ' dit: </span><span>' + ante + "<span style='color:red'> "+center+"</span> " +post+'</span></span></p>';
 		}
 	}
 	else if(data.type == 'command'){
