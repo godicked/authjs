@@ -269,13 +269,13 @@
 				}
 
 			});
-			socket.on('ask_history',function(data)
+			/*socket.on('ask_history',function(data)
 			{
 				data.storage.forEach(function(line)
 				{
 					$('#room_'+stringToId(data.room)).append(htmlMakeR(line));
 				});
-			});
+			});*/
 			socket.on('room_user_list',function(data)
 			{
 				content = make_list(data);
