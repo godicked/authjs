@@ -188,7 +188,7 @@ header em {
 footer em{
 	font-size: 0.6em;
 	position: absolute;
-	left: 2%;
+	left: 12.5px;
 	bottom: 1%;
 }
 }
@@ -323,7 +323,7 @@ footer{
 	position: fixed;
 	width: 100%;
 	text-align: left;
-	left:2%;
+	left:13px;
 	z-index:10;
 	bottom:1em;
 }
