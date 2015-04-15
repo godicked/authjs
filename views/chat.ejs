@@ -39,8 +39,8 @@
 						<p>
 						<p style="position: absolute;left: 6.5em;top: 1em;">
 							<span style='float:left;font-family:Roboto; margin-top: 0.15em;'>Pseudo:  </span>
-								<input type="text" id="pseudo" value="<%=user.local.name%>" size="5" autocomplete="off"/>
-								<input type="submit" style='display:none'></input>
+							<input type="text" id="pseudo" value="<%=user.local.name%>" size="5" autocomplete="off"/>
+							<input type="submit" style='display:none'></input>
 						</p>
 						<span class="bouton relative" id="furtif" style="position: absolute;top: 3.3em;left:7em">Passer furtif</span>
 					</div>
@@ -87,7 +87,9 @@
 			</section>
 			<nav id='menu_droite' class='menu_droite'>
 				<header>
-				<a href='#'><h1>HERMÈS<span class='blue'>S</span>AGE <img src="/public/images/hermessage02.png" id="photo" /></h1></a>
+				<a href='#'>
+					<h1>HERMÈS<span class='blue'>S</span>AGE <img src="/public/images/hermessage02.png" id="photo"/></h1>
+				</a>
 				<em class="header">Harder, better, faster, stronger IRC</em>
 				<br>
 				</header>
@@ -447,6 +449,10 @@
 					$('.time:hidden').show(0);
 					time_hide = false;
 				}
+			});
+			$('.imagechat').click(function
+			{
+				window.open($(this).attr('src'));
 			});
 		</script>
 	</body>

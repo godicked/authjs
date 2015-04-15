@@ -4,13 +4,13 @@
                  playSound('flr')
             });
 
-            $('span').click(function(){
-                if(this.id == 'flr'){
-                    if(rage<3){
-                        socket.emit('flr',{});
-                    }
-                    insere_flr();
-                  
+            $('#flr').click(function(){
+                message = '/flr';
+                var data = parse(message,active);
+                send(data,socket);
+                var toPrint = htmlMakeS(data,pseudo);
+                htmlPrint(toPrint,data.room);
+                store(toPrint,localStorage);
                 }
             });
          
