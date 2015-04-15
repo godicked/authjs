@@ -82,6 +82,7 @@
 					<img id='hidetime' src='/public/images/icones/time.png' title='Afficher heure des messages'>
 					<input class="textbox" type="text" name="message" id="message" placeholder="Votre message..." size="50" autofocus autocomplete="off" />
 					<span id="flr">#FLR</span>
+					<img id='menu_reduit' src='/public/images/icones/menu_reduit.png' style='display:none;width:1.5em;'>;
 				</form>
 
 			</section>
@@ -170,7 +171,8 @@
 	                	});
 	                }
                 }
-            })
+                image_clic();
+            });
 			socket.on('command',function(data)
 			{
 				store(htmlPrint(htmlMakeR(data),data.room),localStorage);
@@ -457,6 +459,10 @@
 					window.open($(this).attr('src'));
 				});
 			}
+			$('#menu_reduit').clic(function()
+			{
+				$('#menu_gauche').toggle(0);
+			});
 		</script>
 	</body>
 </html>

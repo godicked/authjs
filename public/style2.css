@@ -7,7 +7,20 @@
 		display: none;
 	}
 }
-
+@media screen and (orientation:landscape){
+	#menu_gauche{
+		display:none;
+	}
+	#menu_reduit{
+		display:block;
+	}
+	#hermess_chat{
+		margin-left: 1em;
+	}
+	#hermess_chat span{
+		font-size:1em;
+	}
+}
 body{
 	font-family: 'Raleway', sans-serif;
 	/*background-color: #222222;*/
