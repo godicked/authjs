@@ -2,11 +2,6 @@
 	color:rgb(47, 116, 184);
 }
 
-@media screen and (max-width:1130px) {
-	#menu_droite{
-		display: none;
-	}
-}
 
 body{
 	font-family: 'Raleway', sans-serif;
@@ -576,7 +571,13 @@ p{
 #menu_reduit{
 	display:none;
 }
-@media screen and (orientation:portrait){
+@media screen and (max-width:1130px) {
+	#menu_droite{
+		display: none;
+	}
+}
+
+@media screen and (max-width:640px){
 	#menu_gauche{
 		display:none;
 		width:50%;
