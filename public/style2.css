@@ -7,7 +7,7 @@
 		display: none;
 	}
 }
-@media screen and (orientation:landscape){
+@media screen and (orientation:portrait){
 	#menu_gauche{
 		display:none;
 	}
@@ -16,6 +16,7 @@
 	}
 	#hermess_chat{
 		margin-left: 1em;
+		width:100%;
 	}
 	#hermess_chat span{
 		font-size:1em;
