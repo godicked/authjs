@@ -577,10 +577,10 @@ p{
 	}
 }
 
-@media screen and (max-width:640px){
+@media handheld, screen and (max-width: 640px){
 	#menu_gauche{
 		display:none;
-		width:50%;
+		width:70%;
 		font-size:2em;
 	}
 	#menu_reduit{
@@ -616,4 +616,14 @@ p{
 	#formulaire_chat{
 		width:50%;
 	}
+	#image_ajouter {
+		padding: 1.18em;
+	}
+	#Titre_Room{
+		width:62%;
+	}
+	footer{
+		display: none;
+	}
+
 }
