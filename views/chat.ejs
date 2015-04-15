@@ -436,7 +436,7 @@
 				$('.fake_menu').click(function()
 				{
 					$('.menu_gauche').toggle(250);
-				});
+				}).;
 			}
 			$('#hidetime').click(function()
 			{
@@ -450,10 +450,13 @@
 					time_hide = false;
 				}
 			});
-			$('.imagechat').click(function()
+			function image_clic()
 			{
-				window.open($(this).attr('src'));
-			});
+				$('.imagechat').click(function()
+				{
+					window.open($(this).attr('src'));
+				});
+			}
 		</script>
 	</body>
 </html>

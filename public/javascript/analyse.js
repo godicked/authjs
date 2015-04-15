@@ -194,6 +194,7 @@ function htmlMakeR(data){
 				break;
 			case '/img':
 				res = '<span class="pseudo" title="'+data.who+'" >' + data.from + ' dit: </span><img class="imagechat" src="'+ data.message +'"></img></p>';
+				image_clic();
 				break;
 			case '/dance':
 				res = '<span class="pseudo"title="'+data.who+'" >' + data.from + ' dit: </span><img class="imagechat" src="/public/images/dance.gif"></img></p>';

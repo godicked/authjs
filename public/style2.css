@@ -335,6 +335,11 @@ img.imagechat {
 	vertical-align:middle;
 	margin: 7px;
 }
+img.imagechat:hover{
+	cursor:pointer;
+	width: 30%;
+	height:30%;
+}
 footer em{
 	font-size: 0.6em;
 }
@@ -422,7 +427,7 @@ footer em{
 	font-weight: 400;
 	color: rgb(104, 185, 228);
 }
-.whisp{
+#hermess_chat em.whisp{
 	color : violet;
 }
 .info{
