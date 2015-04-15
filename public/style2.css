@@ -573,6 +573,9 @@ p{
 	-webkit-border-bottom-right-radius: .3125em .5625em;
 	-webkit-border-bottom-left-radius: .3125em .5625em;
 }
+#menu_reduit{
+	display:none;
+}
 @media screen and (orientation:portrait){
 	#menu_gauche{
 		display:none;
@@ -602,5 +605,8 @@ p{
 	}
 	.zone_chat{
 		max-width: 100%;
+	}
+	.textbox{
+		font-size: 2em;
 	}
 }
