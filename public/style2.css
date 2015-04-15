@@ -12,14 +12,30 @@
 		display:none;
 	}
 	#menu_reduit{
-		display:block;
+		display: block;
+		width: 3em;
+		position: absolute;
+		right: 6em;
 	}
 	#hermess_chat{
+		width: 100%;
+		margin: 0;
+		margin-top: 2em;
 		margin-left: 1em;
-		width:100%;
+		margin-right: auto;
+		overflow: auto;
 	}
-	#hermess_chat span{
-		font-size:1em;
+	#hermess_chat p{
+		font-size:2em;
+	}
+	#hidetime{
+		display:none;
+	}
+	#flr{
+		display: none;
+	}
+	.zone_chat{
+		max-width: 100%;
 	}
 }
 body{
