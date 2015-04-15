@@ -585,7 +585,7 @@ p{
 	}
 	#menu_reduit{
 		display: block;
-		width: 3em;
+		width: 5em;
 		position: absolute;
 		right: 6em;
 	}
@@ -611,5 +611,9 @@ p{
 	}
 	.textbox{
 		font-size: 2em;
+		width:100%;
+	}
+	#formulaire_chat{
+		width:50%;
 	}
 }
