@@ -122,8 +122,9 @@ function send(data,socket){
 }
 
 function htmlPrint(message,room){
-	if(message)
+	if(message){
 		$('#room_'+stringToId(room)).prepend(message);
+	}
 }
 
 function htmlMakeS(data,pseudo){

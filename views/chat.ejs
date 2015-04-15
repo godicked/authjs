@@ -181,11 +181,10 @@
 			socket.on('whisper',function(data)
 			{
 				respond = data.from;
-				var rooms = $('.zone_chat');
-				for(i=0;i<rooms.length;i++)
+				
+				for(i=0;i<roomList.length;i++)
 				{
-					var nom = idToString($($('.zone_chat')[i]).attr('id'));
-					htmlPrint(htmlMakeR(data),nom);
+					htmlPrint(htmlMakeR(data),roomList[i]);
 				}
 			
 				if(blur==true && nouveau==false)
