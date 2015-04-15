@@ -3,7 +3,7 @@
 }
 
 @media screen and (max-width:1130px) {
-	.menu_droite{
+	#menu_droite{
 		display: none;
 	}
 }
