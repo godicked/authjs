@@ -1,3 +1,4 @@
+
 .blue{
 	color:rgb(47, 116, 184);
 }
@@ -577,7 +578,7 @@ p{
 	}
 }
 
-@media handheld, screen and (max-width: 640px){
+@media handheld, screen and (min-width: 480px){
 	#menu_gauche{
 		display:none;
 		width:70%;
