@@ -64,7 +64,10 @@ module.exports = function(app, passport) {
     // WELCOME =============================
     // =====================================
 	app.get('/welcome', isLoggedIn, function(req,res) {
-		res.render('welcome.ejs',{user : req.user});
+		if(!req.user.local.name)
+			res.render('welcome.ejs',{user : req.user});
+		else
+			res.redirect('chat');
 	});
 	
 	app.post('/welcome', function(req,res){
