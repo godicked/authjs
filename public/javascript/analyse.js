@@ -139,7 +139,7 @@ function htmlMakeS(data,pseudo){
 				res = '<em>' + pseudo +' '+data.message +'</em></p>';
 				break;
 			case '/img':
-				res = '<span class="pseudo">' + pseudo + ' dit: </span><img class="imagechat" src="'+ data.message +'"></img></p>';
+				res = '<span class="pseudo">' + pseudo + ' dit: </span><img class="imagechat" src="'+ data.message +'" style="border-radius:0;box-shadow:0;"></img></p>';
 				break;
 			case '/dance':
 				res = '<span class="pseudo">' + pseudo + ' dit: </span><img class="imagechat" src="/public/images/dance.gif"></img></p>';
