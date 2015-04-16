@@ -401,12 +401,13 @@ module.exports = function(io){
 	}
 	
 	function identification(socket){
+		if(!io.nsps['/chat'].adapter.rooms[socket.request.user._id]){
+			console.log('emit new client');
+			socket.broadcast.emit('nouveau_client',socket.request.user.local.name);
+		}
 		socket.join(socket.request.user._id);
 		socket.oid = socket.request.user._id;
 		socket.name = socket.request.user.local.name;
-		if(io.nsps['/chat'].adapter.rooms[socket.oid].length == 1){
-			socket.broadcast.emit('nouveau_client',socket.name);
-		}
 		if(!socket.request.user.local.email)
 			socket.visiteur = true;
 		socket.request.user.local.rooms.forEach(function(room){
