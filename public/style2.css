@@ -578,7 +578,7 @@ p{
 	}
 }
 
-@media handheld, screen and (min-width: 480px){
+@media screen and (min-width: 200px) and (max-width: 640px){
 	#menu_gauche{
 		display:none;
 		width:70%;
