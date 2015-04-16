@@ -171,15 +171,17 @@ iframe {
 
 header{
 	text-align: center;
-	padding-bottom: 3em;
+	padding-bottom: 1em;
 	width: 100%;
 	border-bottom: solid;
 	border-bottom-color: rgb(31, 31, 31);
+	margin:0;
 }
 header em {
 	font-size: 0.8em;
 	color: #ccc;
 	padding-right: 2em;
+	display: none;
 }
 footer em{
 	font-size: 0.6em;
@@ -191,13 +193,15 @@ em.whisp{
 	color: #FF66FF;
 }
 h1{
-	font-family: 'Open Sans';
+	font-family: 'Roboto';
 	margin-bottom:auto;
-	font-weight: 700;
-	font-size: 2em;
+	font-weight: 100;
+	font-size: 1.8em;
 	color: #FFF;
-	text-shadow: 3px 7px 0px #121212;
+	/*text-shadow: 3px 7px 0px #121212;*/
 	border: 0;
+	margin:0;
+	padding-top: 1em;
 	/*width: 100%*/
 }
 a{
@@ -212,7 +216,7 @@ a{
 }
 .bouton {
 	display: inline-block;
-	background: rgb(47, 116, 184);
+	background:rgb(0, 118, 184);
 	padding: 0.4em;
 	font-family: 'Roboto';
 	font-size: 0.9em;
@@ -431,7 +435,7 @@ footer em{
 }
 #image_ajouter{
 	width: 1em;
-	height: 1em;
+	height: 1.15em;
 	padding: 1.15em;
 	padding-right: 1.5em;
 	border-top: solid;
