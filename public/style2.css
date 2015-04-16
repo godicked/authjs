@@ -1,12 +1,8 @@
+
 .blue{
 	color:rgb(47, 116, 184);
 }
 
-@media screen and (max-width:1130px) {
-	#menu_droite{
-		display: none;
-	}
-}
 
 body{
 	font-family: 'Raleway', sans-serif;
@@ -121,7 +117,7 @@ iframe {
 #profilpic{
 	float:left;
 	height:5.1em;
-	margin-left: 1em;
+	margin-left: 0.8em;
 	/*border-radius:20px;*/
 }
 #container_profil{
@@ -572,4 +568,63 @@ p{
 	-webkit-border-top-right-radius: .3125em;
 	-webkit-border-bottom-right-radius: .3125em .5625em;
 	-webkit-border-bottom-left-radius: .3125em .5625em;
+}
+#menu_reduit{
+	display:none;
+}
+@media screen and (max-width:1130px) {
+	#menu_droite{
+		display: none;
+	}
+}
+
+@media screen and (min-width: 200px) and (max-width: 640px){
+	#menu_gauche{
+		display:none;
+		width:70%;
+		font-size:2em;
+	}
+	#menu_reduit{
+		display: block;
+		width: 5em;
+		position: absolute;
+		right: 6em;
+	}
+	#hermess_chat{
+		width: 100%;
+		margin: 0;
+		margin-top: 2em;
+		margin-left: 1em;
+		margin-right: auto;
+		overflow: auto;
+	}
+	#hermess_chat p{
+		font-size:2em;
+	}
+	#hidetime{
+		display:none;
+	}
+	#flr{
+		display: none;
+	}
+	.zone_chat{
+		max-width: 100%;
+	}
+	.textbox{
+		font-size: 2em;
+		width:100%;
+	}
+	#formulaire_chat{
+		width:50%;
+	}
+	#image_ajouter {
+		padding: 1.18em;
+	}
+	#Titre_Room{
+		width:62%;
+	}
+	footer{
+		display: none;
+	}
+
 }

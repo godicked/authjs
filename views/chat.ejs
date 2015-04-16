@@ -31,9 +31,9 @@
 			<nav id='menu_gauche' class='menu_gauche'>
 				<div id='profil'>
 					<a class='statut' href=''></a>
-					<h1 class='titre-section' style="text-align:left;padding-left:1em;">Profil</h1>
+					<h1 class='titre-section' style="text-align:left;padding-left:1em;"><%=user.local.name%></h1>
 					<div class='bloc'>
-						<img id="profilpic" src="/public/images/serveur_image/logo_rond.png">
+						<img id="profilpic" src="/public/images/serveur_image/caducée.png">
 						<p>
 							<span style="position: absolute;top: 0;left: 6.5em;font-family:Roboto">Nom: <%=user.local.name%></span>
 						<p>
@@ -78,10 +78,12 @@
 		</footer>
 			</nav>
 			<section id="hermess_chat">
+				<img id='menu_reduit' src='/public/images/icones/menu_reduit.png'>
 				<form action="/" method="post" id="formulaire_chat" style='margin-bottom:2em;position:relative'>
 					<img id='hidetime' src='/public/images/icones/time.png' title='Afficher heure des messages'>
 					<input class="textbox" type="text" name="message" id="message" placeholder="Votre message..." size="50" autofocus autocomplete="off" />
 					<span id="flr">#FLR</span>
+					
 				</form>
 
 			</section>
@@ -169,7 +171,8 @@
 	                	});
 	                }
                 }
-            })
+                image_clic();
+            });
 			socket.on('command',function(data)
 			{
 				store(htmlPrint(htmlMakeR(data),data.room),localStorage);
@@ -456,6 +459,12 @@
 					window.open($(this).attr('src'));
 				});
 			}
+			
+				$('#menu_reduit').click(function()
+				{
+					$('#menu_gauche').toggle(0);
+					$('#message').toggle(0);
+				});
 		</script>
 	</body>
 </html>
