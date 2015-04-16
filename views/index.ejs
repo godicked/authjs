@@ -21,7 +21,18 @@
         <a href="/signup" class="btn btn-default"><span class="fa fa-user"></span> Local Signup</a>
 		<a href="/visit" class="btn btn-default"><span class="fa fa-user"></span> Visiteur</a>
     </div>
-
+	<script src="/socket.io/socket.io.js"></script>
+	<script src="/public/javascript/url.js"></script>
+		<script>
+			localStorage.debug = 'null';
+			var socket = io.connect(getURL() + '/Accueil');
+			socket.on('message', function(data){
+				console.log(data);
+			});
+			socket.on('command', function(data){
+				console.log(data);
+			});
+		</script>
 </div>
 </body>
 </html>

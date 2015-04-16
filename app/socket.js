@@ -9,11 +9,9 @@ module.exports = function(io){
 // Namespace /chat ======================================================================
 	io.of('/chat').on('connection',function(socket)
 	{
-		console.log('new user: '+ socket.id);
-		socket.on('give_id',function(id)
-		{
-			identification(id,socket);
-		});
+		console.log('new user: '+ socket.request.user.local.name);
+		identification(socket);
+		
 		socket.on('message',function(data)
 		{
 			data.time = time();
@@ -30,6 +28,9 @@ module.exports = function(io){
 				data.message = encode(data.message);
 				console.log('send to room: '+data.room);
 				socket.to(data.room).emit('message',data);
+				if(data.room == 'Accueil')
+					io.of('Accueil').emit('message',data);
+				
 				Room.findOne({'name':data.room},function(err,room)
 				{
 					if(room)
@@ -89,6 +90,8 @@ module.exports = function(io){
 					data.message = encode(data.message);
 				console.log('commande envoyé de: '+socket.name);
 				socket.broadcast.emit('command',data);
+				if(data.room == 'Accueil')
+					io.of('Accueil').emit('command',data);
 			}
 			else
 				socket.emit('wrong','votre session a expiré, veuillez recharger la page');
@@ -257,7 +260,78 @@ module.exports = function(io){
 		});
 	});
 
-	function joinRoom(data,socket)
+
+// Namespace /info ======================================================================
+
+	io.of('/info').on('connection',function(socket){
+		console.log('name name');
+		socket.on('name_free',function(name){
+			console.log('name_free ask');
+			User.findOne({'local.name':name},function(err,user){
+				console.log(user);
+				if(err || !user)
+					socket.emit('name_free',data = {'free':true,'name':name});
+				if(user)
+					socket.emit('name_free',data = {'free':false,'name':name});
+			});
+		});
+	});
+	
+	io.of('/room').on('connection', function(socket){
+		
+		socket.on('give_id',function(id)
+		{
+			User.findById(id,function(err,user)
+			{
+				if(err)
+					console.log(err);
+				if(!user)
+				{
+					console.log('socket.io : id not found in db');
+					socket.disconnect();
+				}
+				else
+				{
+					socket.oid = id;
+					socket.name = user.local.name;
+					socket.emit('give_id',true);
+					Room.find({'owner':id},{'name':1,'whitelist':1,'blacklist':1,'moderator':1,'volume':1},function(err,room){
+						if(!err && room){
+							console.log(room);
+							socket.emit('get_list',room);
+						}
+					});
+				}
+			});
+		});
+		
+		
+			
+	});
+	
+	// Namespace Accueil ==========================================================
+	io.of('/Accueil').on('connection', function(socket){
+		console.log('visiteur sur page d\'accueil');
+	});
+	
+	function cleanString(text){
+		return text.split('').map(function(c){
+			if("*?|".indexOf(c) >= 0)
+				return '\\'+c;
+			else
+				return c;
+		}).join('');
+	}
+	
+	
+	function time()
+	{
+		    var d = new Date();
+			var h = d.getHours();
+			var m = d.getMinutes();
+			return h+':'+m;
+	}
+		function joinRoom(data,socket)
 	{
 		var ok = false;
 		Room.findOne({'name':data.message},function(err,room)
@@ -326,27 +400,17 @@ module.exports = function(io){
 		});
 	}
 	
-	function identification(id,socket){
-		User.findById(id, function(err,user){
-			if(err)
-				console.log('Database error');
-			else if(!user){
-				console.log('user not found');
-				socket.disconnect();
-			}
-			else if(user){
-				socket.join(user._id);
-				if(io.nsps['/chat'].adapter.rooms[user._id].length == 1){
-					socket.broadcast.emit('nouveau_client',user.local.name);
-				}
-				socket.name = user.local.name;
-				socket.oid = user._id;
-				if(!user.local.email)
-					socket.visiteur = true;
-				user.local.rooms.forEach(function(room){
-					joinRoom({'message':room}, socket);
-				});
-			}
+	function identification(socket){
+		socket.join(socket.request.user._id);
+		socket.oid = socket.request.user._id;
+		socket.name = socket.request.user.local.name;
+		if(io.nsps['/chat'].adapter.rooms[socket.oid].length == 1){
+			socket.broadcast.emit('nouveau_client',socket.name);
+		}
+		if(!socket.request.user.local.email)
+			socket.visiteur = true;
+		socket.request.user.local.rooms.forEach(function(room){
+			joinRoom({'message':room}, socket);
 		});
 	}
 	
@@ -375,69 +439,4 @@ module.exports = function(io){
 	}
 
 
-// Namespace /info ======================================================================
-
-	io.of('/info').on('connection',function(socket){
-		console.log('name name');
-		socket.on('name_free',function(name){
-			console.log('name_free ask');
-			User.findOne({'local.name':name},function(err,user){
-				console.log(user);
-				if(err || !user)
-					socket.emit('name_free',data = {'free':true,'name':name});
-				if(user)
-					socket.emit('name_free',data = {'free':false,'name':name});
-			});
-		});
-	});
-	
-	io.of('/room').on('connection', function(socket){
-		
-		socket.on('give_id',function(id)
-		{
-			User.findById(id,function(err,user)
-			{
-				if(err)
-					console.log(err);
-				if(!user)
-				{
-					console.log('socket.io : id not found in db');
-					socket.disconnect();
-				}
-				else
-				{
-					socket.oid = id;
-					socket.name = user.local.name;
-					socket.emit('give_id',true);
-					Room.find({'owner':id},{'name':1,'whitelist':1,'blacklist':1,'moderator':1,'volume':1},function(err,room){
-						if(!err && room){
-							console.log(room);
-							socket.emit('get_list',room);
-						}
-					});
-				}
-			});
-		});
-		
-		
-			
-	});
-	
-	function cleanString(text){
-		return text.split('').map(function(c){
-			if("*?|".indexOf(c) >= 0)
-				return '\\'+c;
-			else
-				return c;
-		}).join('');
-	}
-	
-	
-	function time()
-	{
-		    var d = new Date();
-			var h = d.getHours();
-			var m = d.getMinutes();
-			return h+':'+m;
-	}
 };

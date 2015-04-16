@@ -37,7 +37,15 @@ app.use(favicon(__dirname + '/public/images/favicon-96x96.png'));
 app.set('view engine', 'ejs'); // set up ejs for templating
 
 // required for passport
-app.use(session({ secret: 'ilovescotchscotchyscotchscotch' })); // session secret
+var MongoStore = require('connect-mongo')(session);
+var RedisStore = require('connect-redis')(session);
+var sessionStore = new MongoStore({ url:configDB.url });
+app.use(session({
+	key:'express.sid',
+    store: sessionStore,
+    secret: 'keyboard cat',
+}));
+
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 app.use(flash()); // use connect-flash for flash messages stored in session
@@ -46,7 +54,29 @@ app.use(flash()); // use connect-flash for flash messages stored in session
 require('./app/routes.js')(app, passport); // load our routes and pass in our app and fully configured passport
 
 // socket=======================================================================
+var passportSocketIo = require("passport.socketio");
+
+io.of('/chat').use(passportSocketIo.authorize({
+  passport : passport,
+  cookieParser: cookieParser,       // the same middleware you registrer in express
+  key:          'express.sid',       // the name of the cookie where express/connect stores its session_id
+  secret:       'keyboard cat',    // the session_secret to parse the cookie
+  store:        sessionStore,        // we NEED to use a sessionstore. no memorystore please
+  success:      onAuthorizeSuccess,  // *optional* callback on success - read more below
+  fail:         onAuthorizeFail,     // *optional* callback on fail/error - read more below
+}));
 require('./app/socket.js')(io);
 // launch ======================================================================
 server.listen(port);
 console.log('The magic happens on port ' + port);
+
+function onAuthorizeSuccess(data, accept){
+  console.log('successful connection to socket.io');
+  accept();
+}
+
+function onAuthorizeFail(data, message, error, accept){
+  console.log('failed connection to socket.io:', message);
+  if(error)
+    accept(new Error(message));
+}
