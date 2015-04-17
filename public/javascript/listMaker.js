@@ -60,7 +60,7 @@ function newInList(old,actual){
 
 function addRooms(array){
 	array.forEach(function(data){
-		$('#hermess_chat').append('<article id="room_'+ stringToId(data)+'" class="zone_chat" style="overflow:auto"></article>');
+		$('#hermess_chat').append('<article id="room_'+ stringToId(data)+'" class="zone_chat" style="overflow:auto"><div id="room_h_'+ stringToId(data)+'"></div></article>');
 		$('#liste-users').append('<div id="list_'+stringToId(data)+'"class="container-users"></div>');
 		socket.emit('ask_history',data);
 	});

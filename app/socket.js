@@ -413,6 +413,7 @@ module.exports = function(io){
 		socket.request.user.local.rooms.forEach(function(room){
 			joinRoom({'message':room}, socket);
 		});
+		socket.emit('initialise', socket.request.user.local.rooms);
 	}
 	
 	function getRoomUserList(room){

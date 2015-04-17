@@ -136,6 +136,16 @@
 
 
 // Reception socket=============================================================
+			socket.on('initialize',function(rooms){
+				if(roomList){
+					roomList.forEach(function(data){
+						socket.emit('ask_history',data);
+					});
+				}
+			});
+			socket.on('disconnect',function(){
+				htmlPrint('<p class="info">Vous etes deco</p>','Accueil');
+			});
 			socket.on('get_name',function(name)
 			{
 				pseudo = name;
@@ -202,24 +212,20 @@
             socket.on('nouveau_client', function(pseudo) 
             {
                 $('#room_'+stringToId('Accueil')).prepend('<p><em>' + pseudo + ' a rejoint le Chat !</em></p>');
-				store('<p><em>' + pseudo + ' a rejoint le Chat !</em></p>',localStorage);
 				actualise_liste();
 				playSound('connexion');
             });
 			socket.on('deco', function(message) 
 			{
                 $('#room_'+stringToId('Accueil')).prepend(message);
-				store(message,localStorage);
             });
 			socket.on('wrong',function(message)
 			{
 				$('#room_'+stringToId('Accueil')).prepend('<p style="color: red;">'+message+'</p>');
-				store('<p style="color: red;">'+message+'</p>',localStorage);
 			});
 			socket.on('info',function(message)
 			{
 				$('#room_'+stringToId("Accueil")).prepend('<p style="color: green;">'+message+'</p>');
-				store('<p style="color: green;">'+message+'</p>',localStorage);
 			});
 			socket.on('room_list',function(data)
 			{
@@ -269,9 +275,10 @@
 			});
 			socket.on('ask_history',function(data)
 			{
+				$('#room_h_'+ stringToId(data.room)).empty();
 				data.storage.forEach(function(line)
 				{
-					$('#room_'+stringToId(data.room)).append(htmlMakeR(line));
+					$('#room_h_'+ stringToId(data.room)).append(htmlMakeR(line));
 				});
 			});
 			socket.on('room_user_list',function(data)
