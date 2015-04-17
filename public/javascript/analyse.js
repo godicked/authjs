@@ -233,7 +233,12 @@ function htmlMakeR(data){
 	}
 	
 	if(data.time)
-		return '<p><span class="time">['+data.time+']</span> '+res;
+		if(time_hide == true){
+			return '<p><span class="time">['+time()+']</span> '+res;
+		}
+		else {
+			return '<p><span class="time" style="display:inline">['+time()+']</span> '+res;
+		}
 	else
 		return '<p>'+res;
 	
