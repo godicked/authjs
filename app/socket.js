@@ -179,7 +179,6 @@ module.exports = function(io){
 							{
 								console.log('new room: '+data.message);
 								socket.emit('info','La room '+ data.message + ' a été crée');
-								socket.join(data.message);
 								console.log(data);
 								joinRoom(data,socket);
 							}
@@ -240,6 +239,7 @@ module.exports = function(io){
 					
 		socket.on('disconnect',function()
 		{
+			console.log('socket disconnect');
 			if(socket.name){
 				setTimeout(function(){
 					if(!io.nsps['/chat'].adapter.rooms[socket.oid]){
@@ -331,7 +331,7 @@ module.exports = function(io){
 			var m = d.getMinutes();
 			return h+':'+m;
 	}
-		function joinRoom(data,socket)
+	function joinRoom(data,socket)
 	{
 		var ok = false;
 		Room.findOne({'name':data.message},function(err,room)
@@ -371,6 +371,7 @@ module.exports = function(io){
 							{
 								if(room.whitelist.indexOf(socket.name) < 0){
 									room.whitelist.push(socket.name);
+									room.save(function(err){ });
 								}
 							}
 							user.save(function (err) 
