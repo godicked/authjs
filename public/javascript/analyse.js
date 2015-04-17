@@ -169,8 +169,12 @@ function htmlMakeS(data,pseudo){
 		res = '<span style="color: red;">'+data.message+'</span></p>';
 	else
 		return ' ';
-	return '<p><span class="time">['+time()+']</span> '+res;
-	
+	if(time_hide == true){
+		return '<p><span class="time">['+time()+']</span> '+res;
+	}
+	else {
+		return '<p><span class="time" style="display:inline">['+time()+']</span> '+res;
+	}
 }
 
 function htmlMakeR(data){
