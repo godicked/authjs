@@ -137,6 +137,8 @@
 
 // Reception socket=============================================================
 			socket.on('initialize',function(rooms){
+				console.log('initialize');
+				console.log(roomList);
 				if(roomList){
 					roomList.forEach(function(data){
 						socket.emit('ask_history',data);
