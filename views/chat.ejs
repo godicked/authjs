@@ -137,6 +137,7 @@
 
 // Reception socket=============================================================
 			socket.on('initialise',function(rooms){
+				htmlPrint('<p class="info">Vous etes connecté</p>','Accueil');
 				console.log('initialise');
 				console.log(roomList);
 				if(roomList){
