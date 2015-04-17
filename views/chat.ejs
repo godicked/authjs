@@ -279,6 +279,8 @@
 			socket.on('ask_history',function(data)
 			{
 				$('#room_h_'+ stringToId(data.room)).empty();
+				var save = $('#room_h_'+ stringToId(data.room)).detach();
+				$('#room_'+ stringToId(data.room)).empty().append(save);
 				data.storage.forEach(function(line)
 				{
 					$('#room_h_'+ stringToId(data.room)).append(htmlMakeR(line));
