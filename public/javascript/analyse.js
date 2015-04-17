@@ -232,13 +232,14 @@ function htmlMakeR(data){
 		res = '<em class="whisp" title="'+data.who+'">[from: ' +data.from+'] : ' + data.message + '</em></p>';
 	}
 	
-	if(data.time)
+	if(data.time){
 		if(time_hide == true){
 			return '<p><span class="time">['+time()+']</span> '+res;
 		}
 		else {
 			return '<p><span class="time" style="display:inline">['+time()+']</span> '+res;
 		}
+	}
 	else
 		return '<p>'+res;
 	
