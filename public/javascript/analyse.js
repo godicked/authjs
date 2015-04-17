@@ -139,7 +139,7 @@ function htmlMakeS(data,pseudo){
 				res = '<em>' + pseudo +' '+data.message +'</em></p>';
 				break;
 			case '/img':
-				res = '<span class="pseudo">' + pseudo + ' dit: </span><img class="imagechat" src="'+ data.message +'" style="border-radius:0;box-shadow:0;"></img></p>';
+				res = '<span class="pseudo">' + pseudo + ' dit: </span><img class="imagechat" src="'+ data.message +'"></img></p>';
 				break;
 			case '/dance':
 				res = '<span class="pseudo">' + pseudo + ' dit: </span><img class="imagechat" src="/public/images/dance.gif"></img></p>';
@@ -169,8 +169,12 @@ function htmlMakeS(data,pseudo){
 		res = '<span style="color: red;">'+data.message+'</span></p>';
 	else
 		return ' ';
-	return '<p><span class="time">['+time()+']</span> '+res;
-	
+	if(time_hide == true){
+		return '<p><span class="time">['+time()+']</span> '+res;
+	}
+	else {
+		return '<p><span class="time" style="display:inline">['+time()+']</span> '+res;
+	}
 }
 
 function htmlMakeR(data){
@@ -227,9 +231,14 @@ function htmlMakeR(data){
 	else if(data.type == 'whisper'){
 		res = '<em class="whisp" title="'+data.who+'">[from: ' +data.from+'] : ' + data.message + '</em></p>';
 	}
-	
-	if(data.time)
-		return '<p><span class="time">['+data.time+']</span> '+res;
+	if(data.time){
+		if(time_hide == true){
+			return '<p><span class="time">['+time()+']</span> '+res;
+		}
+		else {
+			return '<p><span class="time" style="display:inline">['+time()+']</span> '+res;
+		}
+	}
 	else
 		return '<p>'+res;
 	
