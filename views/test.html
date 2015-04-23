@@ -1,0 +1,71 @@
+<!-- views/profile.ejs -->
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type="text/css">
+		<link href='http://fonts.googleapis.com/css?family=Roboto:100,300' rel='stylesheet' type='text/css'>
+		<link id='css' rel="stylesheet" href="../public/imposetonstyle.css" type="text/css">
+		<title id="title">Hermessage</title>
+	</head>
+	<body>
+		<nav id='menu_gauche'>
+			<header>	
+				<a href='#'><h1>HERMÈS<span class='blue'>S</span>AGE <img src="../public/images/serveur_image/hermessagev3_simple.png" id="image_logo" style='width:2em'/></h1></a>
+			</header>
+			<section id='profil'>
+				<h1 class='titre_section'>Tyra</h1>
+				<div id='conteneur_profil' class='conteneur' style='height: 4.3em;'>
+					<img id='image_profil' src='../public/images/serveur_image/caducée.png' style='width:3em;padding-left:1em;padding:0.7em;'>
+					<span id='affiche_pseudo'></span>
+					<span id='affiche_nom'></span>
+					<span id='bouton_furtif' class='bouton' style='position:absolute;top:1em;'>Furtif</span> 
+				</div>
+			<section>
+			<section id='rooms'>
+				<div id='block'>
+					<h1 class='titre_section'>Rooms</h1>
+					<img id='image_ajouter'>
+					<form id='form_ajouter_room'>
+					</form>
+				</div>
+				<input id='recherche_rooms' type='text'>
+				<aside id='container_recherche_room'>
+				</aside>
+				<aside id='container_rooms'>
+					<span class='room'>Accueil</span>
+					<span class='room'>Amis</span>
+					<span class='room'>Contacts</span>
+				</aside>
+			</section>
+			<section id='utilisateurs'>
+				<aside id='container_users'>
+					<span class='user'>Tyra</span>
+					<span class='user'>glouglou</span>
+					<span class='user'>QMK</span>
+				</aside>
+			</section>
+			<section id='contacts'>
+				<h1 class='titre_section'>Contacts</h1>
+			</section>
+			<footer>
+			</footer>
+		</nav>
+		<div id='zone_chat'> 
+				<article id='room_accueil'>
+					<div class='message'>
+						<span class='message_header'><span class='time'></span><span class='pseudo'>Tyra</span></span>
+						<img class='image_message' src='../public/images/serveur_image/caducée.png'>
+						<span class='message_body'>Coucou juste un petit message pour dire que tout va bien <br> Test de message <br> Encore un test juste pour remplir un peu</span>
+					</div>
+				</article>
+				<form action="/" method="post" id="form_chat">
+				<img id='hidetime' src='../public/images/icones/time.png' title='Afficher heure des messages' style='  width: 1.5em;position: absolute;left: 0.5em;bottom: 0.7em;'>
+				<input class="textbox" type="text" name="message" id="message" placeholder="Votre message..." size="50" autofocus autocomplete="off" />					
+			</form>
+		</div>
+		<nav id='menu_droite' style='display:none'>
+		</nav>
+	</body>
+</html>
