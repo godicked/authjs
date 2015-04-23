@@ -1,0 +1,156 @@
+/*=====================CSS GENERAL============================*/
+body{
+	font-family: 'Roboto', sans-serif;
+	/*background-color: #222222;*/
+	background-image:url('../public/images/navy_blue.png'); 
+	color: white;
+	font-weight: 100;
+	margin:0;
+
+}
+::-webkit-scrollbar { 
+    display: none; 
+}
+html {
+     -ms-overflow-style: none;
+}
+iframe {
+  vertical-align: middle;
+  width:250px;
+  height:180px;
+}
+header{
+	text-align: center;
+	border-bottom: solid;
+	border-width: 1px;
+	border-color: rgb(26, 25, 25);
+	background: rgb(32, 32, 32);
+}
+a{
+	text-decoration: none;
+	color:white;
+}
+h1{
+	font-weight: 100;
+}
+.blue{
+	color: rgb(0, 118, 186);
+	font-weight: 700;
+}
+/*====================CSS BOUTONS============================*/
+.bouton{
+	background: rgb(0, 118, 186);
+	padding: 0.7em;
+	padding-bottom: 0.3em;
+	padding-top: 0.3em;
+	border-radius: 0.3em;
+	font-size: 0.8em;
+ }
+ .bouton:hover{
+ 	cursor: pointer;
+ 	background:rgb(182, 172, 172); 
+ }
+/*====================CSS TITRES=============================*/
+.titre_section{
+	color: white;
+	font-weight: 100;
+	padding: 0.7em;
+	padding-left: 1em;
+	border-bottom: solid;
+	border-width: 1px;
+	margin: 0;
+	border-color: rgb(26, 25, 25);
+	font-size: 1.2em;
+	background: rgb(32, 32, 32);
+}
+.titre_section:hover{
+	background: rgb(42, 42, 42);
+	cursor: pointer;
+}
+/*====================CSS CONTENEURS=========================*/
+.conteneur{
+  border-bottom: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgb(26, 25, 25);
+  position: relative;
+}
+/*====================CSS FORMULAIRES========================*/
+.textbox{
+	border: none;
+	background: rgb(56, 56, 56);
+	outline: none !important;
+	outline-offset: none !important;
+}
+#message{
+	width: 100%;
+	padding: 0.9em;
+	padding-left: 3em;
+	color: white;
+	font-size: 1em;
+}
+#form_chat{
+  position: absolute;
+  bottom: 0;
+  left: 0.3em;
+  width: 100%;
+}
+/*====================CSS MENUS==============================*/
+nav{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 240px;
+	height: 100%;
+	background: rgb(32, 32, 32);
+	-moz-box-shadow: 2px 0px 3px 1px rgb(34, 33, 33);
+	-webkit-box-shadow: 2px 0px 3px 1px rgb(34, 33, 33);
+	-o-box-shadow: 2px 0px 3px 1px rgb(34, 33, 33);
+	box-shadow: 2px 0px 3px 1px rgb(34, 33, 33);
+	filter: progid:DXImageTransform.Microsoft.Shadow(color=rgb(34, 33, 33), Direction=90, Strength=2);
+}
+/*====================CSS CONTENU MULTIMEDIA=================*/
+.grande_video{
+	width:540px;
+	height:330px;
+}
+/*===================CSS DES MESSAGES ========================*/
+#zone_chat{
+	position: absolute;
+	left: 250px;
+	width:100%;
+	height:100%;
+}
+article{
+	padding: 2em;
+}
+.image_message{
+	width: 2em;
+	position: absolute;
+	top: 0.5em;
+	left: 0.5em;
+	border-radius: 50%;
+}
+.message_header{
+	display: block;
+	background: rgb(0, 118, 186);
+	width: 10em;
+	font-weight: 700;
+	color: white;
+	padding: 0.2em;
+	padding-left: 4em;
+}
+.message_body{
+	background: rgb(255, 255, 244);
+	display: block;
+	padding: 2.5em;
+	padding-top: 0.5em;
+	padding-bottom: 0.5em;
+	border-bottom-left-radius: 10px;
+	max-width: 50%;
+	border-bottom-right-radius: 10px;
+	border-top-right-radius: 10px;
+	color: black;
+}
+.message{
+	position: relative;
+}
