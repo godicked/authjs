@@ -1,4 +1,6 @@
-/*=====================CSS GENERAL============================*/
+/*============================================================*/
+/********************CSS GENERAL ********** *******************/
+/*============================================================*/
 body{
 	font-family: 'Roboto', sans-serif;
 	/*background-color: #222222;*/
@@ -37,7 +39,9 @@ h1{
 	color: rgb(0, 118, 186);
 	font-weight: 700;
 }
-/*====================CSS BOUTONS============================*/
+/*============================================================*/
+/********************CSS DES BOUTONS **************************/
+/*============================================================*/
 .bouton{
 	background: rgb(0, 118, 186);
 	padding: 0.7em;
@@ -50,7 +54,9 @@ h1{
  	cursor: pointer;
  	background:rgb(182, 172, 172); 
  }
-/*====================CSS TITRES=============================*/
+/*============================================================*/
+/********************CSS DES TITRES ******* *******************/
+/*============================================================*/
 .titre_section{
 	color: white;
 	font-weight: 100;
@@ -67,14 +73,37 @@ h1{
 	background: rgb(42, 42, 42);
 	cursor: pointer;
 }
-/*====================CSS CONTENEURS=========================*/
+/*============================================================*/
+/********************CSS DES CONTENEURS ***********************/
+/*============================================================*/
 .conteneur{
   border-bottom: solid;
   border-bottom-width: 1px;
   border-bottom-color: rgb(26, 25, 25);
   position: relative;
 }
-/*====================CSS FORMULAIRES========================*/
+.room{
+	display: block;
+	background: rgb(26, 26, 26);
+	padding: 0.7em;
+	border-bottom: solid;
+	border-bottom-width: 1px;
+	border-bottom-color: rgb(32, 32, 32);
+}
+.user{
+	display: inline-block;
+	width: 25.6%;
+	background: rgb(26, 26, 26);
+	text-align: center;
+	padding: 0.5em;
+}
+.user:hover,.room:hover{
+	cursor: pointer;
+	background: rgb(0, 118, 186);
+}
+/*============================================================*/
+/*********************CSS DES FORMULAIRES *********************/
+/*============================================================*/
 .textbox{
 	border: none;
 	background: rgb(56, 56, 56);
@@ -94,7 +123,17 @@ h1{
   left: 0.3em;
   width: 100%;
 }
-/*====================CSS MENUS==============================*/
+#recherche_room,#recherche_user{
+	width: 80%;
+	margin-left: 1.5em;
+	padding: 0.5em;
+	border-radius: 20px;
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+/*============================================================*/
+/*********************CSS DES MENUS ***************************/
+/*============================================================*/
 nav{
 	position: absolute;
 	top: 0;
@@ -108,12 +147,17 @@ nav{
 	box-shadow: 2px 0px 3px 1px rgb(34, 33, 33);
 	filter: progid:DXImageTransform.Microsoft.Shadow(color=rgb(34, 33, 33), Direction=90, Strength=2);
 }
-/*====================CSS CONTENU MULTIMEDIA=================*/
+
+/*============================================================*/
+/********************CSS CONTENU MULTIMEDIA *******************/
+/*============================================================*/
 .grande_video{
 	width:540px;
 	height:330px;
 }
-/*===================CSS DES MESSAGES ========================*/
+/*============================================================*/
+/********************CSS DES MESSAGES *************************/
+/*============================================================*/
 #zone_chat{
 	position: absolute;
 	left: 240px;
@@ -122,6 +166,7 @@ nav{
 }
 article{
 	padding: 2em;
+	max-width: 60%
 }
 .image_message{
 	width: 2em;
@@ -129,6 +174,7 @@ article{
 	top: 0.5em;
 	left: 0.5em;
 	border-radius: 50%;
+	z-index:2;
 }
 .message_header{
 	display: inline-block;
@@ -139,6 +185,8 @@ article{
 	padding: 0.2em;
 	padding-left: 4em;
 	padding-right: 4em;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
 }
 .message_body{
 	background: rgb(255, 255, 244);
@@ -153,6 +201,10 @@ article{
 	color: black;
 	/* width: auto; */
 	font-size: 0.9em;
+	position: absolute;
+	left: 0;
+	top: 1.77em;
+  font-weight: 400;
 }
 .message{
 	position: relative;

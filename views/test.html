@@ -30,7 +30,7 @@
 					<form id='form_ajouter_room'>
 					</form>
 				</div>
-				<input id='recherche_rooms' type='text'>
+				<input id='recherche_room' type='text' class='textbox'>
 				<aside id='container_recherche_room'>
 				</aside>
 				<aside id='container_rooms'>
@@ -40,6 +40,7 @@
 				</aside>
 			</section>
 			<section id='utilisateurs'>
+				<h1 class='titre_section'>Utilisateurs</h1>
 				<aside id='container_users'>
 					<span class='user'>Tyra</span>
 					<span class='user'>glouglou</span>
@@ -57,12 +58,12 @@
 					<div class='message'>
 						<span class='message_header'><span class='time'></span><span class='pseudo'>Tyra</span></span>
 						<img class='image_message' src='../public/images/serveur_image/caducée.png'>
-						<span class='message_body'>Coucou juste un petit message pour dire que tout va bien <br> Test de message <br> Encore un test juste pour remplir un peu</span>
+						<span class='message_body'>Coucou juste un petit message pour dire que tout va bien <br> Test de message <br> Encore un test juste pour remplir un peu<br>Et vas y que je te remplis encore une autre ligne, tout ça pour tester si ça s'adapte bien en hauteur et largeur</span>
 					</div>
 				</article>
 				<form action="/" method="post" id="form_chat">
 				<img id='hidetime' src='../public/images/icones/time.png' title='Afficher heure des messages' style='  width: 1.5em;position: absolute;left: 0.5em;bottom: 0.7em;'>
-				<input class="textbox" type="text" name="message" id="message" placeholder="Votre message..." size="50" autofocus autocomplete="off" />					
+				<input class="textbox" type="text" name="message" id="message" placeholder="Votre message..." size="50" autofocus autocomplete="off" />
 			</form>
 		</div>
 		<nav id='menu_droite' style='display:none'>
