@@ -25,7 +25,7 @@ iframe {
 header{
 	text-align: center;
 	border-bottom: solid;
-	border-width: 1px;
+	border-width: 0.3em;
 	border-color: rgb(26, 25, 25);
 	background: rgb(32, 32, 32);
 }
@@ -87,6 +87,7 @@ h1{
 	display: block;
 	background: rgb(26, 26, 26);
 	padding: 0.7em;
+	padding-left: 1em;
 	border-bottom: solid;
 	border-bottom-width: 1px;
 	border-bottom-color: rgb(32, 32, 32);
