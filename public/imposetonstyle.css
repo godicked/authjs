@@ -8,6 +8,7 @@ body{
 	color: white;
 	font-weight: 100;
 	margin:0;
+	overflow:hidden;
 
 }
 ::-webkit-scrollbar { 
@@ -92,14 +93,19 @@ h1{
 }
 .user{
 	display: inline-block;
-	width: 25.6%;
-	background: rgb(26, 26, 26);
+	width: 26.09%;
+	background: rgb(32, 32, 32);
 	text-align: center;
-	padding: 0.5em;
+	padding: 0.6em;
+	overflow:hidden;
 }
 .user:hover,.room:hover{
 	cursor: pointer;
 	background: rgb(0, 118, 186);
+}
+#container_users{
+	background: rgb(26, 26, 26);
+	padding-top: 0.2em;
 }
 /*============================================================*/
 /*********************CSS DES FORMULAIRES *********************/
@@ -113,15 +119,16 @@ h1{
 #message{
 	width: 100%;
 	padding: 0.9em;
-	padding-left: 3em;
+	padding-left: 3.5em;
 	color: white;
 	font-size: 1em;
 }
 #form_chat{
   position: absolute;
   bottom: 0;
-  left: 0.3em;
+  left: -0.1em;
   width: 100%;
+  z-index:1;
 }
 #recherche_room,#recherche_user{
 	width: 80%;
@@ -135,19 +142,32 @@ h1{
 /*********************CSS DES MENUS ***************************/
 /*============================================================*/
 nav{
-	position: absolute;
-	top: 0;
-	left: 0;
+	position: relative;
 	width: 240px;
-	height: 100%;
+	height:101vh;
+	text-align: center;
+	-moz-box-shadow: 1px 0px 5px 1px rgb(19, 16, 16);
+	-webkit-box-shadow:1px 0px 5px 1px rgb(19, 16, 16);
+	-o-box-shadow: 1px 0px 5px 1px rgb(19, 16, 16);
+	box-shadow: 1px 0px 5px 1px rgb(19, 16, 16);
+	filter: progid:DXImageTransform.Microsoft.Shadow(color=rgb(19, 16, 16), Direction=-90, Strength=2);
+	z-index:2;
 	background: rgb(32, 32, 32);
-	-moz-box-shadow: 2px 0px 3px 1px rgb(34, 33, 33);
-	-webkit-box-shadow: 2px 0px 3px 1px rgb(34, 33, 33);
-	-o-box-shadow: 2px 0px 3px 1px rgb(34, 33, 33);
-	box-shadow: 2px 0px 3px 1px rgb(34, 33, 33);
-	filter: progid:DXImageTransform.Microsoft.Shadow(color=rgb(34, 33, 33), Direction=90, Strength=2);
+	}
+#menu_gauche{
+	float:left;
+	text-align:left;
 }
-
+#menu_droite{
+	float:right;
+	width: 300px;
+	text-align: center;
+	-moz-box-shadow: -1px 0px 5px 1px rgb(19, 16, 16);
+	-webkit-box-shadow:-1px 0px 5px 1px rgb(19, 16, 16);
+	-o-box-shadow: -1px 0px 5px 1px rgb(19, 16, 16);
+	box-shadow: -1px 0px 5px 1px rgb(19, 16, 16);
+	filter: progid:DXImageTransform.Microsoft.Shadow(color=rgb(19, 16, 16), Direction=-90, Strength=2);
+}
 /*============================================================*/
 /********************CSS CONTENU MULTIMEDIA *******************/
 /*============================================================*/
@@ -159,10 +179,10 @@ nav{
 /********************CSS DES MESSAGES *************************/
 /*============================================================*/
 #zone_chat{
-	position: absolute;
-	left: 240px;
-	width:100%;
-	height:100%;
+	position: relative;
+	width:800px;
+	height:100vh;
+	float:left;
 }
 article{
 	padding: 2em;
@@ -189,7 +209,7 @@ article{
 	border-top-right-radius: 10px;
 }
 .message_body{
-	background: rgb(255, 255, 244);
+	background: rgb(245, 245, 242);
 	display: inline-block;
 	padding: 2.5em;
 	padding-top: 0.5em;
@@ -204,7 +224,8 @@ article{
 	position: absolute;
 	left: 0;
 	top: 1.77em;
-  font-weight: 400;
+	font-weight: 400;
+	min-width: 15em;
 }
 .message{
 	position: relative;

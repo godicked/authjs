@@ -7,13 +7,12 @@
 		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type="text/css">
 		<link href='http://fonts.googleapis.com/css?family=Roboto:100,300' rel='stylesheet' type='text/css'>
 		<link id='css' rel="stylesheet" href="../public/imposetonstyle.css" type="text/css">
+		<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
 		<title id="title">Hermessage</title>
 	</head>
 	<body>
 		<nav id='menu_gauche'>
-			<header>	
-				<a href='#'><h1>HERMÈS<span class='blue'>S</span>AGE <img src="../public/images/serveur_image/hermessagev3_simple.png" id="image_logo" style='width:2em'/></h1></a>
-			</header>
+			
 			<section id='profil'>
 				<h1 class='titre_section'>Tyra</h1>
 				<div id='conteneur_profil' class='conteneur' style='height: 4.3em;'>
@@ -26,12 +25,12 @@
 			<section id='rooms'>
 				<div id='block'>
 					<h1 class='titre_section'>Rooms</h1>
-					<img id='image_ajouter'>
-					<form id='form_ajouter_room'>
+					<img id='image_ajouter' style='display:none'>
+					<form id='form_ajouter_room' style='displaye:none'>
 					</form>
 				</div>
 				<input id='recherche_room' type='text' class='textbox'>
-				<aside id='container_recherche_room'>
+				<aside id='container_recherche_room' style='displaye:none'>
 				</aside>
 				<aside id='container_rooms'>
 					<span class='room'>Accueil</span>
@@ -39,21 +38,12 @@
 					<span class='room'>Contacts</span>
 				</aside>
 			</section>
-			<section id='utilisateurs'>
-				<h1 class='titre_section'>Utilisateurs</h1>
-				<aside id='container_users'>
-					<span class='user'>Tyra</span>
-					<span class='user'>glouglou</span>
-					<span class='user'>QMK</span>
-				</aside>
-			</section>
 			<section id='contacts'>
 				<h1 class='titre_section'>Contacts</h1>
 			</section>
-			<footer>
-			</footer>
+
 		</nav>
-		<div id='zone_chat'> 
+		<div id='zone_chat'>
 				<article id='room_accueil'>
 					<div class='message'>
 						<span class='message_header'><span class='time'></span><span class='pseudo'>Tyra</span></span>
@@ -62,11 +52,36 @@
 					</div>
 				</article>
 				<form action="/" method="post" id="form_chat">
-				<img id='hidetime' src='../public/images/icones/time.png' title='Afficher heure des messages' style='  width: 1.5em;position: absolute;left: 0.5em;bottom: 0.7em;'>
+				<img id='hidetime' src='../public/images/icones/time.png' title='Afficher heure des messages' style='  width: 1.5em;position: absolute;left: 1em;bottom: 0.7em;'>
 				<input class="textbox" type="text" name="message" id="message" placeholder="Votre message..." size="50" autofocus autocomplete="off" />
 			</form>
 		</div>
-		<nav id='menu_droite' style='display:none'>
+		<nav id='menu_droite'>
+			<header>
+				<a href='#'><h1>HERMÈS<span class='blue'>S</span>AGE <img src="../public/images/serveur_image/hermessagev3_simple.png" id="image_logo" style='width:2em'/></h1></a>
+			</header>
+			<section id='utilisateurs'>
+				<h1 class='titre_section'>Utilisateurs</h1>
+				<aside id='container_users'>
+					<span class='user'>Tyra</span>
+					<span class='user'>glouglou</span>
+					<span class='user'>QMK</span>
+				</aside>
+			</section>
+			<footer>
+			</footer>
 		</nav>
+		<script>
+		$(document).ready(function(){
+			resizeMid();
+			$(window).resize(function() {
+			  resizeMid();
+			});
+			function resizeMid(){
+				var mid_width = $('body').width() - ($('#menu_gauche').width()+$('#menu_droite').width());
+				$('#zone_chat').css({'width':mid_width});
+			}
+		});
+		</script>
 	</body>
 </html>
