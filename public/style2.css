@@ -505,6 +505,7 @@ p{
 	text-align: center;
 	border-radius: 50%;
 	padding: 0.4em;
+	margin-right:1em;
 }
 .time{
 	font-size: 0.8em;
@@ -520,7 +521,7 @@ p{
 	padding:1em;
 }
 .close {
-	width: 0.5em;
+	width: 0.25em;
 	position: absolute;
 	top: 0.5em;
 	right: 0.5em;

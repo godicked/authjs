@@ -4,15 +4,15 @@
 body{
 	font-family: 'Roboto', sans-serif;
 	/*background-color: #222222;*/
-	background-image:url('../public/images/navy_blue.png'); 
+	background-image:url('../public/images/navy_blue.png');
 	color: white;
 	font-weight: 100;
 	margin:0;
 	overflow:hidden;
 
 }
-::-webkit-scrollbar { 
-    display: none; 
+::-webkit-scrollbar {
+    display: none;
 }
 html {
      -ms-overflow-style: none;
@@ -78,12 +78,13 @@ h1{
 /********************CSS DES CONTENEURS ***********************/
 /*============================================================*/
 .conteneur{
-  border-bottom: solid;
-  border-bottom-width: 1px;
-  border-bottom-color: rgb(26, 25, 25);
-  position: relative;
+	border-bottom: solid;
+	border-bottom-width: 1px;
+	border-bottom-color: rgb(26, 25, 25);
+	position: relative;
 }
 .room{
+	position: relative;
 	display: block;
 	background: rgb(26, 26, 26);
 	padding: 0.7em;
@@ -116,6 +117,8 @@ h1{
 	background: rgb(56, 56, 56);
 	outline: none !important;
 	outline-offset: none !important;
+	color:white;
+	padding: 6px 15px 6px 35px;
 }
 #message{
 	width: 100%;
@@ -125,16 +128,16 @@ h1{
 	font-size: 1em;
 }
 #form_chat{
-  position: absolute;
-  bottom: 0;
-  left: -0.1em;
-  width: 100%;
-  z-index:1;
+	position: absolute;
+	bottom: 0;
+	left: -0.1em;
+	width: 100%;
+	z-index:1;
 }
 #recherche_room,#recherche_user{
-	width: 80%;
+	width: 60%;
 	margin-left: 1.5em;
-	padding: 0.5em;
+	/*padding: 0.5em;*/
 	border-radius: 20px;
 	margin-top: 0.5em;
 	margin-bottom: 0.5em;
@@ -185,10 +188,12 @@ nav{
 	height:100vh;
 	float:left;
 }
+
 article{
 	padding: 2em;
 	max-width: 60%
 }
+
 .image_message{
 	width: 2em;
 	position: absolute;
@@ -197,6 +202,7 @@ article{
 	border-radius: 50%;
 	z-index:2;
 }
+
 .message_header{
 	display: inline-block;
 	background: rgb(0, 118, 186);
@@ -204,30 +210,58 @@ article{
 	font-weight: 700;
 	color: white;
 	padding: 0.2em;
-	padding-left: 4em;
+	padding-left: 3.2em;
 	padding-right: 4em;
 	border-top-left-radius: 10px;
 	border-top-right-radius: 10px;
+	font-size: 0.9em;
 }
+
 .message_body{
 	background: rgb(245, 245, 242);
 	display: inline-block;
 	padding: 2.5em;
+	padding-left: 3.5em;
 	padding-top: 0.5em;
 	padding-bottom: 0.5em;
 	border-bottom-left-radius: 10px;
-	/* max-width: 50%; */
 	border-bottom-right-radius: 10px;
 	border-top-right-radius: 10px;
 	color: black;
-	/* width: auto; */
-	font-size: 0.9em;
+	font-size: 0.8em;
 	position: absolute;
 	left: 0;
 	top: 1.77em;
 	font-weight: 400;
 	min-width: 15em;
 }
+
 .message{
 	position: relative;
+}
+/*============================================================*/
+/*************************NOTIFICATIONS************************/
+/*============================================================*/
+.notif{
+	float: right;
+	display: block;
+	background: rgb(47, 116, 184);
+	font-size: 0.6em;
+	width: 1.3em;
+	height: 1.3em;
+	text-align: center;
+	border-radius: 50%;
+	padding: 0.4em;
+	margin-right:2em;
+}
+.close {
+	width: 0.5em;
+	position: absolute;
+	top: 0.5em;
+	right: 0.5em;
+	padding: 0.3em;
+	border-radius: 50%;
+}
+.close:hover{
+	background: rgb(51,51,51);
 }
