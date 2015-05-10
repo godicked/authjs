@@ -104,6 +104,9 @@ module.exports = function(app, passport) {
 		res.render('profile.ejs',{user:req.user});
 	});
 	
+    app.get('/test', function(req, res) {
+res.render('test.ejs', {user : req.user});
+});
 	
     // =====================================
     // LOGOUT ==============================
