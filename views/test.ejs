@@ -12,15 +12,14 @@
 	</head>
 	<body>
 		<nav id='menu_gauche'>
-			
+
 			<section id='profil'>
-				<h1 class='titre_section'>Tyra</h1>
-				<div id='conteneur_profil' class='conteneur' style='height: 4.3em;'>
-					<img id='image_profil' src='../public/images/serveur_image/caducée.png' style='width:3em;padding-left:1em;padding:0.7em;'>
+				<h1 class='titre_section' style='padding:0.3em;padding-left:1em;text-align: left;position:relative'><img id='image_profil' src='../public/images/serveur_image/caducée.png' style='width:2em;'><span style="position:relative;top:-0.5em;left:0.5em;">Tyra</span></h1>
+				<!--<div id='conteneur_profil' class='conteneur' style='height: 4.3em;'>
 					<span id='affiche_pseudo'></span>
 					<span id='affiche_nom'></span>
 					<span id='bouton_furtif' class='bouton' style='position:absolute;top:1em;'>Furtif</span> 
-				</div>
+				</div>-->
 			<section>
 			<section id='rooms'>
 				<div id='block'>
@@ -41,14 +40,28 @@
 			<section id='contacts'>
 				<h1 class='titre_section' style='padding-left:0.7em'>Contacts</h1>
 			</section>
-
 		</nav>
 		<div id='zone_chat'>
 				<article id='room_accueil'>
 					<div class='message'>
-						<span class='message_header'><span class='time'></span><span class='pseudo'>Tyra</span></span>
+						<span class='message_header'><span class='time'></span><span class='pseudo'>Tyra</span></span><br>
 						<img class='image_message' src='../public/images/serveur_image/caducée.png'>
 						<span class='message_body'>Coucou juste un petit message pour dire que tout va bien <br> Test de message <br> Encore un test juste pour remplir un peu<br>Et vas y que je te remplis encore une autre ligne, tout ça pour tester si ça s'adapte bien en hauteur et largeur</span>
+					</div>
+					<div class='message'>
+						<span class='message_header'><span class='time'></span><span class='pseudo'>glouglou</span></span><br>
+						<img class='image_message' src='../public/images/serveur_image/caducée.png'>
+						<span class='message_body'>osef</span>
+					</div>
+					<div class='message'>
+						<span class='message_header'><span class='time'></span><span class='pseudo'>Tyra</span></span><br>
+						<img class='image_message' src='../public/images/serveur_image/caducée.png'>
+						<span class='message_body'>Ta gueule</span>
+					</div>
+					<div class='message'>
+						<span class='message_header'><span class='time'></span><span class='pseudo'>QMK</span></span><br>
+						<img class='image_message' src='../public/images/serveur_image/caducée.png'>
+						<span class='message_body'>Eh eh eh moi j'habite au Rouret lol<br>Et j'ai plein d'argent lol<br>Et je suis une pute!!</span>
 					</div>
 				</article>
 				<form action="/" method="post" id="form_chat">
@@ -72,16 +85,16 @@
 			</footer>
 		</nav>
 		<script>
-		$(document).ready(function(){
-			resizeMid();
-			$(window).resize(function() {
-			  resizeMid();
+			$(document).ready(function(){
+				resizeMid();
+				$(window).resize(function() {
+				  resizeMid();
+				});
+				function resizeMid(){
+					var mid_width = $('body').width() - ($('#menu_gauche').width()+$('#menu_droite').width());
+					$('#zone_chat').css({'width':mid_width});
+				}
 			});
-			function resizeMid(){
-				var mid_width = $('body').width() - ($('#menu_gauche').width()+$('#menu_droite').width());
-				$('#zone_chat').css({'width':mid_width});
-			}
-		});
 		</script>
 	</body>
 </html>

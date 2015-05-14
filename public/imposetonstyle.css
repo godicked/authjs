@@ -191,7 +191,8 @@ nav{
 
 article{
 	padding: 2em;
-	max-width: 60%
+	max-width: 60%;
+	padding-top: 0;
 }
 
 .image_message{
@@ -206,7 +207,6 @@ article{
 .message_header{
 	display: inline-block;
 	background: rgb(0, 118, 186);
-	/* width: 10em; */
 	font-weight: 700;
 	color: white;
 	padding: 0.2em;
@@ -229,15 +229,15 @@ article{
 	border-top-right-radius: 10px;
 	color: black;
 	font-size: 0.8em;
-	position: absolute;
-	left: 0;
-	top: 1.77em;
+	position: relative;
+	top: 0;
 	font-weight: 400;
 	min-width: 15em;
 }
 
 .message{
 	position: relative;
+	margin-top:1em;
 }
 /*============================================================*/
 /*************************NOTIFICATIONS************************/
